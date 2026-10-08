@@ -97,8 +97,8 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 
 /* Plans */
 .plans-sec{padding:80px 5%;background:var(--white)}
-.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1100px;margin:0 auto}
-.p-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px 26px;text-align:center;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;max-width:1150px;margin:0 auto}
+.p-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--grad);transform:scaleX(0);transition:transform .35s;transform-origin:left}
 .p-card:hover::before{transform:scaleX(1)}
 .p-card:hover{border-color:var(--or);box-shadow:var(--shadow);transform:translateY(-6px)}
@@ -106,9 +106,9 @@ input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;bac
 .p-card.pop::before{transform:scaleX(1)}
 .p-badge{display:inline-block;background:var(--grad);color:#fff;padding:5px 14px;border-radius:50px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;box-shadow:0 4px 10px rgba(217,111,0,.25)}
 .p-badge.hot{background:linear-gradient(135deg,#FFC857,#F7941D);color:#5a2f00}
-.p-amount{font-size:2.4rem;font-weight:900;color:var(--or-deep);margin-bottom:4px;letter-spacing:-.03em}
+.p-amount{font-size:2.1rem;font-weight:900;color:var(--or-deep);margin-bottom:4px;letter-spacing:-.03em;line-height:1.1}
 .p-amount small{font-size:1rem;color:var(--muted);font-weight:700;display:block;margin-top:2px}
-.p-repay{font-size:1.15rem;font-weight:800;color:var(--dark);margin-bottom:6px}
+.p-repay{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:6px}
 .p-repay small{font-size:.75rem;font-weight:600;color:var(--muted);display:block}
 .p-list{list-style:none;text-align:left;margin:18px 0 22px;font-size:12.5px;color:var(--muted)}
 .p-list li{padding:6px 0;display:flex;align-items:center;gap:8px}
@@ -248,7 +248,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
     <h1>Empréstimos Rápidos com a Sua <span class="hl">Mola e-Mola</span></h1>
     <p>Peça o seu empréstimo em minutos. Taxa fixa de 15%, sem surpresas, sem burocracia. Aprovação via e-Mola.</p>
     <div class="hero-stats">
-      <div class="stat-item"><div class="num">500K+</div><div class="lbl">Clientes</div></div>
+      <div class="stat-item"><div class="num">50K+</div><div class="lbl">Clientes</div></div>
       <div class="stat-item"><div class="num">5 min</div><div class="lbl">Aprovação</div></div>
       <div class="stat-item"><div class="num">500 MZN</div><div class="lbl">A partir de</div></div>
     </div>
@@ -268,8 +268,8 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
   <div class="calc-card">
     <div class="calc-row">
       <h3><span class="dot"></span>Valor do Empréstimo</h3>
-      <div class="calc-label"><span>Quanto precisa?</span><span class="val" id="amountLbl">2.500 MZN</span></div>
-      <input type="range" id="amountSlider" min="500" max="10000" step="500" value="2500">
+      <div class="calc-label"><span>Quanto precisa?</span><span class="val" id="amountLbl">5.000 MZN</span></div>
+      <input type="range" id="amountSlider" min="500" max="50000" step="500" value="5000">
     </div>
 
     <div class="calc-row">
@@ -283,10 +283,10 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
     </div>
 
     <div class="calc-result">
-      <div class="cr-row"><span>Valor solicitado</span><span id="rAmount">2.500 MZN</span></div>
-      <div class="cr-row"><span>Juros (15% fixo)</span><span id="rInterest">375 MZN</span></div>
+      <div class="cr-row"><span>Valor solicitado</span><span id="rAmount">5.000 MZN</span></div>
+      <div class="cr-row"><span>Juros (15% fixo)</span><span id="rInterest">750 MZN</span></div>
       <div class="cr-row"><span>Prazo</span><span id="rDur">14 dias</span></div>
-      <div class="cr-row total"><span>Total a pagar</span><span id="rTotal">2.875 MZN</span></div>
+      <div class="cr-row total"><span>Total a pagar</span><span id="rTotal">5.750 MZN</span></div>
     </div>
 
     <button class="btn-calc" onclick="proceed()">Solicitar Este Empréstimo →</button>
@@ -297,7 +297,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
 <section class="plans-sec" id="planos">
   <div class="s-label">Planos Populares</div>
   <h2 class="s-title">Escolha o Seu Empréstimo</h2>
-  <p class="s-sub">Três opções desenhadas para diferentes necessidades.</p>
+  <p class="s-sub">Quatro opções desenhadas para diferentes necessidades.</p>
   <div class="p-grid">
     <div class="p-card">
       <div class="p-badge">Essencial</div>
@@ -308,17 +308,24 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
     </div>
     <div class="p-card pop">
       <div class="p-badge hot">Mais Popular</div>
-      <div class="p-amount">2.500 <small>MZN</small></div>
-      <div class="p-repay">Pagar 2.875 MZN <small>em 14 dias</small></div>
+      <div class="p-amount">5.000 <small>MZN</small></div>
+      <div class="p-repay">Pagar 5.750 MZN <small>em 14 dias</small></div>
       <ul class="p-list"><li>Aprovação em minutos</li><li>Sem burocracia</li><li>Taxa fixa 15%</li><li>Suporte prioritário</li></ul>
-      <button class="btn-p" onclick="pick(2500,14)">Solicitar</button>
+      <button class="btn-p" onclick="pick(5000,14)">Solicitar</button>
+    </div>
+    <div class="p-card">
+      <div class="p-badge">Avançado</div>
+      <div class="p-amount">20.000 <small>MZN</small></div>
+      <div class="p-repay">Pagar 23.000 MZN <small>em 30 dias</small></div>
+      <ul class="p-list"><li>Aprovação em minutos</li><li>Sem burocracia</li><li>Taxa fixa 15%</li></ul>
+      <button class="btn-p" onclick="pick(20000,30)">Solicitar</button>
     </div>
     <div class="p-card">
       <div class="p-badge">Premium</div>
-      <div class="p-amount">10.000 <small>MZN</small></div>
-      <div class="p-repay">Pagar 11.500 MZN <small>em 30 dias</small></div>
-      <ul class="p-list"><li>Aprovação em minutos</li><li>Sem burocracia</li><li>Taxa fixa 15%</li></ul>
-      <button class="btn-p" onclick="pick(10000,30)">Solicitar</button>
+      <div class="p-amount">50.000 <small>MZN</small></div>
+      <div class="p-repay">Pagar 57.500 MZN <small>em 60 dias</small></div>
+      <ul class="p-list"><li>Aprovação em minutos</li><li>Sem burocracia</li><li>Taxa fixa 15%</li><li>Gestor dedicado</li></ul>
+      <button class="btn-p" onclick="pick(50000,60)">Solicitar</button>
     </div>
   </div>
 </section>
@@ -443,7 +450,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
 </div>
 
 <script>
-let curAmount=2500, curDur=14;
+let curAmount=5000, curDur=14;
 
 function toggleMenu(){document.getElementById('mobNav').classList.toggle('open')}
 function closeMenu(){document.getElementById('mobNav').classList.remove('open')}
@@ -462,7 +469,7 @@ function updateCalc(){
   document.getElementById('rDur').textContent = curDur + ' dias';
 
   const slider = document.getElementById('amountSlider');
-  const pct = ((curAmount - 500) / (10000 - 500)) * 100;
+  const pct = ((curAmount - 500) / (50000 - 500)) * 100;
   slider.style.setProperty('--pct', pct + '%');
 }
 
