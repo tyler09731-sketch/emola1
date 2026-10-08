@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1b1464">
+    <title>D-Money | Félicitations · Djibouti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1b1464;
+            --navy-dark: #0f0d3a;
+            --navy-light: #2d2680;
+            --gold: #f5a623;
+            --gold-light: #ffc857;
+            --orange: #e8841a;
+            --white: #ffffff;
+            --light: #f5f3f0;
+            --dark: #1a1a1a;
+            --muted: #666666;
+            --border: #e0ddd9;
+            --success: #2e7d32;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: white;
+            padding: 14px 5%;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(27,20,100,0.08);
+        }
+
+        .logo { font-size: 22px; font-weight: 900; text-decoration: none; }
+        .logo .d { color: var(--navy); }
+        .logo .money { color: var(--gold); }
+
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px 28px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(27,20,100,0.35);
+            text-align: center;
+        }
+
+        .icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(46,125,50,0.1);
+            border: 3px solid var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            animation: pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), glow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pop { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(46,125,50,0.3); } 50% { box-shadow: 0 0 0 16px rgba(46,125,50,0); } }
+
+        .card h1 { font-size: 24px; font-weight: 900; color: var(--success); margin-bottom: 8px; }
+        .card .desc { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 26px; }
+
+        .details {
+            background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 26px;
+            color: white;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .d-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 10px; }
+        .d-row:last-child { margin-bottom: 0; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.12); font-weight: 900; font-size: 14px; }
+        .d-row .lbl { opacity: 0.75; font-weight: 600; }
+        .d-row .val { font-weight: 800; }
+
+        .btn-home {
+            width: 100%;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 14px rgba(27,20,100,0.28);
+            transition: all 0.2s;
+            margin-bottom: 10px;
+        }
+
+        .btn-home:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(245,166,35,0.3); }
+
+        .btn-receipt {
+            width: 100%;
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-receipt:hover { background: var(--light); }
+
+        .card-ft { margin-top: 20px; font-size: 11px; color: var(--muted); }
+        .card-ft a { color: var(--gold); text-decoration: none; font-weight: 800; }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+            font-size: 10px;
+            color: var(--muted);
+            font-weight: 700;
+            flex-wrap: wrap;
+        }
+
+        /* Confetti */
+        .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1000; overflow: hidden; }
+        .c-piece { position: absolute; width: 10px; height: 10px; border-radius: 2px; animation: fall 3.5s ease-out forwards; opacity: 0; }
+        @keyframes fall { 0% { transform: translateY(-80px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+
+        @media (max-width: 500px) {
+            main { padding: 24px 12px; }
+            .card { padding: 32px 18px; }
+            .card h1 { font-size: 21px; }
+            .icon { width: 72px; height: 72px; font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <header><a class="logo" href="index.html"><span class="d">D-</span><span class="money">Money</span></a></header>
+
+    <main>
+        <div class="card">
+            <div class="icon">✓</div>
+            <h1>Félicitations!</h1>
+            <p class="desc">Votre forfait data a été activé avec succès. Vous pouvez commencer à naviguer immédiatement sur tous les réseaux!</p>
+
+            <div class="details" id="details">
+                <div class="d-row"><span class="lbl">Forfait</span><span class="val" id="sData">&mdash;</span></div>
+                <div class="d-row"><span class="lbl">Téléphone</span><span class="val" id="sPhone">&mdash;</span></div>
+                <div class="d-row"><span class="lbl">Statut</span><span class="val" style="color:#86efac;">✓ Actif</span></div>
+                <div class="d-row"><span class="lbl">Référence</span><span class="val" id="sRef">&mdash;</span></div>
+                <div class="d-row"><span class="lbl">Montant Payé</span><span class="val" id="sPrice">0 DJF</span></div>
+            </div>
+
+            <button class="btn-home" onclick="location.href='index.html'">Retour à l'Accueil</button>
+            <button class="btn-receipt" onclick="dlReceipt()">Télécharger le Reçu</button>
+
+            <div class="card-ft">Transaction réussie. <a href="index.html">Acheter un autre forfait</a></div>
+
+            <div class="badges">
+                <span>🔒 Chiffré</span>
+                <span>✓ Vérifié</span>
+                <span>🌐 Sécurisé</span>
+            </div>
+        </div>
+    </main>
+
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+        let bd = {};
+
+        function init() {
+            const p = new URLSearchParams(location.search);
+            const d = p.get('data'), pr = p.get('price'), ph = p.get('phone');
+            const ref = 'DMN' + Date.now().toString().slice(-8);
+            bd = { data: d || 'N/A', price: pr || '0', phone: ph || 'N/A', ref };
+
+            document.getElementById('sData').textContent = bd.data;
+            document.getElementById('sPhone').textContent = ph ? '+253' + ph : 'N/A';
+            document.getElementById('sPrice').textContent = bd.price + ' DJF';
+            document.getElementById('sRef').textContent = ref;
+        }
+
+        function dlReceipt() {
+            const date = new Date().toLocaleString('fr-DJ');
+            const txt = `========================================
+         REÇU DE TRANSACTION D-MONEY
+========================================
+
+Référence: ${bd.ref}
+Date: ${date}
+Statut: SUCCÈS ✓
+
+Forfait: ${bd.data}
+Téléphone: +253${bd.phone}
+Montant: ${bd.price} DJF
+Paiement: D-Money
+
+========================================
+  Félicitations! Profitez de votre data.
+  Merci d'avoir choisi D-Money.
+========================================`;
+
+            const blob = new Blob([txt], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `D-Money_Recu_${bd.ref}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function confetti() {
+            const el = document.getElementById('confetti');
+            const colors = ['#1b1464','#f5a623','#ffc857','#e8841a','#2d2680','#60a5fa','#2e7d32'];
+            for (let i = 0; i < 80; i++) {
+                const p = document.createElement('div');
+                p.className = 'c-piece';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.animationDelay = Math.random() * 2.5 + 's';
+                p.style.animationDuration = (2.5 + Math.random() * 2.5) + 's';
+                el.appendChild(p);
+            }
+            setTimeout(() => el.remove(), 5500);
+        }
+
+        window.addEventListener('load', () => { init(); confetti(); });
+    </script>
+</body>
+</html>

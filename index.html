@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1b1464">
+    <title>D-Money | Forfaits Mobiles Djibouti · Argent Numérique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1b1464;
+            --navy-dark: #0f0d3a;
+            --navy-light: #2d2680;
+            --gold: #f5a623;
+            --gold-light: #ffc857;
+            --orange: #e8841a;
+            --white: #ffffff;
+            --light-bg: #f5f3f0;
+            --dark-text: #1a1a1a;
+            --muted: #666666;
+            --border: #e0ddd9;
+            --error: #d32f2f;
+            --success: #2e7d32;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .topbar {
+            background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 16px;
+            right: 5%;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover { background: var(--gold-light); }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(27,20,100,0.08);
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: -0.8px;
+        }
+
+        .logo .d { color: var(--navy); }
+        .logo .money { color: var(--gold); }
+
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-desktop a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .nav-desktop a:hover { color: var(--gold); }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white !important;
+            padding: 11px 24px;
+            border-radius: 50px;
+            font-size: 12px !important;
+            box-shadow: 0 4px 14px rgba(27,20,100,0.3);
+            transition: all 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; transform: translateY(-2px); }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0; right: 0;
+            background: white;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 8px 24px rgba(27,20,100,0.12);
+            z-index: 999;
+        }
+
+        .mobile-nav.open { display: block; }
+
+        .mobile-nav a {
+            display: block;
+            padding: 14px 5%;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav a:hover { background: var(--light-bg); }
+
+        .mobile-nav .m-cta {
+            margin: 12px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white;
+            padding: 14px;
+            border-radius: 50px;
+            border-bottom: none;
+            font-weight: 800;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            color: white;
+            padding: 90px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%; right: -10%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%; left: -5%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(255,200,87,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -1.2px;
+            line-height: 1.1;
+        }
+
+        .hero h1 .hl { color: var(--gold-light); }
+
+        .hero p { font-size: 1.1rem; opacity: 0.95; margin-bottom: 32px; }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item { text-align: center; }
+        .stat-item .num { font-size: 1.8rem; font-weight: 900; color: var(--gold-light); }
+        .stat-item .lbl { font-size: 11px; opacity: 0.75; margin-top: 2px; }
+
+        .hero-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+        .btn-hero-1 {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 13px;
+            transition: all 0.2s;
+            box-shadow: 0 6px 20px rgba(245,166,35,0.35);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-hero-1:hover { background: white; transform: translateY(-3px); box-shadow: 0 8px 28px rgba(245,166,35,0.4); }
+
+        .btn-hero-2 {
+            background: transparent;
+            color: white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            border: 2px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-hero-2:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+
+        /* Sections */
+        .s-label { text-align: center; color: var(--gold); font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px; }
+        .s-title { text-align: center; font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; color: var(--dark-text); letter-spacing: -0.8px; }
+        .s-sub { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+        /* Plans */
+        .plans-sec { padding: 70px 5%; }
+
+        .p-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .p-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 22px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .p-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--navy), var(--gold)); transform: scaleX(0); transition: transform 0.3s; }
+        .p-card:hover::before { transform: scaleX(1); }
+        .p-card:hover { border-color: var(--gold); box-shadow: 0 12px 36px rgba(27,20,100,0.12); transform: translateY(-4px); }
+
+        .p-card.pop { border-color: var(--gold); border-width: 2.5px; }
+        .p-card.pop::before { transform: scaleX(1); }
+
+        .p-badge { display: inline-block; background: var(--navy); color: white; padding: 4px 12px; border-radius: 50px; font-size: 9px; font-weight: 800; text-transform: uppercase; margin-bottom: 14px; }
+        .p-badge.hot { background: var(--gold); color: var(--navy); }
+
+        .p-data { font-size: 2.4rem; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+        .p-price { font-size: 1.2rem; font-weight: 800; color: var(--dark-text); margin-bottom: 14px; }
+
+        .p-list { list-style: none; text-align: left; margin-bottom: 18px; font-size: 12px; color: var(--muted); }
+        .p-list li { padding: 5px 0; display: flex; align-items: center; gap: 7px; }
+        .p-list li::before { content: "\2713"; color: var(--success); font-weight: 900; font-size: 13px; }
+
+        .btn-p {
+            width: 100%;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(27,20,100,0.2);
+        }
+
+        .btn-p:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+
+        /* Features */
+        .feat-sec { padding: 70px 5%; background: linear-gradient(135deg, var(--light-bg), white); }
+
+        .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; max-width: 1000px; margin: 0 auto; }
+
+        .feat-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(27,20,100,0.05);
+        }
+
+        .feat-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(27,20,100,0.1); transform: translateY(-3px); }
+
+        .feat-ic { width: 54px; height: 54px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 1.4rem; }
+        .feat-card h3 { font-size: 0.9rem; font-weight: 800; margin-bottom: 6px; color: var(--navy); }
+        .feat-card p { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+
+        /* How */
+        .how-sec {
+            padding: 70px 5%;
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            color: white;
+        }
+
+        .how-sec .s-label { color: var(--gold-light); }
+        .how-sec .s-title { color: white; }
+        .how-sec .s-sub { color: rgba(255,255,255,0.75); }
+
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; max-width: 950px; margin: 0 auto; }
+
+        .step {
+            background: rgba(255,255,255,0.06);
+            border: 1.5px solid rgba(255,255,255,0.12);
+            padding: 28px 18px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .step:hover { background: rgba(255,255,255,0.12); transform: translateY(-3px); border-color: rgba(255,255,255,0.25); }
+
+        .step-n { width: 44px; height: 44px; background: var(--gold); color: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin: 0 auto 12px; box-shadow: 0 4px 12px rgba(245,166,35,0.3); }
+        .step h3 { font-size: 0.9rem; font-weight: 800; margin-bottom: 6px; }
+        .step p { color: rgba(255,255,255,0.65); font-size: 0.8rem; }
+
+        /* Footer */
+        footer { background: #0a0820; color: white; padding: 50px 5% 20px; }
+
+        .ft-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 32px; }
+
+        .ft-brand p { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 10px; line-height: 1.8; }
+        .ft-col h4 { font-size: 0.8rem; font-weight: 900; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
+        .ft-col ul { list-style: none; }
+        .ft-col ul li { margin-bottom: 7px; }
+        .ft-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 12px; transition: color 0.2s; }
+        .ft-col ul li a:hover { color: white; }
+
+        .ft-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .ft-bottom p { font-size: 11px; color: rgba(255,255,255,0.4); }
+        .ft-badges { display: flex; gap: 14px; font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 700; }
+
+        @media (max-width: 768px) {
+            .nav-desktop { display: none; }
+            .menu-btn { display: block; }
+            .hero { padding: 60px 5% 50px; }
+            .hero h1 { font-size: 2.2rem; }
+            .s-title { font-size: 1.6rem; }
+            .p-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+            .steps { grid-template-columns: 1fr 1fr; }
+            .ft-grid { grid-template-columns: 1fr 1fr; }
+            .ft-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .steps { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <span>🇩🇯 Djibouti</span>
+        <span>⚡ Activation Rapide</span>
+        <span>🔒 Sécurisé</span>
+        <span>💰 Tarifs Compétitifs</span>
+        <button class="lang-toggle" onclick="toggleLang()">العربية</button>
+    </div>
+
+    <header>
+        <a class="logo" href="index.html"><span class="d">D-</span><span class="money">Money</span></a>
+        <nav class="nav-desktop">
+            <a href="#plans">Forfaits</a>
+            <a href="#features">Avantages</a>
+            <a href="#how">Comment Ça Marche</a>
+            <a href="login.html?data=2%20Go&price=500" class="nav-cta">Commencer</a>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <div class="mobile-nav" id="mobNav">
+            <a href="index.html">Accueil</a>
+            <a href="#plans" onclick="closeMenu()">Forfaits</a>
+            <a href="#how" onclick="closeMenu()">Comment Ça Marche</a>
+            <a href="login.html?data=2%20Go&price=500" class="m-cta">Commencer</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">🇩🇯 Djibouti - #1 Argent Numérique</div>
+            <h1>Forfaits Data <span class="hl">Sans Expiration</span></h1>
+            <p>Achetez des forfaits data via D-Money. Activation instantanée, jamais d'expiration, tous les réseaux.</p>
+            <div class="hero-stats">
+                <div class="stat-item"><div class="num">500K+</div><div class="lbl">Utilisateurs</div></div>
+                <div class="stat-item"><div class="num">99.9%</div><div class="lbl">Disponibilité</div></div>
+                <div class="stat-item"><div class="num">500 DJF</div><div class="lbl">À partir de</div></div>
+            </div>
+            <div class="hero-btns">
+                <button class="btn-hero-1" onclick="location.href='#plans'">Voir les Forfaits</button>
+                <button class="btn-hero-2" onclick="location.href='login.html?data=2%20Go&price=500'">Commencer →</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="plans-sec" id="plans">
+        <div class="s-label">Forfaits Disponibles</div>
+        <h2 class="s-title">Forfaits Data Sans Expiration</h2>
+        <p class="s-sub">Payez via D-Money. Activation instantanée. Jamais d'expiration.</p>
+        <div class="p-grid">
+            <div class="p-card"><div class="p-badge">Essentiel</div><div class="p-data">2 Go</div><div class="p-price">500 DJF</div><ul class="p-list"><li>Sans Expiration</li><li>Activation Instantanée</li><li>Tous les Réseaux</li></ul><button class="btn-p" onclick="pick('2 Go','500')">Obtenir</button></div>
+            <div class="p-card"><div class="p-badge">Standard</div><div class="p-data">5 Go</div><div class="p-price">1 000 DJF</div><ul class="p-list"><li>Sans Expiration</li><li>Activation Instantanée</li><li>Tous les Réseaux</li></ul><button class="btn-p" onclick="pick('5 Go','1000')">Obtenir</button></div>
+            <div class="p-card"><div class="p-badge">Premium</div><div class="p-data">10 Go</div><div class="p-price">1 800 DJF</div><ul class="p-list"><li>Sans Expiration</li><li>Activation Instantanée</li><li>Tous les Réseaux</li></ul><button class="btn-p" onclick="pick('10 Go','1800')">Obtenir</button></div>
+            <div class="p-card pop"><div class="p-badge hot">Meilleure Valeur</div><div class="p-data">25 Go</div><div class="p-price">3 500 DJF</div><ul class="p-list"><li>Sans Expiration</li><li>Activation Instantanée</li><li>Tous les Réseaux</li><li>Support Prioritaire</li></ul><button class="btn-p" onclick="pick('25 Go','3500')">Obtenir</button></div>
+            <div class="p-card"><div class="p-badge">Illimité</div><div class="p-data">50 Go</div><div class="p-price">6 500 DJF</div><ul class="p-list"><li>Sans Expiration</li><li>Activation Instantanée</li><li>Tous les Réseaux</li></ul><button class="btn-p" onclick="pick('50 Go','6500')">Obtenir</button></div>
+            <div class="p-card"><div class="p-badge">Professionnel</div><div class="p-data">100 Go</div><div class="p-price">12 000 DJF</div><ul class="p-list"><li>Sans Expiration</li><li>Activation Instantanée</li><li>Tous les Réseaux</li></ul><button class="btn-p" onclick="pick('100 Go','12000')">Obtenir</button></div>
+        </div>
+    </section>
+
+    <section class="feat-sec" id="features">
+        <div class="s-label">Pourquoi D-Money</div>
+        <h2 class="s-title">Avantages Exclusifs</h2>
+        <p class="s-sub">Approuvé par des millions à Djibouti.</p>
+        <div class="feat-grid">
+            <div class="feat-card"><div class="feat-ic">🔄</div><h3>Jamais d'Expiration</h3><p>Votre data reste valide indéfiniment.</p></div>
+            <div class="feat-card"><div class="feat-ic">⚡</div><h3>Activation Instantanée</h3><p>Achetez et naviguez immédiatement.</p></div>
+            <div class="feat-card"><div class="feat-ic">💾</div><h3>Accumulation Auto</h3><p>Les données non utilisées s'ajoutent.</p></div>
+            <div class="feat-card"><div class="feat-ic">🔒</div><h3>Sécurité Bancaire</h3><p>Chiffrement 256-bit sur toutes les transactions.</p></div>
+        </div>
+    </section>
+
+    <section class="how-sec" id="how">
+        <div class="s-label">Paiement D-Money</div>
+        <h2 class="s-title">Comment Ça Marche</h2>
+        <p class="s-sub">Processus simple en 4 étapes D-Money.</p>
+        <div class="steps">
+            <div class="step"><div class="step-n">1</div><h3>Choisir</h3><p>Sélectionnez votre forfait data.</p></div>
+            <div class="step"><div class="step-n">2</div><h3>Détails</h3><p>Entrez votre numéro D-Money et PIN.</p></div>
+            <div class="step"><div class="step-n">3</div><h3>Vérifier</h3><p>Entrez le code OTP à 6 chiffres.</p></div>
+            <div class="step"><div class="step-n">4</div><h3>Profiter</h3><p>Forfait activé instantanément!</p></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="ft-grid">
+            <div class="ft-brand">
+                <span class="logo"><span class="d">D-</span><span class="money">Money</span></span>
+                <p>Solution d'argent numérique leader à Djibouti. Achetez des forfaits data sans expiration en toute sécurité.</p>
+            </div>
+            <div class="ft-col"><h4>Produits</h4><ul><li><a href="#plans">Forfaits Data</a></li><li><a href="#">Airtime</a></li><li><a href="#">Transferts</a></li></ul></div>
+            <div class="ft-col"><h4>Support</h4><ul><li><a href="#">Centre d'Aide</a></li><li><a href="#">Contact</a></li><li><a href="#">FAQ</a></li></ul></div>
+            <div class="ft-col"><h4>Légal</h4><ul><li><a href="#">Confidentialité</a></li><li><a href="#">Conditions</a></li></ul></div>
+        </div>
+        <div class="ft-bottom">
+            <p>&copy; 2026 D-Money · Djibouti Telecom</p>
+            <div class="ft-badges"><span>🔒 Chiffré 256-bit</span><span>✓ Certifié PCI DSS</span></div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('mobNav').classList.toggle('open'); }
+        function closeMenu() { document.getElementById('mobNav').classList.remove('open'); }
+        window.addEventListener('scroll', closeMenu);
+
+        function pick(d, p) { window.location.href = `login.html?data=${encodeURIComponent(d)}&price=${p}`; }
+
+        function toggleLang() {
+            alert('Traducteur: Basculer vers العربية (Arabe) - Fonctionnalité complète à venir');
+        }
+    </script>
+</body>
+</html>

