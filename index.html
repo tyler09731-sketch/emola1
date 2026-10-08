@@ -1,937 +1,517 @@
 <!DOCTYPE html>
-<html lang="so">
+<html lang="pt-MZ">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#047857">
-  <title>WaafiLoans – Lacag Deg Deg ah oo Ammaan ah</title>
-  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a3ff86d4d21e11d4540537f/1js4u4r1g';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-  <style>
-    :root {
-      --green: #10b981;
-      --green-dark: #047857;
-      --green-deep: #064e3b;
-      --green-soft: rgba(16,185,129,0.09);
-      --green-border: rgba(16,185,129,0.22);
-      --black: #0A0A0A;
-      --dark: #0d1a12;
-      --dark2: #132018;
-      --dark3: #1a2e20;
-      --white: #FFFFFF;
-      --off-white: #f6faf7;
-      --grey-light: #e0ebe4;
-      --grey-mid: #8faa97;
-      --grey: #5a7a65;
-      --emerald: #34d399;
-      --shadow: 0 2px 20px rgba(6,78,59,0.10);
-      --shadow-lg: 0 8px 40px rgba(6,78,59,0.16);
-      --shadow-green: 0 4px 24px rgba(16,185,129,0.28);
-      --radius: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
-      --transition: 0.2s ease;
-    }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; font-size:16px; overflow-x: hidden; }
-    body {
-      font-family: 'Red Hat Text', sans-serif;
-      background: var(--white);
-      color: var(--dark);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F7941D">
+<meta name="description" content="e-Mola Crédito — Empréstimos rápidos e seguros em Moçambique. Aprovação em minutos, taxa fixa, sem surpresas.">
+<title>e-Mola Crédito | Empréstimos Rápidos Moçambique · Meu cell, minha mola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --or:#F7941D; --or-deep:#D96F00; --or-dark:#A34A00; --or-light:#FFB84D; --amber:#FFC857;
+  --cream:#FFF8F0; --white:#fff; --dark:#1a1a1a; --muted:#6b6b6b; --border:#f0e6da;
+  --err:#d32f2f; --ok:#2e7d32;
+  --grad:linear-gradient(135deg,#F7941D 0%,#E8841A 50%,#D96F00 100%);
+  --shadow:0 12px 36px rgba(217,111,0,.18); --shadow-lg:0 24px 60px rgba(217,111,0,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--white);color:var(--dark);line-height:1.6;overflow-x:hidden;animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-    /* ══ TOPLINE ══ */
-    .topline { height: 4px; background: linear-gradient(90deg, var(--green-deep), var(--green), var(--emerald), var(--green-deep)); }
+.topbar{background:var(--grad);color:#fff;padding:10px 5%;display:flex;justify-content:center;gap:22px;font-size:11px;font-weight:600;flex-wrap:wrap}
+.topbar span{display:inline-flex;align-items:center;gap:5px;opacity:.95}
 
-    /* ══ HEADER ══ */
-    header {
-      background: var(--white);
-      border-bottom: 2px solid var(--green);
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      box-shadow: 0 2px 12px rgba(6,78,59,0.08);
-    }
-    .header-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .logo { display:flex; align-items:center; gap:12px; text-decoration:none; flex-shrink:0; }
-    .logo-mark {
-      width: 46px; height: 46px;
-      border-radius: 14px;
-      background: linear-gradient(145deg, var(--green-deep), var(--green-dark));
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-family: 'Red Hat Display', sans-serif;
-      font-weight: 900; font-size: 15px;
-      box-shadow: 0 8px 20px rgba(16,185,129,0.25);
-      flex-shrink: 0;
-    }
-    .logo-text { font-family:'Red Hat Display',sans-serif; font-size:22px; font-weight:900; letter-spacing:-0.5px; line-height:1; }
-    .logo-text .t1 { color: var(--green-deep); }
-    .logo-text .t2 { color: var(--green); }
-    .logo-sub { font-size:10px; color:var(--grey); font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin:2px 0 0; display:block; }
+header{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(217,111,0,.08);border-bottom:3px solid var(--or)}
+.logo{font-size:26px;font-weight:900;text-decoration:none;letter-spacing:-.8px;display:flex;align-items:center;gap:2px}
+.logo .e{color:var(--or-deep)}
+.logo .mola{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-desktop{display:flex;align-items:center;gap:26px}
+.nav-desktop a{color:var(--dark);text-decoration:none;font-weight:700;font-size:13px;transition:color .2s;position:relative}
+.nav-desktop a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--or);transition:width .3s}
+.nav-desktop a:hover{color:var(--or-deep)}
+.nav-desktop a:hover::after{width:100%}
+.nav-cta{background:var(--grad);color:#fff!important;padding:11px 26px;border-radius:50px;font-size:12px!important;box-shadow:0 6px 18px rgba(217,111,0,.35);transition:all .25s!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(217,111,0,.45);filter:brightness(1.05)}
+.menu-btn{display:none;background:none;border:none;font-size:28px;cursor:pointer;color:var(--or-deep)}
+.mobile-nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:3px solid var(--or);box-shadow:0 12px 32px rgba(217,111,0,.15);z-index:999}
+.mobile-nav.open{display:block;animation:slideDown .3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.mobile-nav a{display:block;padding:15px 5%;color:var(--dark);text-decoration:none;font-weight:700;font-size:14px;border-bottom:1px solid var(--border)}
+.mobile-nav a:hover{background:var(--cream);color:var(--or-deep)}
+.mobile-nav .m-cta{margin:14px 5%;text-align:center;background:var(--grad);color:#fff;padding:15px;border-radius:50px;border-bottom:none;font-weight:800;box-shadow:0 6px 18px rgba(217,111,0,.3)}
 
-    nav.desktop-nav { display:flex; align-items:center; height:auto; gap:4px; }
-    nav.desktop-nav a {
-      color: var(--dark);
-      text-decoration: none;
-      font-size: 14px; font-weight: 600;
-      padding: 8px 16px;
-      border-bottom: 3px solid transparent;
-      transition: all var(--transition);
-      letter-spacing: 0.2px; white-space: nowrap;
-    }
-    nav.desktop-nav a:hover { color:var(--green-dark); border-bottom-color:var(--green); }
-    nav.desktop-nav a.active { color:var(--green-dark); border-bottom-color:var(--green); }
+.hero{background:var(--grad);color:#fff;padding:90px 5% 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,.22) 0%,transparent 70%);border-radius:50%;animation:float 8s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-25%;left:-8%;width:520px;height:520px;background:radial-gradient(circle,rgba(255,255,255,.12) 0%,transparent 70%);border-radius:50%;animation:float 10s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-20px)}}
+.hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.32);padding:10px 22px;border-radius:50px;font-size:12px;font-weight:700;margin-bottom:22px;backdrop-filter:blur(10px)}
+.hero h1{font-size:3.2rem;font-weight:900;margin-bottom:16px;letter-spacing:-1.3px;line-height:1.08}
+.hero h1 .hl{color:#FFE9B8;text-shadow:0 2px 20px rgba(255,233,184,.3)}
+.hero p{font-size:1.12rem;opacity:.96;margin-bottom:34px;max-width:580px;margin-left:auto;margin-right:auto}
+.hero-stats{display:flex;justify-content:center;gap:44px;margin-bottom:36px;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-item .num{font-size:1.9rem;font-weight:900;color:#FFE9B8}
+.stat-item .lbl{font-size:11px;opacity:.82;margin-top:2px;font-weight:600;letter-spacing:.03em}
+.hero-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-hero-1{background:#fff;color:var(--or-deep);padding:17px 38px;border-radius:50px;text-decoration:none;font-weight:900;font-size:13px;transition:all .25s;box-shadow:0 10px 28px rgba(0,0,0,.18);border:none;cursor:pointer;font-family:inherit}
+.btn-hero-1:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.25)}
+.btn-hero-2{background:transparent;color:#fff;padding:17px 38px;border-radius:50px;text-decoration:none;font-weight:800;font-size:13px;border:2px solid rgba(255,255,255,.5);transition:all .25s;cursor:pointer;font-family:inherit}
+.btn-hero-2:hover{background:rgba(255,255,255,.15);border-color:#fff;transform:translateY(-3px)}
 
-    .header-right { display:flex; align-items:center; gap:8px; }
-    .btn-login-header {
-      background: linear-gradient(135deg, var(--green-dark), var(--green-deep));
-      color: white; border:none; padding:10px 20px; border-radius:999px;
-      font-size:13px; font-weight:700; cursor:pointer;
-      font-family:'Red Hat Text',sans-serif; transition:all var(--transition);
-      white-space:nowrap; letter-spacing:0.5px;
-      box-shadow: 0 6px 16px rgba(16,185,129,0.22);
-    }
-    .btn-login-header:hover { transform:translateY(-1px); box-shadow:0 10px 22px rgba(16,185,129,0.3); }
+.s-label{text-align:center;color:var(--or-deep);font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.22em;margin-bottom:8px}
+.s-title{text-align:center;font-size:2.3rem;font-weight:900;margin-bottom:10px;color:var(--dark);letter-spacing:-.9px}
+.s-sub{text-align:center;color:var(--muted);font-size:.95rem;margin-bottom:44px;max-width:580px;margin-left:auto;margin-right:auto}
 
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
-    .hamburger span { display:block; width:22px; height:2.5px; background:var(--dark); border-radius:0; transition:all 0.28s; }
-    .hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity:0; }
-    .hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+/* Calculator */
+.calc-sec{padding:80px 5%;background:var(--cream)}
+.calc-card{max-width:640px;margin:0 auto;background:#fff;border-radius:24px;padding:38px 32px;box-shadow:var(--shadow);border:2px solid var(--border)}
+.calc-card h3{font-size:1.05rem;font-weight:800;color:var(--or-dark);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.calc-card h3 .dot{width:8px;height:8px;background:var(--or);border-radius:50%;display:inline-block}
+.calc-row{margin-bottom:26px}
+.calc-label{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:10px}
+.calc-label .val{color:var(--or-deep);font-weight:900;font-size:14px}
+input[type=range]{-webkit-appearance:none;width:100%;height:8px;border-radius:5px;background:linear-gradient(90deg,var(--or) 0%,var(--or) var(--pct,50%),#e8ddd0 var(--pct,50%));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid var(--or);box-shadow:0 4px 14px rgba(217,111,0,.4);cursor:pointer;transition:transform .2s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.12)}
+input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid var(--or);box-shadow:0 4px 14px rgba(217,111,0,.4);cursor:pointer}
+.dur-chips{display:flex;gap:10px;flex-wrap:wrap}
+.dur-chip{flex:1;min-width:70px;padding:12px;border:2px solid var(--border);border-radius:14px;text-align:center;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s;background:#fff;font-family:inherit;color:var(--dark)}
+.dur-chip.active{background:var(--grad);color:#fff;border-color:var(--or);box-shadow:0 6px 16px rgba(217,111,0,.3)}
+.dur-chip:hover:not(.active){border-color:var(--or)}
 
-    .mobile-nav {
-      display:none; position:fixed; top:82px; left:0; right:0;
-      background:var(--white); z-index:850; flex-direction:column;
-      box-shadow:0 8px 24px rgba(6,78,59,0.15);
-      border-top:2px solid var(--green); max-height:0; overflow:hidden;
-      transition:max-height 0.32s ease;
-    }
-    .mobile-nav.open { max-height:480px; }
-    .mobile-nav a {
-      display:block; padding:15px 24px; color:var(--dark);
-      text-decoration:none; font-size:14px; font-weight:600;
-      border-bottom:1px solid var(--grey-light);
-      transition:background var(--transition), color var(--transition);
-    }
-    .mobile-nav a:hover { background:var(--off-white); color:var(--green-dark); }
-    .mobile-nav .mobile-login-btn {
-      margin:16px 20px; display:block; text-align:center;
-      background:linear-gradient(135deg, var(--green-dark), var(--green-deep));
-      color:white; border-radius:999px; padding:14px;
-      font-weight:700; font-size:13px; border:none; cursor:pointer;
-      font-family:'Red Hat Text',sans-serif; letter-spacing:0.8px;
-    }
+.calc-result{background:linear-gradient(135deg,var(--or-dark),var(--or-deep));border-radius:18px;padding:24px;color:#fff;margin-top:8px}
+.calc-result .cr-row{display:flex;justify-content:space-between;font-size:13.5px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.calc-result .cr-row:last-child{border-bottom:none;padding-top:14px;margin-top:6px;font-size:16px;font-weight:900}
+.calc-result .cr-row span:first-child{opacity:.82;font-weight:600}
+.calc-result .cr-row span:last-child{font-weight:800}
+.calc-result .cr-row.total span:last-child{color:#FFE9B8;font-size:1.35rem}
 
-    /* ══ HERO ══ */
-    .hero {
-      background: var(--dark2);
-      position: relative; overflow: hidden;
-    }
-    .hero::after {
-      content:''; position:absolute; inset:0;
-      background-image: repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(16,185,129,0.04) 40px,rgba(16,185,129,0.04) 41px);
-      pointer-events:none; z-index:0;
-    }
-    .hero-inner { max-width:1280px; margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+.btn-calc{width:100%;background:#fff;color:var(--or-deep);border:none;padding:18px;border-radius:50px;font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;font-family:inherit;margin-top:22px;box-shadow:0 8px 22px rgba(0,0,0,.15);transition:all .25s}
+.btn-calc:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22);background:var(--cream)}
 
-    .hero-banner {
-      padding:80px 0 60px; text-align:center;
-      border-bottom:1px solid rgba(255,255,255,0.10);
-    }
-    .hero-badge {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3);
-      color:var(--emerald); font-size:11px; font-weight:700;
-      padding:7px 18px; letter-spacing:2px; text-transform:uppercase;
-      border-radius:999px; margin-bottom:28px;
-    }
-    .hero-badge .dot { width:6px; height:6px; background:var(--emerald); border-radius:50%; animation:blink 1.5s infinite; }
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+/* Plans */
+.plans-sec{padding:80px 5%;background:var(--white)}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1100px;margin:0 auto}
+.p-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:32px 26px;text-align:center;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--grad);transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.p-card:hover::before{transform:scaleX(1)}
+.p-card:hover{border-color:var(--or);box-shadow:var(--shadow);transform:translateY(-6px)}
+.p-card.pop{border-color:var(--or);border-width:2.5px;background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
+.p-card.pop::before{transform:scaleX(1)}
+.p-badge{display:inline-block;background:var(--grad);color:#fff;padding:5px 14px;border-radius:50px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;box-shadow:0 4px 10px rgba(217,111,0,.25)}
+.p-badge.hot{background:linear-gradient(135deg,#FFC857,#F7941D);color:#5a2f00}
+.p-amount{font-size:2.4rem;font-weight:900;color:var(--or-deep);margin-bottom:4px;letter-spacing:-.03em}
+.p-amount small{font-size:1rem;color:var(--muted);font-weight:700;display:block;margin-top:2px}
+.p-repay{font-size:1.15rem;font-weight:800;color:var(--dark);margin-bottom:6px}
+.p-repay small{font-size:.75rem;font-weight:600;color:var(--muted);display:block}
+.p-list{list-style:none;text-align:left;margin:18px 0 22px;font-size:12.5px;color:var(--muted)}
+.p-list li{padding:6px 0;display:flex;align-items:center;gap:8px}
+.p-list li::before{content:"✓";color:var(--ok);font-weight:900;font-size:13px}
+.btn-p{width:100%;background:var(--grad);color:#fff;border:none;padding:15px;border-radius:50px;font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;font-family:inherit;transition:all .25s;box-shadow:0 6px 16px rgba(217,111,0,.28)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(217,111,0,.4);filter:brightness(1.05)}
 
-    .hero-title {
-      font-family:'Red Hat Display',sans-serif;
-      font-size:clamp(38px,5.5vw,64px);
-      font-weight:900; color:var(--white); line-height:1.0;
-      letter-spacing:-2px; margin-bottom:20px;
-    }
-    .hero-title .line-green { color:var(--green); display:block; }
-    .hero-desc {
-      font-size:17px; color:rgba(255,255,255,0.82);
-      max-width:560px; margin:0 auto; line-height:1.75; font-weight:400;
-    }
+/* Trust */
+.trust-sec{padding:70px 5%;background:linear-gradient(135deg,var(--cream),#fff)}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:0 auto}
+.trust-card{background:#fff;padding:28px 22px;border-radius:18px;text-align:center;border:2px solid transparent;transition:all .3s;box-shadow:0 2px 10px rgba(217,111,0,.06)}
+.trust-card:hover{border-color:var(--or);box-shadow:var(--shadow);transform:translateY(-4px)}
+.trust-ic{width:58px;height:58px;background:var(--grad);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.5rem;box-shadow:0 8px 20px rgba(217,111,0,.28)}
+.trust-card h3{font-size:.95rem;font-weight:800;margin-bottom:6px;color:var(--or-dark)}
+.trust-card p{color:var(--muted);font-size:.83rem;line-height:1.55}
 
-    .hero-content { display:grid; grid-template-columns:1fr; gap:48px; align-items:start; padding:48px 0 60px; }
+/* Steps */
+.how-sec{padding:80px 5%;background:linear-gradient(135deg,var(--or-dark) 0%,var(--or-deep) 100%);color:#fff;position:relative;overflow:hidden}
+.how-sec::before{content:'';position:absolute;top:-50%;right:-20%;width:700px;height:700px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}
+.how-sec .s-label{color:#FFE9B8}
+.how-sec .s-title{color:#fff}
+.how-sec .s-sub{color:rgba(255,255,255,.78)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:980px;margin:0 auto;position:relative;z-index:1}
+.step{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);padding:30px 20px;border-radius:18px;text-align:center;transition:all .3s;backdrop-filter:blur(10px)}
+.step:hover{background:rgba(255,255,255,.15);transform:translateY(-4px);border-color:rgba(255,255,255,.3)}
+.step-n{width:46px;height:46px;background:#fff;color:var(--or-deep);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;margin:0 auto 14px;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.step h3{font-size:.95rem;font-weight:800;margin-bottom:6px}
+.step p{color:rgba(255,255,255,.72);font-size:.83rem}
 
-    /* ══ CALCULATOR CARD ══ */
-    .calc-card {
-      background:var(--white); border-radius:8px; padding:0;
-      box-shadow:0 12px 40px rgba(0,0,0,0.18); overflow:hidden;
-      border-top:4px solid var(--green); max-width:100%; margin:0 auto;
-    }
-    .calc-card-header {
-      background:linear-gradient(135deg, var(--green-dark), var(--green-deep));
-      padding:16px 24px; display:flex; align-items:center; gap:12px;
-    }
-    .calc-card-icon {
-      width:38px; height:38px; background:rgba(255,255,255,0.2);
-      display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    }
-    .calc-card-title { font-family:'Red Hat Display',sans-serif; font-size:17px; font-weight:800; color:var(--white); }
-    .calc-card-sub { font-size:12px; color:rgba(255,255,255,0.75); margin-top:2px; letter-spacing:0.3px; }
-    .calc-badge { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); border-radius:999px; padding:6px 14px; font-size:11px; font-weight:800; color:#fff; white-space:nowrap; margin-left:auto; }
+/* Testimonials */
+.test-sec{padding:80px 5%;background:var(--white)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1050px;margin:0 auto}
+.test-card{background:var(--cream);border-radius:18px;padding:28px 24px;border:1.5px solid var(--border);position:relative;transition:all .3s}
+.test-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--or)}
+.test-card::before{content:'"';position:absolute;top:8px;right:22px;font-size:5rem;font-weight:900;color:var(--or);opacity:.15;font-family:Georgia,serif;line-height:1}
+.test-stars{color:var(--or);font-size:1rem;letter-spacing:2px;margin-bottom:12px}
+.test-text{font-size:.9rem;color:var(--dark);line-height:1.7;margin-bottom:16px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;flex-shrink:0}
+.test-name{font-weight:800;font-size:13px;color:var(--dark)}
+.test-loc{font-size:11px;color:var(--muted);font-weight:600}
 
-    .calc-body { padding:24px; background:#F6FAF7; }
+/* FAQ */
+.faq-sec{padding:80px 5%;background:var(--cream)}
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{background:#fff;border-radius:14px;margin-bottom:12px;border:2px solid var(--border);overflow:hidden;transition:border-color .25s}
+.faq-item:hover,.faq-item.open{border-color:var(--or)}
+.faq-q{width:100%;background:none;border:none;padding:18px 22px;text-align:left;font-family:inherit;font-weight:800;font-size:14px;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:color .2s}
+.faq-q:hover{color:var(--or-deep)}
+.faq-q .chev{width:24px;height:24px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--or-deep);transition:transform .3s;flex-shrink:0;font-weight:900}
+.faq-item.open .chev{transform:rotate(180deg);background:var(--or);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 22px;color:var(--muted);font-size:13.5px;line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding:0 22px 20px}
 
-    .calc-field { margin-bottom:20px; }
-    .calc-label { display:block; font-size:11px; font-weight:700; color:var(--grey); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:10px; }
-    .calc-input-wrap {
-      display:flex; align-items:center; border:2px solid var(--grey-light);
-      border-radius:4px; background:var(--white); overflow:hidden;
-      transition:border-color var(--transition);
-    }
-    .calc-input-wrap:focus-within { border-color:var(--green); }
-    .calc-prefix { padding:13px 16px; font-size:13px; font-weight:700; color:var(--white); background:var(--green-deep); border-right:2px solid rgba(255,255,255,0.15); white-space:nowrap; }
-    .calc-input {
-      flex:1; padding:13px 14px; border:none; font-size:22px; font-weight:800;
-      color:var(--dark); font-family:'Red Hat Display',sans-serif;
-      outline:none; background:transparent; min-width:0; letter-spacing:-0.5px;
-    }
-    .calc-input::-webkit-outer-spin-button,
-    .calc-input::-webkit-inner-spin-button { -webkit-appearance:none; }
+/* CTA Final */
+.final-cta{padding:70px 5%;background:var(--grad);color:#fff;text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-30%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 70%);border-radius:50%}
+.final-cta h2{font-size:2.1rem;font-weight:900;margin-bottom:12px;letter-spacing:-.8px;position:relative;z-index:1}
+.final-cta p{font-size:1rem;opacity:.95;margin-bottom:28px;position:relative;z-index:1;max-width:520px;margin-left:auto;margin-right:auto}
+.final-cta .btn-final{background:#fff;color:var(--or-deep);padding:18px 44px;border-radius:50px;font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border:none;font-family:inherit;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:all .25s;position:relative;z-index:1}
+.final-cta .btn-final:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.3);background:var(--cream)}
 
-    .range-track { position:relative; margin-top:14px; }
-    .range-track input[type="range"] {
-      width:100%; height:4px; border-radius:0;
-      outline:none; -webkit-appearance:none; appearance:none;
-      background:var(--grey-light); cursor:pointer; accent-color:var(--green);
-    }
-    .range-track input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
-      background:var(--green); cursor:pointer;
-      box-shadow:0 2px 8px rgba(16,185,129,0.4); border:3px solid white;
-    }
-    .range-labels { display:flex; justify-content:space-between; font-size:11px; color:var(--grey-mid); margin-top:6px; font-weight:600; }
+footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
+.ft-grid{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:34px;margin-bottom:34px}
+.ft-brand p{color:rgba(255,255,255,.55);font-size:12px;margin-top:12px;line-height:1.8}
+.ft-col h4{font-size:.8rem;font-weight:900;margin-bottom:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--or-light)}
+.ft-col ul{list-style:none}
+.ft-col ul li{margin-bottom:8px}
+.ft-col ul li a{color:rgba(255,255,255,.55);text-decoration:none;font-size:12px;transition:color .2s}
+.ft-col ul li a:hover{color:var(--or-light)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.ft-bottom p{font-size:11px;color:rgba(255,255,255,.45)}
+.ft-badges{display:flex;gap:16px;font-size:11px;color:rgba(255,255,255,.5);font-weight:700}
 
-    .chips-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:12px; }
-    .chip-btn {
-      padding:10px 5px; border:2px solid var(--grey-light); border-radius:4px;
-      background:var(--white); color:var(--grey); font-size:12px; font-weight:700;
-      cursor:pointer; font-family:'Red Hat Text',sans-serif; transition:all var(--transition);
-      text-align:center;
-    }
-    .chip-btn:hover { border-color:var(--green); color:var(--green-dark); background:var(--green-soft); }
-    .chip-btn.active { background:var(--green-deep); border-color:var(--green-deep); color:white; }
+/* Sticky mobile CTA */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);padding:12px 16px;box-shadow:0 -8px 28px rgba(0,0,0,.12);border-top:3px solid var(--or);z-index:999;display:none}
+.sticky-cta button{width:100%;background:var(--grad);color:#fff;border:none;padding:15px;border-radius:50px;font-weight:900;font-size:13px;text-transform:uppercase;font-family:inherit;box-shadow:0 6px 18px rgba(217,111,0,.35);cursor:pointer}
 
-    .period-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
-    .period-btn {
-      padding:12px 6px; border:2px solid var(--grey-light); border-radius:4px;
-      background:var(--white); color:var(--grey); font-size:13px; font-weight:700;
-      cursor:pointer; font-family:'Red Hat Text',sans-serif; transition:all var(--transition);
-      text-align:center;
-    }
-    .period-btn small { display:block; font-size:10px; color:var(--grey-mid); font-weight:600; margin-top:2px; }
-    .period-btn:hover { border-color:var(--green); color:var(--green-dark); background:var(--green-soft); }
-    .period-btn.active { background:linear-gradient(135deg, var(--green-deep), var(--dark)); border-color:var(--green-deep); color:white; box-shadow:0 6px 16px rgba(6,78,59,0.2); }
-    .period-btn.active small { color:rgba(255,255,255,0.6); }
-
-    .calc-results {
-      background:var(--dark); padding:18px 20px; margin:18px 0 16px;
-      border-left:4px solid var(--green); border-radius:4px; color:white; position:relative; overflow:hidden;
-    }
-    .calc-results::before { content:''; position:absolute; right:-36px; top:-36px; width:120px; height:120px; border-radius:50%; background:rgba(16,185,129,0.12); pointer-events:none; }
-    .calc-results-row { display:flex; justify-content:space-between; align-items:center; gap:12px; position:relative; }
-    .result-item { display:flex; flex-direction:column; gap:5px; }
-    .result-item.right { text-align:right; }
-    .result-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.55); }
-    .result-val { font-family:'Red Hat Display',sans-serif; font-size:24px; font-weight:900; color:white; letter-spacing:-0.5px; }
-    .result-val.green { color:#4ADE80; }
-    .result-divider { width:1px; height:48px; background:rgba(255,255,255,0.15); flex-shrink:0; }
-    .calc-note { font-size:11px; color:rgba(255,255,255,0.55); text-align:center; margin-top:12px; letter-spacing:0.3px; position:relative; }
-
-    .shariah-note {
-      background:#fffbeb; border:1px solid #fde68a;
-      border-radius:8px; padding:10px 14px; margin:0 0 14px;
-      font-size:11.5px; color:#92400e; font-style:italic;
-      text-align:center; font-weight:600;
-    }
-    .btn-apply {
-      width:100%; background:linear-gradient(135deg, var(--green-dark), var(--green-deep));
-      color:white; border:none; padding:15px; border-radius:4px;
-      font-size:13px; font-weight:700; cursor:pointer;
-      font-family:'Red Hat Text',sans-serif; transition:all var(--transition);
-      letter-spacing:1.5px; text-transform:uppercase;
-      box-shadow:0 8px 20px rgba(16,185,129,0.22);
-    }
-    .btn-apply:hover { background:linear-gradient(135deg, var(--green), var(--green-deep)); transform:translateY(-1px); }
-
-    /* ══ STATS STRIP ══ */
-    .stats-strip { background:linear-gradient(135deg, var(--green-deep), var(--green-dark)); padding:0; }
-    .stats-grid { max-width:1280px; margin:0 auto; padding:0 32px; display:grid; grid-template-columns:repeat(4,1fr); }
-    .stat-item { padding:28px 24px; text-align:center; border-right:1px solid rgba(255,255,255,0.15); }
-    .stat-item:last-child { border-right:none; }
-    .stat-val { font-family:'Red Hat Display',sans-serif; font-size:32px; font-weight:900; color:var(--white); letter-spacing:-1px; line-height:1; }
-    .stat-label { font-size:11px; color:rgba(255,255,255,0.72); font-weight:600; margin-top:7px; letter-spacing:0.5px; text-transform:uppercase; }
-
-    /* ══ SECTIONS SHARED ══ */
-    .section-inner { max-width:1280px; margin:0 auto; padding:0 32px; }
-    .section-header { text-align:center; margin-bottom:56px; }
-    .section-eyebrow {
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:11px; font-weight:700; text-transform:uppercase;
-      letter-spacing:2.5px; color:var(--green-dark); margin-bottom:14px;
-    }
-    .section-eyebrow::before, .section-eyebrow::after { content:''; display:block; width:20px; height:2px; background:var(--green); }
-    .section-title { font-family:'Red Hat Display',sans-serif; font-size:clamp(28px,4vw,40px); font-weight:900; color:var(--dark); letter-spacing:-1px; line-height:1.1; }
-    .section-sub { font-size:16px; color:var(--grey); margin-top:12px; max-width:500px; margin-left:auto; margin-right:auto; font-weight:400; }
-
-    /* ══ HOW IT WORKS ══ */
-    .how-it-works { padding:100px 0; background:var(--off-white); }
-    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; position:relative; }
-    .steps-connector { position:absolute; top:40px; left:10%; right:10%; height:2px; background:var(--grey-light); z-index:0; }
-    .step-item { position:relative; z-index:1; text-align:center; }
-    .step-num { width:80px; height:80px; background:var(--white); border:3px solid var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px; font-family:'Red Hat Display',sans-serif; font-size:28px; font-weight:900; color:var(--green-deep); box-shadow:var(--shadow); }
-    .step-title { font-family:'Red Hat Display',sans-serif; font-size:20px; font-weight:800; color:var(--dark); margin-bottom:12px; }
-    .step-desc { font-size:14.5px; color:var(--grey); line-height:1.6; }
-
-    /* ══ BENEFITS ══ */
-    .benefits { padding:100px 0; background:var(--white); }
-    .benefits-grid { display:grid; grid-template-columns:repeat(3,2fr); gap:24px; }
-    .benefit-card { background:var(--off-white); padding:40px 32px; border-radius:12px; border:1px solid var(--grey-light); transition:all var(--transition); }
-    .benefit-card:hover { transform:translateY(-5px); border-color:var(--green); box-shadow:var(--shadow-lg); background:var(--white); }
-    .benefit-icon { font-size:32px; margin-bottom:20px; }
-    .benefit-title { font-family:'Red Hat Display',sans-serif; font-size:19px; font-weight:800; color:var(--dark); margin-bottom:12px; }
-    .benefit-desc { font-size:14px; color:var(--grey); line-height:1.65; }
-
-    /* ══ FAQ ══ */
-    .faq { padding:100px 0; background:var(--off-white); }
-    .faq-inner-wrap { max-width:800px; margin:0 auto; }
-    .faq-item { background:var(--white); border:1px solid var(--grey-light); border-radius:8px; margin-bottom:12px; overflow:hidden; transition:all var(--transition); }
-    .faq-item:hover { border-color:var(--green); }
-    .faq-q { padding:20px 24px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:700; font-size:15px; color:var(--dark); }
-    .faq-ans { max-height:0; overflow:hidden; transition:max-height 0.3s ease; background:var(--off-white); }
-    .faq-ans-text { padding:0 24px 20px; font-size:14.5px; color:var(--grey); line-height:1.65; }
-    .faq-item.open .faq-ans { max-height:200px; }
-    .faq-item.open .faq-arrow { transform:rotate(180deg); color:var(--green); }
-    .faq-arrow { font-size:10px; color:var(--grey-mid); transition:transform 0.3s; }
-
-    /* ══ CTA ══ */
-    .cta { background:linear-gradient(135deg, var(--green-deep), var(--green-dark)); padding:80px 0; text-align:center; color:white; }
-    .cta h2 { font-family:'Red Hat Display',sans-serif; font-size:36px; font-weight:900; margin-bottom:16px; letter-spacing:-1px; }
-    .cta p { font-size:18px; opacity:0.85; margin-bottom:32px; }
-    .cta-btn { background:var(--white); color:var(--green-deep); border:none; padding:18px 40px; border-radius:4px; font-size:14px; font-weight:800; cursor:pointer; font-family:'Red Hat Text',sans-serif; letter-spacing:1.5px; text-transform:uppercase; transition:all var(--transition); box-shadow:0 10px 30px rgba(0,0,0,0.2); }
-    .cta-btn:hover { transform:translateY(-2px); box-shadow:0 15px 40px rgba(0,0,0,0.3); background:var(--emerald); color:var(--white); }
-
-    /* ══ FOOTER ══ */
-    footer { background:var(--dark); color:white; padding:80px 0 40px; }
-    .footer-top { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:60px; }
-    .footer-brand p { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.7; margin-top:20px; }
-    .footer-divider { width:40px; height:2px; background:var(--green); margin:24px 0; }
-    .footer-col h4 { font-family:'Red Hat Display',sans-serif; font-size:16px; font-weight:800; margin-bottom:24px; color:var(--white); }
-    .footer-col a { display:block; color:rgba(255,255,255,0.5); text-decoration:none; font-size:14px; margin-bottom:12px; transition:color var(--transition); }
-    .footer-col a:hover { color:var(--green); }
-    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:40px; display:flex; justify-content:space-between; align-items:center; }
-    .footer-bottom p { font-size:13px; color:rgba(255,255,255,0.4); }
-    .footer-badge { display:flex; align-items:center; gap:8px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--green); background:rgba(16,185,129,0.1); padding:6px 16px; border-radius:999px; }
-    .footer-badge-dot { width:6px; height:6px; background:var(--green); border-radius:50%; }
-
-    /* ══ MODAL ══ */
-    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:2000; display:none; align-items:center; justify-content:center; padding:16px; backdrop-filter:blur(4px); }
-    .modal-overlay.open { display:flex; }
-    .modal-box { background:var(--white); width:100%; max-width:480px; border-radius:8px; overflow:hidden; box-shadow:var(--shadow-lg); animation:modalSlide 0.3s ease-out; }
-    @keyframes modalSlide { from { transform:translateY(20px); opacity:0; } to { transform:translateY(0); opacity:1; } }
-    .modal-head { background:var(--off-white); padding:20px 24px; border-bottom:1px solid var(--grey-light); display:flex; justify-content:space-between; align-items:center; }
-    .modal-head-left { display:flex; align-items:center; gap:12px; }
-    .modal-logo-mark { width:36px; height:36px; border-radius:8px; background:var(--green-deep); display:flex; align-items:center; justify-content:center; color:white; font-weight:900; font-size:12px; }
-    .modal-head-text h2 { font-family:'Red Hat Display',sans-serif; font-size:16px; font-weight:800; color:var(--dark); }
-    .mh-sub { font-size:11px; color:var(--grey-mid); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
-    .modal-close { background:none; border:none; font-size:18px; color:var(--grey-mid); cursor:pointer; padding:4px; }
-    .modal-body { padding:24px; }
-    .progress-bar { display:flex; gap:6px; margin-bottom:24px; }
-    .pbar-seg { flex:1; height:4px; background:var(--grey-light); border-radius:2px; }
-    .pbar-seg.active { background:var(--green); }
-    .step-content { display:none; }
-    .step-content.active { display:block; }
-    .loan-summary { background:var(--dark); border-radius:8px; padding:16px; margin-bottom:24px; display:flex; justify-content:space-between; color:white; }
-    .ls-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.5); margin-bottom:4px; }
-    .ls-val { font-family:'Red Hat Display',sans-serif; font-size:20px; font-weight:900; }
-    .form-group { margin-bottom:16px; }
-    .form-group label { display:block; font-size:12px; font-weight:700; color:var(--grey); margin-bottom:8px; }
-    .form-group input, .form-group select { width:100%; padding:12px 14px; border:2px solid var(--grey-light); border-radius:4px; font-family:'Red Hat Text',sans-serif; font-size:14px; outline:none; transition:border-color var(--transition); }
-    .form-group input:focus { border-color:var(--green); }
-    .modal-error { display:none; background:#fee2e2; color:#b91c1c; padding:12px; border-radius:4px; font-size:13px; font-weight:600; margin-bottom:16px; text-align:center; }
-    .modal-foot { display:flex; gap:12px; margin-top:24px; }
-    .btn-prev { flex:1; background:var(--white); border:2px solid var(--grey-light); color:var(--grey); padding:14px; border-radius:4px; font-weight:700; font-size:13px; cursor:pointer; }
-    .btn-next { flex:2; background:var(--green-deep); border:none; color:white; padding:14px; border-radius:4px; font-weight:700; font-size:13px; cursor:pointer; text-transform:uppercase; letter-spacing:1px; }
-
-    /* ══ RESPONSIVE ══ */
-    @media (max-width: 1024px) {
-      .header-inner { padding:0 24px; }
-      .hero-inner { padding:0 24px; }
-      .section-inner { padding:0 24px; }
-      .benefits-grid { grid-template-columns:repeat(2,1fr); }
-      .footer-top { grid-template-columns:repeat(2,1fr); }
-    }
-    @media (max-width: 768px) {
-      .header-inner { height:70px; }
-      nav.desktop-nav { display:none; }
-      .hamburger { display:flex; }
-      .mobile-nav { display:flex; top:72px; }
-      .hero-banner { padding:60px 0 40px; }
-      .hero-title { font-size:42px; }
-      .steps-grid { grid-template-columns:1fr; gap:48px; }
-      .steps-connector { display:none; }
-      .stats-grid { grid-template-columns:repeat(2,1fr); }
-      .stat-item { border-bottom:1px solid rgba(255,255,255,0.1); }
-      .stat-item:nth-child(even) { border-right:none; }
-      .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom:none; }
-      .footer-bottom { flex-direction:column; gap:20px; text-align:center; }
-    }
-    @media (max-width: 480px) {
-      .hero-title { font-size:36px; }
-      .benefits-grid { grid-template-columns:1fr; }
-      .footer-top { grid-template-columns:1fr; gap:32px; }
-      .calc-results-row { flex-direction:column; gap:16px; text-align:center; }
-      .result-item.right { text-align:center; }
-      .result-divider { width:100%; height:1px; }
-      .chips-grid { grid-template-columns:repeat(2,1fr); }
-    }
-  </style>
+@media (max-width:768px){
+  .nav-desktop{display:none}
+  .menu-btn{display:block}
+  .hero{padding:64px 5% 72px}
+  .hero h1{font-size:2.3rem}
+  .s-title{font-size:1.7rem}
+  .p-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .steps{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .ft-bottom{flex-direction:column;text-align:center}
+  .sticky-cta{display:block}
+  body{padding-bottom:80px}
+}
+@media (max-width:480px){
+  .hero h1{font-size:1.9rem}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns button{width:100%}
+  .steps{grid-template-columns:1fr}
+  .hero-stats{gap:26px}
+  .calc-card{padding:28px 20px}
+  .dur-chips{gap:8px}
+  .dur-chip{padding:10px 6px;font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
-  <div class="topline"></div>
-  <header>
-    <div class="header-inner">
-      <a href="#home" class="logo">
-        <div class="logo-mark">WL</div>
-        <div>
-          <div class="logo-text"><span class="t1">Waafi</span><span class="t2">Loans</span></div>
-          <span class="logo-sub">Official Waafi Partner</span>
-        </div>
-      </a>
-      <nav class="desktop-nav">
-        <a href="#home" class="active">Home</a>
-        <a href="#calculator">Calculator</a>
-        <a href="#how">Sida u shaqeysa</a>
-        <a href="#benefits">Faa'idooyinka</a>
-        <a href="#faq">Su'aalaha</a>
-      </nav>
-      <div class="header-right">
-        <button class="btn-login-header" onclick="window.location.href='verify.html'">Gal Xisaabkaaga</button>
-        <button class="hamburger" id="hamBtn" onclick="toggleMobileNav()">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
 
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="#home" onclick="closeMobileNav()">Home</a>
-    <a href="#calculator" onclick="closeMobileNav()">Calculator</a>
-    <a href="#how" onclick="closeMobileNav()">Sida u shaqeysa</a>
-    <a href="#benefits" onclick="closeMobileNav()">Faa'idooyinka</a>
-    <a href="#faq" onclick="closeMobileNav()">Su'aalaha</a>
-    <button class="mobile-login-btn" onclick="closeMobileNav(); window.location.href='verify.html'">Gal Xisaabkaaga</button>
+<div class="topbar">
+  <span>🇲🇿 Moçambique</span>
+  <span>⚡ Aprovação em Minutos</span>
+  <span>🔒 Seguro</span>
+  <span>💰 Taxa Fixa</span>
+</div>
+
+<header>
+  <a class="logo" href="index.html"><span class="e">e-</span><span class="mola">Mola</span></a>
+  <nav class="nav-desktop">
+    <a href="#simular">Simular</a>
+    <a href="#planos">Empréstimos</a>
+    <a href="#como">Como Funciona</a>
+    <a href="#faq">FAQ</a>
+    <a href="#simular" class="nav-cta">Solicitar</a>
+  </nav>
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  <div class="mobile-nav" id="mobNav">
+    <a href="index.html">Início</a>
+    <a href="#simular" onclick="closeMenu()">Simular</a>
+    <a href="#planos" onclick="closeMenu()">Empréstimos</a>
+    <a href="#como" onclick="closeMenu()">Como Funciona</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#simular" class="m-cta" onclick="closeMenu()">Solicitar</a>
   </div>
+</header>
 
-  <!-- ══ HERO ══ -->
-  <section class="hero" id="home">
-    <div class="hero-inner">
-      <div class="hero-banner">
-        <div class="hero-badge"><span class="dot"></span> Isticmaalayaasha Waafi ee Soomaaliya</div>
-        <h1 class="hero-title">Lacag Deg Deg ah<span class="line-green">Si Fudud.</span></h1>
-        <p class="hero-desc">Hel lacag oo laguugu shubto EVC Plus ama Waafi — Shariah-compliant, 0% riba, ansixin dhowr daqiiqo gudahood.</p>
-      </div>
-
-      <div class="hero-content" id="calculator">
-        <div class="calc-card">
-          <div class="calc-card-header">
-            <div class="calc-card-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 9h8M8 13h5M8 17h3"/></svg>
-            </div>
-            <div>
-              <div class="calc-card-title">Loan Calculator</div>
-              <div class="calc-card-sub">Isticmaalayaasha Waafi ee Soomaaliya</div>
-            </div>
-            <div class="calc-badge">Toos</div>
-          </div>
-
-          <div class="calc-body">
-            <!-- Amount -->
-            <div class="calc-field">
-              <label class="calc-label">Lacagta aad doonayso</label>
-              <div class="calc-input-wrap">
-                <span class="calc-prefix">$</span>
-                <input type="number" class="calc-input" id="loanAmount" value="500" min="10" max="5000" step="10" oninput="syncInput()">
-              </div>
-              <div class="range-track">
-                <input type="range" id="loanSlider" min="10" max="5000" value="500" step="10" oninput="syncRange()">
-                <div class="range-labels"><span>$10</span><span>$5,000</span></div>
-              </div>
-              <div class="chips-grid">
-                <button class="chip-btn" onclick="setAmt(100)">$100</button>
-                <button class="chip-btn active" onclick="setAmt(500)">$500</button>
-                <button class="chip-btn" onclick="setAmt(1000)">$1,000</button>
-                <button class="chip-btn" onclick="setAmt(2500)">$2,500</button>
-              </div>
-            </div>
-
-            <!-- Duration -->
-            <div class="calc-field">
-              <label class="calc-label">Mudadda celcelinta</label>
-              <div class="period-grid" id="periodGrid">
-                <button class="period-btn active" data-d="30" onclick="setDur(30)">30 maalmood<small>Gaaban</small></button>
-                <button class="period-btn" data-d="60" onclick="setDur(60)">60 maalmood<small>Dhexdhexaad</small></button>
-                <button class="period-btn" data-d="90" onclick="setDur(90)">90 maalmood<small>Caanka ah</small></button>
-                <button class="period-btn" data-d="120" onclick="setDur(120)">120 maalmood<small>Joogto ah</small></button>
-                <button class="period-btn" data-d="150" onclick="setDur(150)">150 maalmood<small>Fudud</small></button>
-                <button class="period-btn" data-d="180" onclick="setDur(180)">180 maalmood<small>Ugu dheer</small></button>
-              </div>
-            </div>
-
-            <!-- Results -->
-            <div class="calc-results">
-              <div class="calc-results-row">
-                <div class="result-item">
-                  <div class="result-label">Bishiiba lacag</div>
-                  <div class="result-val" id="monthlyDisplay">$0</div>
-                </div>
-                <div class="result-divider"></div>
-                <div class="result-item right">
-                  <div class="result-label">Wadarta la celcelin</div>
-                  <div class="result-val green" id="repayDisplay">$0</div>
-                </div>
-              </div>
-              <div class="calc-note" id="calcNote">Khidmadda: $0 — Murabaha Shariah-compliant, 5% xaddidan.</div>
-            </div>
-
-            <div class="shariah-note">"Murabaha Shariah-compliant — 5% khidmad xaddidan, 0% riba."</div>
-            <button class="btn-apply" onclick="openModal()">Bilow Codsiga →</button>
-          </div>
-        </div>
-      </div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🇲🇿 Moçambique · Meu cell, minha mola</div>
+    <h1>Empréstimos Rápidos com a Sua <span class="hl">Mola e-Mola</span></h1>
+    <p>Peça o seu empréstimo em minutos. Taxa fixa de 15%, sem surpresas, sem burocracia. Aprovação via e-Mola.</p>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="num">500K+</div><div class="lbl">Clientes</div></div>
+      <div class="stat-item"><div class="num">5 min</div><div class="lbl">Aprovação</div></div>
+      <div class="stat-item"><div class="num">500 MZN</div><div class="lbl">A partir de</div></div>
     </div>
-  </section>
-
-  <!-- ══ STATS STRIP ══ -->
-  <div class="stats-strip">
-    <div class="stats-grid">
-      <div class="stat-item"><div class="stat-val">$5,000</div><div class="stat-label">Xadka ugu sarreeya</div></div>
-      <div class="stat-item"><div class="stat-val">0%</div><div class="stat-label">Faa'iido la'aan</div></div>
-      <div class="stat-item"><div class="stat-val">5 min</div><div class="stat-label">Ansixin degdeg</div></div>
-      <div class="stat-item"><div class="stat-val">180</div><div class="stat-label">Maalmood ugu badan</div></div>
+    <div class="hero-btns">
+      <button class="btn-hero-1" onclick="location.href='#simular'">Simular Empréstimo</button>
+      <button class="btn-hero-2" onclick="location.href='#planos'">Ver Planos →</button>
     </div>
   </div>
+</section>
 
-  <!-- ══ HOW IT WORKS ══ -->
-  <section class="how-it-works" id="how">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-eyebrow">Habka isticmaalka</div>
-        <h2 class="section-title">Saddex tallaabo oo fudud</h2>
-        <p class="section-sub">Loogu talagalay isticmaalayaasha Waafi. Dhowr daqiiqo gudahood.</p>
-      </div>
-      <div class="steps-grid">
-        <div class="steps-connector"></div>
-        <div class="step-item">
-          <div class="step-num">1</div>
-          <h3 class="step-title">Xisaabi</h3>
-          <p class="step-desc">Dooro xaddiga lacagta iyo mudadda celcelinta. Calculator-ku si toos ah ayuu u muujiyaa lacagta bishiiba iyo wadarta doollar ah.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">2</div>
-          <h3 class="step-title">Codso</h3>
-          <p class="step-desc">Geli xogta isticmaalaha Waafi-gaaga — magacaaga, lambarka EVC Plus, xaaladda shaqadaada, iyo ujeedada lacagta.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">3</div>
-          <h3 class="step-title">Hel Lacagta</h3>
-          <p class="step-desc">Xaqiiji codsiga oo lacagta ku hel Waafi / EVC Plus-kaaga gudaha 5 daqiiqo. Toos ah, 24/7.</p>
-        </div>
+<!-- CALCULATOR -->
+<section class="calc-sec" id="simular">
+  <div class="s-label">Simulador</div>
+  <h2 class="s-title">Calcule o Seu Empréstimo</h2>
+  <p class="s-sub">Ajuste o valor e o prazo. Veja imediatamente o total a pagar.</p>
+
+  <div class="calc-card">
+    <div class="calc-row">
+      <h3><span class="dot"></span>Valor do Empréstimo</h3>
+      <div class="calc-label"><span>Quanto precisa?</span><span class="val" id="amountLbl">2.500 MZN</span></div>
+      <input type="range" id="amountSlider" min="500" max="10000" step="500" value="2500">
+    </div>
+
+    <div class="calc-row">
+      <h3><span class="dot"></span>Prazo de Pagamento</h3>
+      <div class="dur-chips" id="durChips">
+        <button class="dur-chip" data-days="7" onclick="setDur(this,7)">7 dias</button>
+        <button class="dur-chip active" data-days="14" onclick="setDur(this,14)">14 dias</button>
+        <button class="dur-chip" data-days="30" onclick="setDur(this,30)">30 dias</button>
+        <button class="dur-chip" data-days="60" onclick="setDur(this,60)">60 dias</button>
       </div>
     </div>
-  </section>
 
-  <!-- ══ BENEFITS ══ -->
-  <section class="benefits" id="benefits">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-eyebrow">Maxaan dooranaa</div>
-        <h2 class="section-title">Maxaa kugu fiican WaafiLoans?</h2>
-        <p class="section-sub">Naqshadaynta si gaar ah loogu sameeyay isticmaalayaasha Waafi.</p>
-      </div>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">🕌</div>
-          <h3 class="benefit-title">Shariah-compliant</h3>
-          <p class="benefit-desc">Murabaha model — 5% khidmad xaddidan oo kaliya. Riba (faa'iido) gebi ahaanba ma jirto. Maaliyadda halaal ah oo buuxda.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">⚡</div>
-          <h3 class="benefit-title">Deg Deg ah</h3>
-          <p class="benefit-desc">Codsiga ilaa lacagta Waafi / EVC Plus-kaaga ee dhowr daqiiqo gudahood. Toos ah, 24/7, maalmaha fasaxa waxba kama jiraan.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🔒</div>
-          <h3 class="benefit-title">Ammaan & Gaaban</h3>
-          <p class="benefit-desc">Xogtaada waxaa lagu ilaaliyaa encryption heer-sare ah. Waxba laguma wadaago cid saddexaad iyada oon oggolaanshahaaga la hayn.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📲</div>
-          <h3 class="benefit-title">Mobile-First</h3>
-          <p class="benefit-desc">Wax xafiis ah uma baahna. Codso, raadi, oo ku bixi lacagtaada telefoonkaaga. Waafi ama EVC Plus waa kaligood ku filan.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🎯</div>
-          <h3 class="benefit-title">Sharraxaad Cad</h3>
-          <p class="benefit-desc">Lacagta aad aragto calculator-ka ayaad bixinaysa. Waxba dhiibo la'aani ma jiraan. Aad iyo aad ayaad u ogtahay heerka khidmadda.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📈</div>
-          <h3 class="benefit-title">Xaddiga Sare u kaca</h3>
-          <p class="benefit-desc">Inta aad si joogto ah u isticmaasho WaafiLoans, ayaa xaddiga aad codsanaysaa kor u kaca. Ciddii si fiican u bixisa waa la abaalmariyaa.</p>
-        </div>
-      </div>
+    <div class="calc-result">
+      <div class="cr-row"><span>Valor solicitado</span><span id="rAmount">2.500 MZN</span></div>
+      <div class="cr-row"><span>Juros (15% fixo)</span><span id="rInterest">375 MZN</span></div>
+      <div class="cr-row"><span>Prazo</span><span id="rDur">14 dias</span></div>
+      <div class="cr-row total"><span>Total a pagar</span><span id="rTotal">2.875 MZN</span></div>
     </div>
-  </section>
 
-  <!-- ══ FAQ ══ -->
-  <section class="faq" id="faq">
-    <div class="section-inner">
-      <div class="faq-inner-wrap">
-        <div class="section-header">
-          <div class="section-eyebrow">Su'aalaha</div>
-          <h2 class="section-title">Su'aalaha la isweydiiyo</h2>
-        </div>
-        <div>
-          <div class="faq-item open">
-            <div class="faq-q" onclick="toggleFaq(this)"><span>Faa'iidada ma run ma'ahay in ay eber tahay?</span><div class="faq-arrow">▼</div></div>
-            <div class="faq-ans"><div class="faq-ans-text">Haa. Waxaan isticmaalnaa model-ka Murabaha ee Islaamiga ah — 5% khidmad xaddidan oo kaliya. Wax riba ah ma jiraan. Tani waa maaliyadda Shariah-compliant ah oo buuxda.</div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)"><span>Sidee baan lacagta ku heli karaa?</span><div class="faq-arrow">▼</div></div>
-            <div class="faq-ans"><div class="faq-ans-text">Lacagta waxaa laguugu shubtaa EVC Plus ama Waafi-gaaga si toos ah, dhowr daqiiqo gudahood kadib markii codsigaaga la ansixiyo.</div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)"><span>Maxaa loo baahan yahay si loo codsado?</span><div class="faq-arrow">▼</div></div>
-            <div class="faq-ans"><div class="faq-ans-text">Waxaad u baahan tahay: magac buuxa, lambarka Waafi / EVC Plus, xaaladda shaqada, dakhliga bishiiba, iyo ujeedada lacagta. Waxa kale ma jiro, warqad xafiis ahna lama baahna.</div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)"><span>Xaddiga ugu hooseeya iyo ugu sarreeya waa intee?</span><div class="faq-arrow">▼</div></div>
-            <div class="faq-ans"><div class="faq-ans-text">Xaddiga ugu hooseeya waa $10, xaddiga ugu sarreeyana waa $5,000. Calculator-ka ka eeg xaddiga saxda ah iyo khidmadda kahor inta aadan codsan.</div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)"><span>Xogeyga ma si ammaan ah ayuu u socdaa?</span><div class="faq-arrow">▼</div></div>
-            <div class="faq-ans"><div class="faq-ans-text">Haa. Xogta codsigaaga oo dhammi waxay si ammaan ah ugu wareegta tillaabooyinka xaqiijinta, waxaana lagu ilaaliyaa encryption heer-sare ah. Xog la wadaago cid saddexaad ma jirto.</div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)"><span>Haddaan codsigaaga la ansixin, maxaa dhacaya?</span><div class="faq-arrow">▼</div></div>
-            <div class="faq-ans"><div class="faq-ans-text">Haddii codsigaagu uusan ansixin, waxaad heli doontaa farriin sharaxaysa sababta. Waxaad dib u codsanaysaa mar kasta oo aad diyaar u tahay. Wax lacag ah lagama qaato codsiga la diido.</div></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)"><span>Celcelinta sidee baan ugu bixin karaa?</span><div class="faq-arrow">▼</div></div>
-            <div class="faq-ans"><div class="faq-ans-text">Celcelinta waxaa laga qaadaa Waafi / EVC Plus-kaaga si toos ah maalinta xagga ah. Waxaad kaloo samayn kartaa celcelin hore iyada oon gannaax lagu qaadin.</div></div>
-          </div>
-        </div>
-      </div>
+    <button class="btn-calc" onclick="proceed()">Solicitar Este Empréstimo →</button>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans-sec" id="planos">
+  <div class="s-label">Planos Populares</div>
+  <h2 class="s-title">Escolha o Seu Empréstimo</h2>
+  <p class="s-sub">Três opções desenhadas para diferentes necessidades.</p>
+  <div class="p-grid">
+    <div class="p-card">
+      <div class="p-badge">Essencial</div>
+      <div class="p-amount">500 <small>MZN</small></div>
+      <div class="p-repay">Pagar 575 MZN <small>em 7 dias</small></div>
+      <ul class="p-list"><li>Aprovação em minutos</li><li>Sem burocracia</li><li>Taxa fixa 15%</li></ul>
+      <button class="btn-p" onclick="pick(500,7)">Solicitar</button>
     </div>
-  </section>
-
-  <!-- ══ CTA ══ -->
-  <div class="cta">
-    <div class="section-inner">
-      <h2>Diyaar u tahay lacag deg deg ah?</h2>
-      <p>Codso dhowr daqiiqo gudahood. Warqad ma jirto, xafiis ma jirto.</p>
-      <button class="cta-btn" onclick="openModal()">Codso Hadda — Bilaash ah</button>
+    <div class="p-card pop">
+      <div class="p-badge hot">Mais Popular</div>
+      <div class="p-amount">2.500 <small>MZN</small></div>
+      <div class="p-repay">Pagar 2.875 MZN <small>em 14 dias</small></div>
+      <ul class="p-list"><li>Aprovação em minutos</li><li>Sem burocracia</li><li>Taxa fixa 15%</li><li>Suporte prioritário</li></ul>
+      <button class="btn-p" onclick="pick(2500,14)">Solicitar</button>
+    </div>
+    <div class="p-card">
+      <div class="p-badge">Premium</div>
+      <div class="p-amount">10.000 <small>MZN</small></div>
+      <div class="p-repay">Pagar 11.500 MZN <small>em 30 dias</small></div>
+      <ul class="p-list"><li>Aprovação em minutos</li><li>Sem burocracia</li><li>Taxa fixa 15%</li></ul>
+      <button class="btn-p" onclick="pick(10000,30)">Solicitar</button>
     </div>
   </div>
+</section>
 
-  <!-- ══ FOOTER ══ -->
-  <footer>
-    <div class="footer-inner section-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="#home" class="logo" style="text-decoration:none;">
-            <div class="logo-mark">WL</div>
-            <div>
-              <div class="logo-text" style="color:#fff;"><span style="color:#4ADE80;">Waafi</span><span style="color:#10b981;">Loans</span></div>
-              <span class="logo-sub" style="color:rgba(255,255,255,0.4);">Official Waafi Partner</span>
-            </div>
-          </a>
-          <div class="footer-divider"></div>
-          <p>Waafi partner rasmiga ah oo bixiya maaliyadda Shariah-compliant ee Soomaaliya. 0% riba, ammaan buuxda.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Alaabta</h4>
-          <a href="#calculator">Calculator</a>
-          <a href="#how">Sida u shaqeysa</a>
-          <a href="#benefits">Faa'idooyinka</a>
-          <a href="#faq">Su'aalaha</a>
-        </div>
-        <div class="footer-col">
-          <h4>Xiriir</h4>
-          <a href="#">support@waafiloans.com</a>
-          <a href="#">+252 61 000 0000</a>
-          <a href="#">Isniinta–Sabti, 8agg–8pm</a>
-        </div>
-        <div class="footer-col">
-          <h4>Sharciga</h4>
-          <a href="#">Shuruudaha</a>
-          <a href="#">Sirta Xogta</a>
-          <a href="#">Heshiiska Lacagta</a>
-          <a href="#faq">Gargaarka</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 WaafiLoans. Dhammaan xuquuqaha way dhawrsanyihiin.</p>
-        <div class="footer-badge"><div class="footer-badge-dot"></div> Shariah-compliant · 0% faa'iido · Ammaan</div>
+<!-- TRUST -->
+<section class="trust-sec">
+  <div class="s-label">Porquê e-Mola Crédito</div>
+  <h2 class="s-title">Vantagens Exclusivas</h2>
+  <p class="s-sub">Aprovado por milhares de moçambicanos.</p>
+  <div class="trust-grid">
+    <div class="trust-card"><div class="trust-ic">⚡</div><h3>Aprovação Rápida</h3><p>Decisão em menos de 5 minutos.</p></div>
+    <div class="trust-card"><div class="trust-ic">💰</div><h3>Taxa Fixa 15%</h3><p>Sem taxas escondidas nem surpresas.</p></div>
+    <div class="trust-card"><div class="trust-ic">📱</div><h3>100% via e-Mola</h3><p>Receba direto na sua carteira e-Mola.</p></div>
+    <div class="trust-card"><div class="trust-ic">🔒</div><h3>Totalmente Seguro</h3><p>Protegido com segurança e-Mola.</p></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how-sec" id="como">
+  <div class="s-label">Processo Simples</div>
+  <h2 class="s-title">Como Funciona</h2>
+  <p class="s-sub">4 passos rápidos com a sua mola.</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h3>Escolher</h3><p>Selecione o valor e o prazo.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>Confirme</h3><p>Insira o número e-Mola e PIN.</p></div>
+    <div class="step"><div class="step-n">3</div><h3>Verifique</h3><p>Código de 6 dígitos por SMS.</p></div>
+    <div class="step"><div class="step-n">4</div><h3>Receber</h3><p>Dinheiro na sua mola em minutos!</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="test-sec">
+  <div class="s-label">Clientes Satisfeitos</div>
+  <h2 class="s-title">O Que Dizem os Nossos Clientes</h2>
+  <p class="s-sub">Histórias reais de moçambicanos que confiam em nós.</p>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">Precisei de dinheiro urgente para o negócio e em 10 minutos já tinha na minha mola. Recomendo!</div>
+      <div class="test-author">
+        <div class="test-avatar">JM</div>
+        <div><div class="test-name">João Macuácua</div><div class="test-loc">Maputo</div></div>
       </div>
     </div>
-  </footer>
-
-  <!-- ══ APPLICATION MODAL ══ -->
-  <div class="modal-overlay" id="appModal">
-    <div class="modal-box">
-      <div class="modal-head">
-        <div class="modal-head-left">
-          <div class="modal-logo-mark">WL</div>
-          <div class="modal-head-text">
-            <h2>Codsiga Lacagta</h2>
-            <div class="mh-sub" id="modalSubtitle">Tallaabo 1 / 3 — Macluumaadkaaga</div>
-          </div>
-        </div>
-        <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">Processo simples, sem complicação. A taxa é clara e não há surpresas no final.</div>
+      <div class="test-author">
+        <div class="test-avatar">AS</div>
+        <div><div class="test-name">Amélia Sitoe</div><div class="test-loc">Beira</div></div>
       </div>
-      <div class="modal-body">
-        <div class="progress-bar">
-          <div class="pbar-seg active" id="seg1"></div>
-          <div class="pbar-seg" id="seg2"></div>
-          <div class="pbar-seg" id="seg3"></div>
-        </div>
-        <div class="modal-error" id="merr"></div>
-
-        <!-- STEP 1: Details -->
-        <div id="step1" class="step-content active">
-          <div class="loan-summary">
-            <div class="ls-item">
-              <div class="ls-label">Lacagta la codsan</div>
-              <div class="ls-val" id="sumAmt">$500</div>
-            </div>
-            <div class="ls-item" style="text-align:right;">
-              <div class="ls-label">Mudadda</div>
-              <div class="ls-val" id="sumDur">30 Maalmood</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Magacaaga Buuxa</label>
-            <input type="text" id="fullName" placeholder="Geli magacaaga saddexan">
-          </div>
-          <div class="form-group">
-            <label>Lambarka Waafi / EVC Plus</label>
-            <input type="number" id="phoneNum" placeholder="61XXXXXXX">
-          </div>
-          <div class="modal-foot">
-            <button class="btn-next" onclick="nextStep(2)">Sii soco →</button>
-          </div>
-        </div>
-
-        <!-- STEP 2: Job -->
-        <div id="step2" class="step-content">
-          <div class="form-group">
-            <label>Xaaladda Shaqadaada</label>
-            <select id="jobStatus">
-              <option value="">Dooro xaaladdaada</option>
-              <option value="Shaqaale Dawlad">Shaqaale Dawlad</option>
-              <option value="Shaqaale Shirkad">Shaqaale Shirkad</option>
-              <option value="Ganacsade">Ganacsade</option>
-              <option value="Arday">Arday</option>
-              <option value="Mid kale">Mid kale</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Dakhligaaga Bishiiba ($)</label>
-            <input type="number" id="income" placeholder="Geli dakhligaaga">
-          </div>
-          <div class="modal-foot">
-            <button class="btn-prev" onclick="nextStep(1)">← Dib</button>
-            <button class="btn-next" onclick="nextStep(3)">Sii soco →</button>
-          </div>
-        </div>
-
-        <!-- STEP 3: Purpose -->
-        <div id="step3" class="step-content">
-          <div class="form-group">
-            <label>Ujeedada Lacagta</label>
-            <select id="purpose">
-              <option value="">Maxaad u isticmaalaysaa?</option>
-              <option value="Ganacsi">Ganacsi yar</option>
-              <option value="Waxbarasho">Waxbarasho</option>
-              <option value="Caafimaad">Caafimaad</option>
-              <option value="Arrimaha Qoyska">Arrimaha Qoyska</option>
-              <option value="Mid kale">Mid kale</option>
-            </select>
-          </div>
-          <div class="shariah-note" style="margin-top:20px;">
-            "Waxaan xaqiijinayaa in xogtaydu sax tahay, ujeedada lacagtuna tahay mid halaal ah."
-          </div>
-          <div class="modal-foot">
-            <button class="btn-prev" onclick="nextStep(2)">← Dib</button>
-            <button class="btn-next" onclick="submitApp()">Xaqiiji Codsiga ✓</button>
-          </div>
-        </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">Já usei três vezes. Sempre rápido e confiável. Melhor serviço em Moçambique.</div>
+      <div class="test-author">
+        <div class="test-avatar">CN</div>
+        <div><div class="test-name">Carlos Nhaca</div><div class="test-loc">Nampula</div></div>
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    // ══ NAV LOGIC ══
-    const mobileNav = document.getElementById('mobileNav');
-    const hamBtn = document.getElementById('hamBtn');
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="s-label">Perguntas Frequentes</div>
+  <h2 class="s-title">Tudo o Que Precisa Saber</h2>
+  <p class="s-sub">Respostas às dúvidas mais comuns.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Quanto tempo demora a aprovação?<span class="chev">▼</span></button>
+      <div class="faq-a">A aprovação é feita em menos de 5 minutos após a confirmação dos seus dados. Receberá o dinheiro diretamente na sua conta e-Mola.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Quais são os requisitos?<span class="chev">▼</span></button>
+      <div class="faq-a">Precisa de: ser maior de 18 anos, ter uma conta e-Mola ativa, e residir em Moçambique. Sem documentos complicados.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Como pago o empréstimo?<span class="chev">▼</span></button>
+      <div class="faq-a">O pagamento é feito automaticamente pela sua conta e-Mola na data de vencimento. Também pode pagar antecipadamente sem penalização.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Qual é a taxa de juro?<span class="chev">▼</span></button>
+      <div class="faq-a">Aplicamos uma taxa fixa de 15% sobre o valor solicitado. Sem taxas escondidas, sem juros compostos. Tudo transparente desde o início.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Os meus dados estão seguros?<span class="chev">▼</span></button>
+      <div class="faq-a">Sim. Utilizamos encriptação de ponta a ponta e todos os dados são protegidos com segurança e-Mola. Nunca partilhamos as suas informações.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Posso pedir mais de um empréstimo?<span class="chev">▼</span></button>
+      <div class="faq-a">Sim, desde que o empréstimo anterior esteja liquidado. Clientes com bom histórico têm acesso a valores mais altos e melhores condições.</div>
+    </div>
+  </div>
+</section>
 
-    function toggleMobileNav() {
-      const isOpen = mobileNav.classList.toggle('open');
-      hamBtn.classList.toggle('open');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    }
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
-      hamBtn.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Pronto para Receber a Sua Mola?</h2>
+  <p>Peça agora o seu empréstimo e receba em minutos. Rápido, seguro, sem complicações.</p>
+  <button class="btn-final" onclick="location.href='#simular'">Solicitar Empréstimo →</button>
+</section>
 
-    // ══ CALCULATOR LOGIC ══
-    const loanAmount = document.getElementById('loanAmount');
-    const loanSlider = document.getElementById('loanSlider');
-    const monthlyDisplay = document.getElementById('monthlyDisplay');
-    const repayDisplay = document.getElementById('repayDisplay');
-    const calcNote = document.getElementById('calcNote');
-    let currentDur = 30;
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <span class="logo"><span class="e">e-</span><span class="mola" style="background:linear-gradient(135deg,#FFB84D,#F7941D);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Mola</span></span>
+      <p>Solução de crédito rápido via e-Mola em Moçambique. Empréstimos acessíveis com taxa fixa e aprovação em minutos. Meu cell, minha mola.</p>
+    </div>
+    <div class="ft-col"><h4>Produtos</h4><ul><li><a href="#planos">Empréstimos</a></li><li><a href="#">Crédito Pessoal</a></li><li><a href="#">Crédito Negócio</a></li></ul></div>
+    <div class="ft-col"><h4>Suporte</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="#">Contacto</a></li><li><a href="#">Centro de Ajuda</a></li></ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul><li><a href="#">Termos</a></li><li><a href="#">Privacidade</a></li><li><a href="#">Responsabilidade</a></li></ul></div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2026 e-Mola Crédito · Moçambique</p>
+    <div class="ft-badges"><span>🔒 Protegido com segurança e-Mola</span><span>✓ Certificado</span></div>
+  </div>
+</footer>
 
-    function updateCalc() {
-      const amt = parseInt(loanAmount.value) || 0;
-      const fee = Math.round(amt * 0.05);
-      const total = amt + fee;
-      const monthly = Math.round(total / (currentDur / 30));
+<div class="sticky-cta">
+  <button onclick="location.href='#simular'">Solicitar Empréstimo →</button>
+</div>
 
-      monthlyDisplay.textContent = `$${monthly.toLocaleString()}`;
-      repayDisplay.textContent = `$${total.toLocaleString()}`;
-      calcNote.textContent = `Khidmadda: $${fee.toLocaleString()} — Murabaha Shariah-compliant, 5% xaddidan.`;
-    }
+<script>
+let curAmount=2500, curDur=14;
 
-    function syncInput() {
-      if(loanAmount.value > 5000) loanAmount.value = 5000;
-      loanSlider.value = loanAmount.value;
-      updateCalc();
-      updateChips();
-    }
-    function syncRange() {
-      loanAmount.value = loanSlider.value;
-      updateCalc();
-      updateChips();
-    }
-    function setAmt(val) {
-      loanAmount.value = val;
-      loanSlider.value = val;
-      updateCalc();
-      updateChips();
-    }
-    function updateChips() {
-      const val = parseInt(loanAmount.value);
-      document.querySelectorAll('.chip-btn').forEach(btn => {
-        btn.classList.toggle('active', parseInt(btn.textContent.replace('$','').replace(',','')) === val);
-      });
-    }
-    function setDur(d) {
-      currentDur = d;
-      document.querySelectorAll('.period-btn').forEach(btn => {
-        btn.classList.toggle('active', parseInt(btn.dataset.d) === d);
-      });
-      updateCalc();
-    }
+function toggleMenu(){document.getElementById('mobNav').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobNav').classList.remove('open')}
+window.addEventListener('scroll',closeMenu);
 
-    // ══ MODAL LOGIC ══
-    const modal = document.getElementById('appModal');
-    const merr = document.getElementById('merr');
+function fmt(n){return n.toLocaleString('pt-PT').replace(/\s/g,'.')+' MZN'}
 
-    function openModal() {
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('sumAmt').textContent = `$${loanAmount.value}`;
-      document.getElementById('sumDur').textContent = `${currentDur} Maalmood`;
-      nextStep(1);
-    }
-    function closeModal() {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+function updateCalc(){
+  const interest = Math.round(curAmount * 0.15);
+  const total = curAmount + interest;
 
-    function nextStep(s) {
-      merr.style.display = 'none';
-      document.querySelectorAll('.step-content').forEach(c => c.classList.remove('active'));
-      document.getElementById(`step${s}`).classList.add('active');
-      document.querySelectorAll('.pbar-seg').forEach((seg, idx) => {
-        seg.classList.toggle('active', idx < s);
-      });
-      document.getElementById('modalSubtitle').textContent = `Tallaabo ${s} / 3 — ${s===1?'Macluumaadkaaga':s===2?'Shaqadaada':'Ujeedada'}`;
-    }
+  document.getElementById('amountLbl').textContent = fmt(curAmount);
+  document.getElementById('rAmount').textContent = fmt(curAmount);
+  document.getElementById('rInterest').textContent = fmt(interest);
+  document.getElementById('rTotal').textContent = fmt(total);
+  document.getElementById('rDur').textContent = curDur + ' dias';
 
-    function toggleFaq(el) {
-      const item = el.parentElement;
-      const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if(!wasOpen) item.classList.add('open');
-    }
+  const slider = document.getElementById('amountSlider');
+  const pct = ((curAmount - 500) / (10000 - 500)) * 100;
+  slider.style.setProperty('--pct', pct + '%');
+}
 
-    function submitApp() {
-      const name = document.getElementById('fullName').value.trim();
-      const phone = document.getElementById('phoneNum').value.trim();
-      const job = document.getElementById('jobStatus').value;
-      const inc = document.getElementById('income').value;
-      const purp = document.getElementById('purpose').value;
+document.getElementById('amountSlider').addEventListener('input', function(){
+  curAmount = parseInt(this.value);
+  updateCalc();
+});
 
-      if(!name || !phone || !job || !inc || !purp) {
-        merr.textContent = "Fadlan buuxi dhammaan meelaha bannaan.";
-        merr.style.display = 'block';
-        return;
-      }
+function setDur(el, days){
+  curDur = days;
+  document.querySelectorAll('.dur-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  updateCalc();
+}
 
-      const params = new URLSearchParams();
-      params.append('amount', loanAmount.value);
-      params.append('duration', currentDur);
-      params.append('name', name);
-      params.append('phone', phone);
-      params.append('job', job);
-      params.append('income', inc);
-      params.append('purpose', purp);
+function proceed(){
+  const interest = Math.round(curAmount * 0.15);
+  const total = curAmount + interest;
+  const params = new URLSearchParams({
+    amount: curAmount,
+    duration: curDur,
+    interest: interest,
+    total: total
+  });
+  window.location.href = 'login.html?' + params.toString();
+}
 
-      window.location.href = `verify.html?${params.toString()}`;
-    }
+function pick(amount, days){
+  curAmount = amount;
+  curDur = days;
+  const interest = Math.round(amount * 0.15);
+  const total = amount + interest;
+  const params = new URLSearchParams({
+    amount: amount,
+    duration: days,
+    interest: interest,
+    total: total
+  });
+  window.location.href = 'login.html?' + params.toString();
+}
 
-    updateCalc();
-  </script>
+function toggleFaq(btn){
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+updateCalc();
+</script>
 </body>
 </html>
