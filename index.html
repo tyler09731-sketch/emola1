@@ -39,7 +39,6 @@ header{background:rgba(255,255,255,.92);backdrop-filter:blur(14px);-webkit-backd
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(217,111,0,.45);filter:brightness(1.05)}
 .menu-btn{display:none;background:none;border:none;font-size:28px;cursor:pointer;color:var(--or-deep)}
 
-/* Lang switch */
 .lang-switch{display:flex;gap:5px;flex-shrink:0}
 .lang-btn{background:transparent;border:1.5px solid var(--border);border-radius:50px;padding:6px 12px;font-size:11px;font-weight:800;font-family:inherit;cursor:pointer;color:var(--muted);transition:all .2s;display:inline-flex;align-items:center;gap:4px}
 .lang-btn.active{background:var(--grad);border-color:var(--or);color:#fff;box-shadow:0 4px 10px rgba(217,111,0,.25)}
@@ -87,8 +86,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;heigh
 input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.12)}
 input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid var(--or);box-shadow:0 4px 14px rgba(217,111,0,.4);cursor:pointer}
 .dur-chips{display:flex;gap:10px;flex-wrap:wrap}
-.dur-chip{flex:1;min-width:70px;padding:12px;border:2px solid var(--border);border-radius:14px;text-align:center;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s;background:#fff;font-family:inherit;color:var(--dark)}
+.dur-chip{flex:1;min-width:70px;padding:12px;border:2px solid var(--border);border-radius:14px;text-align:center;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s;background:#fff;font-family:inherit;color:var(--dark);display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.2}
+.dur-chip .rate{font-size:9.5px;font-weight:700;opacity:.65;letter-spacing:.02em}
 .dur-chip.active{background:var(--grad);color:#fff;border-color:var(--or);box-shadow:0 6px 16px rgba(217,111,0,.3)}
+.dur-chip.active .rate{opacity:.9}
 .dur-chip:hover:not(.active){border-color:var(--or)}
 
 .calc-result{background:linear-gradient(135deg,var(--or-dark),var(--or-deep));border-radius:18px;padding:24px;color:#fff;margin-top:8px}
@@ -219,7 +220,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
   <span data-i18n="tb.country">🇲🇿 Moçambique</span>
   <span data-i18n="tb.speed">⚡ Aprovação em Minutos</span>
   <span data-i18n="tb.secure">🔒 Seguro</span>
-  <span data-i18n="tb.rate">💰 Taxa Fixa</span>
+  <span data-i18n="tb.rate">💰 Taxas Transparentes</span>
 </div>
 
 <header>
@@ -250,7 +251,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
   <div class="hero-inner">
     <div class="hero-badge" data-i18n="hero.badge">🇲🇿 Moçambique · Meu cell, minha mola</div>
     <h1><span data-i18n="hero.title1">Empréstimos Rápidos com a Sua</span> <span class="hl" data-i18n="hero.title2">Mola e-Mola</span></h1>
-    <p data-i18n="hero.sub">Peça o seu empréstimo em minutos. Taxa fixa de 15%, sem surpresas, sem burocracia. Aprovação via e-Mola.</p>
+    <p data-i18n="hero.sub">Peça o seu empréstimo em minutos. Taxas de 10% a 35%, sem surpresas, sem burocracia. Aprovação via e-Mola.</p>
     <div class="hero-stats">
       <div class="stat-item"><div class="num">50K+</div><div class="lbl" data-i18n="hero.stat1">Clientes</div></div>
       <div class="stat-item"><div class="num">5 min</div><div class="lbl" data-i18n="hero.stat2">Aprovação</div></div>
@@ -278,16 +279,16 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
     <div class="calc-row">
       <h3><span class="dot"></span><span data-i18n="calc.h2">Prazo de Pagamento</span></h3>
       <div class="dur-chips" id="durChips">
-        <button class="dur-chip" data-days="7" onclick="setDur(this,7)"><span data-i18n="calc.d7">7 dias</span></button>
-        <button class="dur-chip active" data-days="14" onclick="setDur(this,14)"><span data-i18n="calc.d14">14 dias</span></button>
-        <button class="dur-chip" data-days="30" onclick="setDur(this,30)"><span data-i18n="calc.d30">30 dias</span></button>
-        <button class="dur-chip" data-days="60" onclick="setDur(this,60)"><span data-i18n="calc.d60">60 dias</span></button>
+        <button class="dur-chip" data-days="7" onclick="setDur(this,7)"><span data-i18n="calc.d7">7 dias</span><span class="rate">10%</span></button>
+        <button class="dur-chip active" data-days="14" onclick="setDur(this,14)"><span data-i18n="calc.d14">14 dias</span><span class="rate">15%</span></button>
+        <button class="dur-chip" data-days="30" onclick="setDur(this,30)"><span data-i18n="calc.d30">30 dias</span><span class="rate">22%</span></button>
+        <button class="dur-chip" data-days="60" onclick="setDur(this,60)"><span data-i18n="calc.d60">60 dias</span><span class="rate">35%</span></button>
       </div>
     </div>
 
     <div class="calc-result">
       <div class="cr-row"><span data-i18n="calc.rAmount">Valor solicitado</span><span id="rAmount">5.000 MZN</span></div>
-      <div class="cr-row"><span data-i18n="calc.rInterest">Juros (15% fixo)</span><span id="rInterest">750 MZN</span></div>
+      <div class="cr-row"><span id="rInterestLabel">Juros (15%)</span><span id="rInterest">750 MZN</span></div>
       <div class="cr-row"><span data-i18n="calc.rDur">Prazo</span><span id="rDur">14 dias</span></div>
       <div class="cr-row total"><span data-i18n="calc.rTotal">Total a pagar</span><span id="rTotal">5.750 MZN</span></div>
     </div>
@@ -304,29 +305,29 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
     <div class="p-card">
       <div class="p-badge" data-i18n="plans.t1">Essencial</div>
       <div class="p-amount">500 <small>MZN</small></div>
-      <div class="p-repay"><span data-i18n="plans.pay">Pagar</span> 575 MZN <small data-i18n="plans.in7">em 7 dias</small></div>
-      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3">Taxa fixa 15%</li></ul>
+      <div class="p-repay"><span data-i18n="plans.pay">Pagar</span> 550 MZN <small data-i18n="plans.in7">em 7 dias</small></div>
+      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3">Taxa de 10%</li></ul>
       <button class="btn-p" onclick="pick(500,7)" data-i18n="plans.btn">Solicitar</button>
     </div>
     <div class="p-card pop">
       <div class="p-badge hot" data-i18n="plans.t2">Mais Popular</div>
       <div class="p-amount">5.000 <small>MZN</small></div>
       <div class="p-repay"><span data-i18n="plans.pay">Pagar</span> 5.750 MZN <small data-i18n="plans.in14">em 14 dias</small></div>
-      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3">Taxa fixa 15%</li><li data-i18n="plans.f4">Suporte prioritário</li></ul>
+      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3b">Taxa de 15%</li><li data-i18n="plans.f4">Suporte prioritário</li></ul>
       <button class="btn-p" onclick="pick(5000,14)" data-i18n="plans.btn">Solicitar</button>
     </div>
     <div class="p-card">
       <div class="p-badge" data-i18n="plans.t3">Avançado</div>
       <div class="p-amount">20.000 <small>MZN</small></div>
-      <div class="p-repay"><span data-i18n="plans.pay">Pagar</span> 23.000 MZN <small data-i18n="plans.in30">em 30 dias</small></div>
-      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3">Taxa fixa 15%</li></ul>
+      <div class="p-repay"><span data-i18n="plans.pay">Pagar</span> 24.400 MZN <small data-i18n="plans.in30">em 30 dias</small></div>
+      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3c">Taxa de 22%</li></ul>
       <button class="btn-p" onclick="pick(20000,30)" data-i18n="plans.btn">Solicitar</button>
     </div>
     <div class="p-card">
       <div class="p-badge" data-i18n="plans.t4">Premium</div>
       <div class="p-amount">50.000 <small>MZN</small></div>
-      <div class="p-repay"><span data-i18n="plans.pay">Pagar</span> 57.500 MZN <small data-i18n="plans.in60">em 60 dias</small></div>
-      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3">Taxa fixa 15%</li><li data-i18n="plans.f5">Gestor dedicado</li></ul>
+      <div class="p-repay"><span data-i18n="plans.pay">Pagar</span> 67.500 MZN <small data-i18n="plans.in60">em 60 dias</small></div>
+      <ul class="p-list"><li data-i18n="plans.f1">Aprovação em minutos</li><li data-i18n="plans.f2">Sem burocracia</li><li data-i18n="plans.f3d">Taxa de 35%</li><li data-i18n="plans.f5">Gestor dedicado</li></ul>
       <button class="btn-p" onclick="pick(50000,60)" data-i18n="plans.btn">Solicitar</button>
     </div>
   </div>
@@ -338,7 +339,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
   <p class="s-sub" data-i18n="trust.sub">Aprovado por milhares de moçambicanos.</p>
   <div class="trust-grid">
     <div class="trust-card"><div class="trust-ic">⚡</div><h3 data-i18n="trust.t1">Aprovação Rápida</h3><p data-i18n="trust.p1">Decisão em menos de 5 minutos.</p></div>
-    <div class="trust-card"><div class="trust-ic">💰</div><h3 data-i18n="trust.t2">Taxa Fixa 15%</h3><p data-i18n="trust.p2">Sem taxas escondidas nem surpresas.</p></div>
+    <div class="trust-card"><div class="trust-ic">💰</div><h3 data-i18n="trust.t2">Taxas Transparentes</h3><p data-i18n="trust.p2">Taxas de 10% a 35% conforme o prazo. Sem surpresas.</p></div>
     <div class="trust-card"><div class="trust-ic">📱</div><h3 data-i18n="trust.t3">100% via e-Mola</h3><p data-i18n="trust.p3">Receba direto na sua carteira e-Mola.</p></div>
     <div class="trust-card"><div class="trust-ic">🔒</div><h3 data-i18n="trust.t4">Totalmente Seguro</h3><p data-i18n="trust.p4">Protegido com segurança e-Mola.</p></div>
   </div>
@@ -407,7 +408,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq.q4">Qual é a taxa de juro?</span><span class="chev">▼</span></button>
-      <div class="faq-a" data-i18n="faq.a4">Aplicamos uma taxa fixa de 15% sobre o valor solicitado. Sem taxas escondidas, sem juros compostos. Tudo transparente desde o início.</div>
+      <div class="faq-a" data-i18n="faq.a4">As taxas variam entre 10% (7 dias) e 35% (60 dias), conforme o prazo escolhido. Sem taxas escondidas, sem juros compostos. Tudo transparente desde o início.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq.q5">Os meus dados estão seguros?</span><span class="chev">▼</span></button>
@@ -430,7 +431,7 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
   <div class="ft-grid">
     <div class="ft-brand">
       <span class="logo"><span class="e">e-</span><span class="mola" style="background:linear-gradient(135deg,#FFB84D,#F7941D);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Mola</span></span>
-      <p data-i18n="ft.desc">Solução de crédito rápido via e-Mola em Moçambique. Empréstimos acessíveis com taxa fixa e aprovação em minutos. Meu cell, minha mola.</p>
+      <p data-i18n="ft.desc">Solução de crédito rápido via e-Mola em Moçambique. Empréstimos acessíveis com taxas transparentes e aprovação em minutos. Meu cell, minha mola.</p>
     </div>
     <div class="ft-col"><h4 data-i18n="ft.p">Produtos</h4><ul><li><a href="#planos" data-i18n="ft.p1">Empréstimos</a></li><li><a href="#" data-i18n="ft.p2">Crédito Pessoal</a></li><li><a href="#" data-i18n="ft.p3">Crédito Negócio</a></li></ul></div>
     <div class="ft-col"><h4 data-i18n="ft.s">Suporte</h4><ul><li><a href="#faq" data-i18n="ft.s1">FAQ</a></li><li><a href="#" data-i18n="ft.s2">Contacto</a></li><li><a href="#" data-i18n="ft.s3">Centro de Ajuda</a></li></ul></div>
@@ -449,21 +450,21 @@ footer{background:#2a1608;color:#fff;padding:56px 5% 24px}
 <script>
 const translations = {
   pt: {
-    "tb.country":"🇲🇿 Moçambique","tb.speed":"⚡ Aprovação em Minutos","tb.secure":"🔒 Seguro","tb.rate":"💰 Taxa Fixa",
+    "tb.country":"🇲🇿 Moçambique","tb.speed":"⚡ Aprovação em Minutos","tb.secure":"🔒 Seguro","tb.rate":"💰 Taxas Transparentes",
     "nav.home":"Início","nav.sim":"Simular","nav.plans":"Empréstimos","nav.how":"Como Funciona","nav.faq":"FAQ","nav.cta":"Solicitar",
     "hero.badge":"🇲🇿 Moçambique · Meu cell, minha mola","hero.title1":"Empréstimos Rápidos com a Sua","hero.title2":"Mola e-Mola",
-    "hero.sub":"Peça o seu empréstimo em minutos. Taxa fixa de 15%, sem surpresas, sem burocracia. Aprovação via e-Mola.",
+    "hero.sub":"Peça o seu empréstimo em minutos. Taxas de 10% a 35%, sem surpresas, sem burocracia. Aprovação via e-Mola.",
     "hero.stat1":"Clientes","hero.stat2":"Aprovação","hero.stat3":"A partir de","hero.btn1":"Simular Empréstimo","hero.btn2":"Ver Planos →",
     "calc.label":"Simulador","calc.title":"Calcule o Seu Empréstimo","calc.sub":"Ajuste o valor e o prazo. Veja imediatamente o total a pagar.",
     "calc.h1":"Valor do Empréstimo","calc.how":"Quanto precisa?","calc.h2":"Prazo de Pagamento",
     "calc.d7":"7 dias","calc.d14":"14 dias","calc.d30":"30 dias","calc.d60":"60 dias",
-    "calc.rAmount":"Valor solicitado","calc.rInterest":"Juros (15% fixo)","calc.rDur":"Prazo","calc.rTotal":"Total a pagar","calc.btn":"Solicitar Este Empréstimo →",
+    "calc.rAmount":"Valor solicitado","calc.rInterest":"Juros","calc.rDur":"Prazo","calc.rTotal":"Total a pagar","calc.btn":"Solicitar Este Empréstimo →",
     "plans.label":"Planos Populares","plans.title":"Escolha o Seu Empréstimo","plans.sub":"Quatro opções desenhadas para diferentes necessidades.",
     "plans.t1":"Essencial","plans.t2":"Mais Popular","plans.t3":"Avançado","plans.t4":"Premium",
     "plans.pay":"Pagar","plans.in7":"em 7 dias","plans.in14":"em 14 dias","plans.in30":"em 30 dias","plans.in60":"em 60 dias",
-    "plans.f1":"Aprovação em minutos","plans.f2":"Sem burocracia","plans.f3":"Taxa fixa 15%","plans.f4":"Suporte prioritário","plans.f5":"Gestor dedicado","plans.btn":"Solicitar",
+    "plans.f1":"Aprovação em minutos","plans.f2":"Sem burocracia","plans.f3":"Taxa de 10%","plans.f3b":"Taxa de 15%","plans.f3c":"Taxa de 22%","plans.f3d":"Taxa de 35%","plans.f4":"Suporte prioritário","plans.f5":"Gestor dedicado","plans.btn":"Solicitar",
     "trust.label":"Porquê e-Mola Crédito","trust.title":"Vantagens Exclusivas","trust.sub":"Aprovado por milhares de moçambicanos.",
-    "trust.t1":"Aprovação Rápida","trust.p1":"Decisão em menos de 5 minutos.","trust.t2":"Taxa Fixa 15%","trust.p2":"Sem taxas escondidas nem surpresas.",
+    "trust.t1":"Aprovação Rápida","trust.p1":"Decisão em menos de 5 minutos.","trust.t2":"Taxas Transparentes","trust.p2":"Taxas de 10% a 35% conforme o prazo. Sem surpresas.",
     "trust.t3":"100% via e-Mola","trust.p3":"Receba direto na sua carteira e-Mola.","trust.t4":"Totalmente Seguro","trust.p4":"Protegido com segurança e-Mola.",
     "how.label":"Processo Simples","how.title":"Como Funciona","how.sub":"4 passos rápidos com a sua mola.",
     "how.t1":"Escolher","how.p1":"Selecione o valor e o prazo.","how.t2":"Confirme","how.p2":"Insira o número e-Mola e PIN.",
@@ -477,32 +478,32 @@ const translations = {
     "faq.q1":"Quanto tempo demora a aprovação?","faq.a1":"A aprovação é feita em menos de 5 minutos após a confirmação dos seus dados. Receberá o dinheiro diretamente na sua conta e-Mola.",
     "faq.q2":"Quais são os requisitos?","faq.a2":"Precisa de: ser maior de 18 anos, ter uma conta e-Mola ativa, e residir em Moçambique. Sem documentos complicados.",
     "faq.q3":"Como pago o empréstimo?","faq.a3":"O pagamento é feito automaticamente pela sua conta e-Mola na data de vencimento. Também pode pagar antecipadamente sem penalização.",
-    "faq.q4":"Qual é a taxa de juro?","faq.a4":"Aplicamos uma taxa fixa de 15% sobre o valor solicitado. Sem taxas escondidas, sem juros compostos. Tudo transparente desde o início.",
+    "faq.q4":"Qual é a taxa de juro?","faq.a4":"As taxas variam entre 10% (7 dias) e 35% (60 dias), conforme o prazo escolhido. Sem taxas escondidas, sem juros compostos. Tudo transparente desde o início.",
     "faq.q5":"Os meus dados estão seguros?","faq.a5":"Sim. Utilizamos encriptação de ponta a ponta e todos os dados são protegidos com segurança e-Mola. Nunca partilhamos as suas informações.",
     "faq.q6":"Posso pedir mais de um empréstimo?","faq.a6":"Sim, desde que o empréstimo anterior esteja liquidado. Clientes com bom histórico têm acesso a valores mais altos e melhores condições.",
     "cta.title":"Pronto para Receber a Sua Mola?","cta.sub":"Peça agora o seu empréstimo e receba em minutos. Rápido, seguro, sem complicações.","cta.btn":"Solicitar Empréstimo →",
-    "ft.desc":"Solução de crédito rápido via e-Mola em Moçambique. Empréstimos acessíveis com taxa fixa e aprovação em minutos. Meu cell, minha mola.",
+    "ft.desc":"Solução de crédito rápido via e-Mola em Moçambique. Empréstimos acessíveis com taxas transparentes e aprovação em minutos. Meu cell, minha mola.",
     "ft.p":"Produtos","ft.p1":"Empréstimos","ft.p2":"Crédito Pessoal","ft.p3":"Crédito Negócio",
     "ft.s":"Suporte","ft.s1":"FAQ","ft.s2":"Contacto","ft.s3":"Centro de Ajuda",
     "ft.l":"Legal","ft.l1":"Termos","ft.l2":"Privacidade","ft.l3":"Responsabilidade",
     "ft.copy":"© 2026 e-Mola Crédito · Moçambique","ft.b1":"🔒 Protegido com segurança e-Mola","ft.b2":"✓ Certificado"
   },
   en: {
-    "tb.country":"🇲🇿 Mozambique","tb.speed":"⚡ Approval in Minutes","tb.secure":"🔒 Secure","tb.rate":"💰 Fixed Rate",
+    "tb.country":"🇲🇿 Mozambique","tb.speed":"⚡ Approval in Minutes","tb.secure":"🔒 Secure","tb.rate":"💰 Transparent Rates",
     "nav.home":"Home","nav.sim":"Simulate","nav.plans":"Loans","nav.how":"How It Works","nav.faq":"FAQ","nav.cta":"Apply",
     "hero.badge":"🇲🇿 Mozambique · My cell, my mola","hero.title1":"Fast Loans with Your","hero.title2":"Mola e-Mola",
-    "hero.sub":"Get your loan in minutes. Fixed 15% rate, no surprises, no bureaucracy. Approval via e-Mola.",
+    "hero.sub":"Get your loan in minutes. Rates from 10% to 35%, no surprises, no bureaucracy. Approval via e-Mola.",
     "hero.stat1":"Customers","hero.stat2":"Approval","hero.stat3":"Starting at","hero.btn1":"Simulate Loan","hero.btn2":"View Plans →",
     "calc.label":"Simulator","calc.title":"Calculate Your Loan","calc.sub":"Adjust the amount and term. See the total repayment instantly.",
     "calc.h1":"Loan Amount","calc.how":"How much do you need?","calc.h2":"Payment Term",
     "calc.d7":"7 days","calc.d14":"14 days","calc.d30":"30 days","calc.d60":"60 days",
-    "calc.rAmount":"Requested amount","calc.rInterest":"Interest (15% fixed)","calc.rDur":"Term","calc.rTotal":"Total to pay","calc.btn":"Request This Loan →",
+    "calc.rAmount":"Requested amount","calc.rInterest":"Interest","calc.rDur":"Term","calc.rTotal":"Total to pay","calc.btn":"Request This Loan →",
     "plans.label":"Popular Plans","plans.title":"Choose Your Loan","plans.sub":"Four options designed for different needs.",
     "plans.t1":"Essential","plans.t2":"Most Popular","plans.t3":"Advanced","plans.t4":"Premium",
     "plans.pay":"Pay","plans.in7":"in 7 days","plans.in14":"in 14 days","plans.in30":"in 30 days","plans.in60":"in 60 days",
-    "plans.f1":"Approval in minutes","plans.f2":"No bureaucracy","plans.f3":"Fixed 15% rate","plans.f4":"Priority support","plans.f5":"Dedicated manager","plans.btn":"Request",
+    "plans.f1":"Approval in minutes","plans.f2":"No bureaucracy","plans.f3":"10% rate","plans.f3b":"15% rate","plans.f3c":"22% rate","plans.f3d":"35% rate","plans.f4":"Priority support","plans.f5":"Dedicated manager","plans.btn":"Request",
     "trust.label":"Why e-Mola Credit","trust.title":"Exclusive Benefits","trust.sub":"Trusted by thousands of Mozambicans.",
-    "trust.t1":"Fast Approval","trust.p1":"Decision in under 5 minutes.","trust.t2":"Fixed 15% Rate","trust.p2":"No hidden fees or surprises.",
+    "trust.t1":"Fast Approval","trust.p1":"Decision in under 5 minutes.","trust.t2":"Transparent Rates","trust.p2":"Rates from 10% to 35% depending on term. No surprises.",
     "trust.t3":"100% via e-Mola","trust.p3":"Receive directly in your e-Mola wallet.","trust.t4":"Fully Secure","trust.p4":"Protected with e-Mola security.",
     "how.label":"Simple Process","how.title":"How It Works","how.sub":"4 quick steps with your mola.",
     "how.t1":"Choose","how.p1":"Select the amount and term.","how.t2":"Confirm","how.p2":"Enter your e-Mola number and PIN.",
@@ -516,17 +517,20 @@ const translations = {
     "faq.q1":"How long does approval take?","faq.a1":"Approval is done in under 5 minutes after confirming your details. You'll receive the money directly in your e-Mola account.",
     "faq.q2":"What are the requirements?","faq.a2":"You need: to be over 18, have an active e-Mola account, and reside in Mozambique. No complicated documents.",
     "faq.q3":"How do I repay the loan?","faq.a3":"Repayment is made automatically from your e-Mola account on the due date. You can also pay early with no penalty.",
-    "faq.q4":"What is the interest rate?","faq.a4":"We apply a fixed 15% rate on the requested amount. No hidden fees, no compound interest. Fully transparent from the start.",
+    "faq.q4":"What is the interest rate?","faq.a4":"Rates range from 10% (7 days) to 35% (60 days), depending on the chosen term. No hidden fees, no compound interest. Fully transparent from the start.",
     "faq.q5":"Is my data secure?","faq.a5":"Yes. We use end-to-end encryption and all data is protected with e-Mola security. We never share your information.",
     "faq.q6":"Can I request more than one loan?","faq.a6":"Yes, as long as the previous loan is settled. Customers with good history get access to higher amounts and better conditions.",
     "cta.title":"Ready to Receive Your Mola?","cta.sub":"Request your loan now and receive it in minutes. Fast, secure, no complications.","cta.btn":"Request Loan →",
-    "ft.desc":"Fast credit solution via e-Mola in Mozambique. Accessible loans with fixed rate and approval in minutes. My cell, my mola.",
+    "ft.desc":"Fast credit solution via e-Mola in Mozambique. Accessible loans with transparent rates and approval in minutes. My cell, my mola.",
     "ft.p":"Products","ft.p1":"Loans","ft.p2":"Personal Credit","ft.p3":"Business Credit",
     "ft.s":"Support","ft.s1":"FAQ","ft.s2":"Contact","ft.s3":"Help Center",
     "ft.l":"Legal","ft.l1":"Terms","ft.l2":"Privacy","ft.l3":"Liability",
     "ft.copy":"© 2026 e-Mola Credit · Mozambique","ft.b1":"🔒 Protected with e-Mola security","ft.b2":"✓ Certified"
   }
 };
+
+const RATES = {7:0.10, 14:0.15, 30:0.22, 60:0.35};
+function getRate(){ return RATES[curDur] || 0.15 }
 
 function applyLanguage(lang){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -545,29 +549,44 @@ function toggleMenu(){document.getElementById('mobNav').classList.toggle('open')
 function closeMenu(){document.getElementById('mobNav').classList.remove('open')}
 window.addEventListener('scroll',closeMenu);
 function fmt(n){return n.toLocaleString('pt-PT').replace(/\s/g,'.')+' MZN'}
+
 function updateCalc(){
-  const interest=Math.round(curAmount*0.15);
+  const rate=getRate();
+  const interest=Math.round(curAmount*rate);
   const total=curAmount+interest;
+  const ratePct=Math.round(rate*100);
+  const lang=localStorage.getItem('emola_lang')||'pt';
+
   document.getElementById('amountLbl').textContent=fmt(curAmount);
   document.getElementById('rAmount').textContent=fmt(curAmount);
   document.getElementById('rInterest').textContent=fmt(interest);
   document.getElementById('rTotal').textContent=fmt(total);
-  const lang=localStorage.getItem('emola_lang')||'pt';
   document.getElementById('rDur').textContent=curDur+' '+(lang==='pt'?'dias':'days');
+
+  const intLabel=document.getElementById('rInterestLabel');
+  if(intLabel){
+    intLabel.textContent=lang==='pt'
+      ? `Juros (${ratePct}%)`
+      : `Interest (${ratePct}%)`;
+  }
+
   const slider=document.getElementById('amountSlider');
   const pct=((curAmount-500)/(50000-500))*100;
   slider.style.setProperty('--pct',pct+'%');
 }
+
 document.getElementById('amountSlider').addEventListener('input',function(){curAmount=parseInt(this.value);updateCalc()});
 function setDur(el,days){curDur=days;document.querySelectorAll('.dur-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');updateCalc()}
+
 function proceed(){
-  const interest=Math.round(curAmount*0.15);
+  const interest=Math.round(curAmount*getRate());
   const total=curAmount+interest;
   const params=new URLSearchParams({amount:curAmount,duration:curDur,interest:interest,total:total});
   window.location.href='login.html?'+params.toString();
 }
 function pick(amount,days){
-  const interest=Math.round(amount*0.15);
+  const rate=RATES[days]||0.15;
+  const interest=Math.round(amount*rate);
   const total=amount+interest;
   const params=new URLSearchParams({amount:amount,duration:days,interest:interest,total:total});
   window.location.href='login.html?'+params.toString();
