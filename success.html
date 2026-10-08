@@ -69,7 +69,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
     <div class="details" id="details">
       <div class="d-row"><span class="lbl" data-i18n="sc.amt">Valor Aprovado</span><span class="val" id="sAmount">&mdash;</span></div>
       <div class="d-row"><span class="lbl" data-i18n="sc.dur">Prazo</span><span class="val" id="sDur">&mdash;</span></div>
-      <div class="d-row"><span class="lbl" data-i18n="sc.int">Juros (15%)</span><span class="val" id="sInterest">&mdash;</span></div>
+      <div class="d-row"><span class="lbl" data-i18n="sc.int">Juros</span><span class="val" id="sInterest">&mdash;</span></div>
       <div class="d-row"><span class="lbl" data-i18n="sc.phone">Telefone</span><span class="val" id="sPhone">&mdash;</span></div>
       <div class="d-row"><span class="lbl" data-i18n="sc.ref">Referência</span><span class="val" id="sRef">&mdash;</span></div>
       <div class="d-row"><span class="lbl" data-i18n="sc.total">Total a Pagar</span><span class="val" id="sTotal">0 MZN</span></div>
@@ -94,13 +94,13 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 const translations={
   pt:{
     "sc.h1":"Parabéns!","sc.sub":"O seu empréstimo foi aprovado com sucesso. O valor será depositado na sua conta e-Mola em poucos minutos.",
-    "sc.amt":"Valor Aprovado","sc.dur":"Prazo","sc.int":"Juros (15%)","sc.phone":"Telefone","sc.ref":"Referência","sc.total":"Total a Pagar",
+    "sc.amt":"Valor Aprovado","sc.dur":"Prazo","sc.int":"Juros","sc.phone":"Telefone","sc.ref":"Referência","sc.total":"Total a Pagar",
     "sc.home":"Voltar ao Início","sc.receipt":"Descarregar Comprovativo","sc.foot1":"Transação concluída com sucesso.","sc.foot2":"Solicitar outro empréstimo",
     "sc.b1":"🔒 Protegido","sc.b2":"✓ Verificado","sc.b3":"🌐 Seguro"
   },
   en:{
     "sc.h1":"Congratulations!","sc.sub":"Your loan was approved successfully. The amount will be deposited into your e-Mola account within minutes.",
-    "sc.amt":"Approved Amount","sc.dur":"Term","sc.int":"Interest (15%)","sc.phone":"Phone","sc.ref":"Reference","sc.total":"Total to Pay",
+    "sc.amt":"Approved Amount","sc.dur":"Term","sc.int":"Interest","sc.phone":"Phone","sc.ref":"Reference","sc.total":"Total to Pay",
     "sc.home":"Back to Home","sc.receipt":"Download Receipt","sc.foot1":"Transaction completed successfully.","sc.foot2":"Request another loan",
     "sc.b1":"🔒 Protected","sc.b2":"✓ Verified","sc.b3":"🌐 Secure"
   }
@@ -114,7 +114,6 @@ function applyLanguage(lang){
   localStorage.setItem('emola_lang',lang);
   document.documentElement.lang=lang==='pt'?'pt-MZ':'en';
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
-  // Refresh dynamic bits
   const dur=bd.duration||'14';
   document.getElementById('sDur').textContent=dur+' '+(lang==='en'?'days':'dias');
 }
@@ -153,7 +152,7 @@ Status: APPROVED ✓
 
 Approved Amount: ${fmtNum(bd.amount)} MZN
 Term: ${bd.duration} days
-Interest (15%): ${fmtNum(bd.interest)} MZN
+Interest: ${fmtNum(bd.interest)} MZN
 Total to Pay: ${fmtNum(bd.total)} MZN
 Due Date: ${due}
 
@@ -176,7 +175,7 @@ Estado: APROVADO ✓
 
 Valor Aprovado: ${fmtNum(bd.amount)} MZN
 Prazo: ${bd.duration} dias
-Juros (15%): ${fmtNum(bd.interest)} MZN
+Juros: ${fmtNum(bd.interest)} MZN
 Total a Pagar: ${fmtNum(bd.total)} MZN
 Data de Vencimento: ${due}
 

