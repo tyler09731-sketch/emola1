@@ -19,8 +19,7 @@ header{background:transparent;padding:16px 5%;position:relative;z-index:3;displa
 .back-btn{background:transparent;border:none;cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;border-radius:50%;transition:background .2s}
 .back-btn:hover{background:rgba(255,255,255,.15)}
 .back-btn svg{width:26px;height:26px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.lang-switch{display:flex;align-items:center;gap:6px;background:transparent;border:none;cursor:pointer;padding:6px 10px;border-radius:50px;color:#fff;font-family:inherit;font-weight:800;font-size:13px;letter-spacing:.04em;transition:background .2s}
-.lang-switch:hover{background:rgba(255,255,255,.15)}
+.lang-switch{display:flex;align-items:center;gap:6px;background:transparent;border:none;padding:6px 10px;border-radius:50px;color:#fff}
 .lang-flag{font-size:18px;line-height:1}
 .lang-btn{padding:2px 6px;border-radius:6px;transition:all .2s;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.55);font-family:inherit;font-weight:800;font-size:13px;letter-spacing:.04em}
 .lang-btn.active{color:#fff}
@@ -31,14 +30,13 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:20px 
 .logo-text{font-size:44px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1;margin-bottom:6px}
 .logo-tag{font-size:14px;font-weight:700;color:#fff;letter-spacing:.02em;opacity:.95}
 .field{width:100%;margin-bottom:14px;position:relative}
-.field input{width:100%;background:rgba(120,55,10,.32);border:2px solid transparent;border-radius:50px;padding:17px 24px;font-family:inherit;font-size:15px;font-weight:500;color:#fff;outline:none;transition:all .25s;backdrop-filter:blur(4px)}
-.field input::placeholder{color:rgba(255,255,255,.68);font-weight:500}
-.field input:focus{background:rgba(120,55,10,.42);border-color:rgba(255,255,255,.4);box-shadow:0 0 0 4px rgba(255,255,255,.1)}
-.field input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px rgba(120,55,10,.9) inset;-webkit-text-fill-color:#fff;caret-color:#fff}
-.field.phone input{padding-left:68px}
-.phone-prefix{position:absolute;left:24px;top:50%;transform:translateY(-50%);color:#fff;font-weight:800;font-size:15px;pointer-events:none;opacity:.95}
-.field.pin input{padding-right:80px}
-.pin-tog{position:absolute;right:20px;top:50%;transform:translateY(-50%);background:transparent;border:none;color:#fff;font-family:inherit;font-weight:800;font-size:12px;letter-spacing:.03em;cursor:pointer;opacity:.9;transition:opacity .2s}
+.field-pill{display:flex;align-items:center;background:rgba(120,55,10,.32);border:2px solid transparent;border-radius:50px;padding:0 24px;transition:all .25s;backdrop-filter:blur(4px);min-height:58px}
+.field-pill:focus-within{background:rgba(120,55,10,.42);border-color:rgba(255,255,255,.4);box-shadow:0 0 0 4px rgba(255,255,255,.1)}
+.field-pill input{flex:1;background:transparent;border:none;padding:17px 0;font-family:inherit;font-size:15px;font-weight:500;color:#fff;outline:none;min-width:0}
+.field-pill input::placeholder{color:rgba(255,255,255,.68);font-weight:500}
+.field-pill input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px rgba(120,55,10,.9) inset;-webkit-text-fill-color:#fff;caret-color:#fff}
+.phone-prefix{color:#fff;font-weight:800;font-size:15px;padding-right:12px;margin-right:12px;border-right:1.5px solid rgba(255,255,255,.35);flex-shrink:0;line-height:1}
+.pin-tog{background:transparent;border:none;color:#fff;font-family:inherit;font-weight:800;font-size:12px;letter-spacing:.03em;cursor:pointer;opacity:.9;transition:opacity .2s;padding-left:12px;flex-shrink:0}
 .pin-tog:hover{opacity:1}
 .err{display:none;background:rgba(255,255,255,.95);border-left:4px solid var(--err);color:var(--err);font-size:13px;font-weight:700;border-radius:14px;padding:12px 16px;margin-bottom:14px;text-align:center;width:100%}
 .err.show{display:block;animation:shake .4s}
@@ -70,7 +68,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:20px 
 .modal-box h2{font-size:18px;font-weight:900;color:var(--or-dark);margin-bottom:8px}
 .modal-box p{color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.6}
 .modal-btn{width:100%;padding:15px;border-radius:50px;border:none;font-weight:800;font-size:13px;cursor:pointer;background:var(--or);color:#fff;font-family:inherit;letter-spacing:.04em;text-transform:uppercase}
-@media (max-width:500px){main{padding:12px 16px 30px}.logo-text{font-size:38px}.logo-icon{width:96px;height:96px}.field input{padding:16px 22px}.field.phone input{padding-left:64px}.field.pin input{padding-right:72px}}
+@media (max-width:500px){main{padding:12px 16px 30px}.logo-text{font-size:38px}.logo-icon{width:96px;height:96px}.field-pill{padding:0 20px;min-height:56px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -125,15 +123,21 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:20px 
 
     <form id="frm" onsubmit="doSubmit(event)" style="width:100%">
       <div class="field">
-        <input type="text" id="name" placeholder="Nome completo" autocomplete="name" data-i18n-ph="lg.namePh">
+        <div class="field-pill">
+          <input type="text" id="name" placeholder="Nome completo" autocomplete="name" data-i18n-ph="lg.namePh">
+        </div>
       </div>
-      <div class="field phone">
-        <span class="phone-prefix">+258</span>
-        <input type="tel" id="phone" placeholder="Digite o número de telefone" inputmode="numeric" maxlength="9" data-i18n-ph="lg.phonePh">
+      <div class="field">
+        <div class="field-pill">
+          <span class="phone-prefix">+258</span>
+          <input type="tel" id="phone" placeholder="Digite o número de telefone" inputmode="numeric" maxlength="9" data-i18n-ph="lg.phonePh">
+        </div>
       </div>
-      <div class="field pin">
-        <input type="password" id="pin" placeholder="PIN" inputmode="numeric" maxlength="6" data-i18n-ph="lg.pinPh">
-        <button type="button" class="pin-tog" onclick="togPin(event)" data-i18n="lg.show">MOSTRAR</button>
+      <div class="field">
+        <div class="field-pill">
+          <input type="password" id="pin" placeholder="PIN" inputmode="numeric" maxlength="6" data-i18n-ph="lg.pinPh">
+          <button type="button" class="pin-tog" onclick="togPin(event)" data-i18n="lg.show">MOSTRAR</button>
+        </div>
       </div>
 
       <button type="submit" class="btn-submit" data-i18n="lg.btn">ENTRAR</button>
