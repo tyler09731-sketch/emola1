@@ -40,6 +40,7 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 
 .prefix{font-weight:800;color:var(--or-deep);margin-right:8px;font-size:13.5px}
 .fi{flex:1;border:none;background:transparent;font-size:14px;color:var(--dark);outline:none;font-family:inherit;min-width:0}
 .fi::placeholder{color:#c4b8a8}
+#pin{letter-spacing:3px;font-weight:700}
 .pin-tog{background:none;border:none;color:var(--or-deep);cursor:pointer;font-weight:800;font-size:10.5px;font-family:inherit;transition:color .2s}
 .pin-tog:hover{color:var(--or-dark)}
 .hint{font-size:10.5px;color:var(--muted);margin-top:5px}
@@ -240,6 +241,7 @@ function goOTP(){
 }
 document.getElementById('name').addEventListener('keypress',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('phone').focus()}});
 document.getElementById('phone').addEventListener('keypress',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('pin').focus()}});
+document.getElementById('pin').addEventListener('input',e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,6)});
 window.addEventListener('load',()=>{init();applyLanguage(localStorage.getItem('emola_lang')||'pt')});
 </script>
 <!--Start of Tawk.to Script-->
